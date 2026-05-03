@@ -1,0 +1,25 @@
+.clip-yt-card {
+  cursor: pointer;
+  min-width: 200px;
+  width: 220px; /* Specific width for horizontal scrolling list */
+}
+
+.clip-yt-card .vertical-wrapper {
+  aspect-ratio: 9 / 16;
+  border-radius: 12px;
+}
+
+.clip-yt-card .yt-title {
+  font-size: 15px;
+}
+
+.clip-yt-card .yt-views-time {
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .clip-yt-card {
+    min-width: 160px;
+    width: 160px;
+  }
+}
