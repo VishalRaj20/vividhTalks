@@ -36,17 +36,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="footer-brand">
             <Link to="/" className="footer-logo-link">
-              <div className="footer-logo-mark">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                  <line x1="12" y1="19" x2="12" y2="22"/>
-                  <line x1="8" y1="22" x2="16" y2="22"/>
-                </svg>
-              </div>
-              <div className="footer-logo-text">
-                <span style={{ color: '#fff' }}>VIVIDH</span><span style={{ color: '#FF4D00' }}>TALKS</span>
-              </div>
+              <img src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="footer-logo-img" style={{ height: '100px', width: 'auto' }} />
             </Link>
             <p className="footer-tagline">
               India's boldest podcast platform. Where creators, founders, and voices that deserve to be heard come alive.
@@ -88,11 +78,11 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-col-heading">Explore</h4>
             <nav className="footer-nav-list">
-              <Link to="/podcasts" className="footer-nav-link">All Episodes</Link>
-              <Link to="/podcasts" className="footer-nav-link">Trending Now</Link>
-              <Link to="/podcasts" className="footer-nav-link">Shorts &amp; Clips</Link>
-              <Link to="/podcasts" className="footer-nav-link">Categories</Link>
-              <Link to="/podcasts" className="footer-nav-link">Guests</Link>
+              <Link to="/episodes" className="footer-nav-link">All Episodes</Link>
+              <Link to="/episodes" className="footer-nav-link">Trending Now</Link>
+              <Link to="/episodes" className="footer-nav-link">Shorts &amp; Clips</Link>
+              <Link to="/episodes" className="footer-nav-link">Categories</Link>
+              <Link to="/episodes" className="footer-nav-link">Guests</Link>
             </nav>
           </div>
 
@@ -117,8 +107,8 @@ const Footer = () => {
               <button type="submit" className="footer-newsletter-btn" aria-label="Subscribe"><ArrowRight size={16} /></button>
             </form>
             <div className="footer-contact-info">
-              <div className="footer-contact-row"><Mail size={13} className="footer-contact-icon" /><span>hello@vividhtalks.in</span></div>
-              <div className="footer-contact-row"><MapPin size={13} className="footer-contact-icon" /><span>Pune, Maharashtra, India</span></div>
+              <div className="footer-contact-row"><Mail size={13} className="footer-contact-icon" /><span>vividhtalks@gmail.com</span></div>
+              <div className="footer-contact-row"><MapPin size={13} className="footer-contact-icon" /><span>Patna, Bihar, India</span></div>
             </div>
           </div>
 
@@ -140,11 +130,11 @@ const Footer = () => {
 
         {/* Accordion: Explore */}
         <AccordionSection title="EXPLORE">
-          <Link to="/podcasts" className="mob-footer-link">All Episodes</Link>
-          <Link to="/podcasts" className="mob-footer-link">Trending Now</Link>
-          <Link to="/podcasts" className="mob-footer-link">Shorts &amp; Clips</Link>
-          <Link to="/podcasts" className="mob-footer-link">Categories</Link>
-          <Link to="/podcasts" className="mob-footer-link">Guests</Link>
+          <Link to="/episodes" className="mob-footer-link">All Episodes</Link>
+          <Link to="/episodes" className="mob-footer-link">Trending Now</Link>
+          <Link to="/episodes" className="mob-footer-link">Shorts &amp; Clips</Link>
+          <Link to="/episodes" className="mob-footer-link">Categories</Link>
+          <Link to="/episodes" className="mob-footer-link">Guests</Link>
         </AccordionSection>
 
         {/* Accordion: Studio */}
@@ -158,8 +148,8 @@ const Footer = () => {
         <div className="mob-footer-bottom-block">
           {/* Address */}
           <div className="mob-footer-address">
-            <span>hello@vividhtalks.in</span>
-            <span>Pune, Maharashtra, India</span>
+            <span>vividhtalks@gmail.com</span>
+            <span>Patna, Bihar, India</span>
           </div>
 
           {/* Social Icons */}

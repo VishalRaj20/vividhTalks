@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Mic2, Video, Scissors, Paintbrush, Radio, TrendingUp, ChevronDown } from 'lucide-react';
 import FeatureCard from '../components/ui/FeatureCard';
 import TestimonialCard from '../components/ui/TestimonialCard';
@@ -52,15 +53,19 @@ const BookSession = () => {
   return (
     <div className="book-page">
       {/* Hero */}
-      <section className="book-hero section-padding container text-center">
-        <h1 className="h1 animate-on-scroll">
-          Your Podcast.<br/>Your Rules.<br/><span className="text-accent">Our Studio.</span>
-        </h1>
-        <p className="subheading mx-auto mt-4 animate-on-scroll" style={{maxWidth: '600px'}}>
-          From idea to published episode — we handle everything. All you need to bring is your story.
-        </p>
-        <div className="scroll-indicator animate-on-scroll mt-12">
-          <ChevronDown size={32} className="text-accent bounce" />
+      <section className="book-hero section-padding animate-on-scroll">
+        <div className="book-hero-bg" style={{ backgroundImage: 'url(/podcast_studio_premium.png)' }}></div>
+        <div className="book-hero-overlay"></div>
+        <div className="container relative text-center">
+          <h1 className="h1 animate-on-scroll">
+            Your Podcast.<br/>Your Rules.<br/><span className="text-accent">Our Studio.</span>
+          </h1>
+          <p className="subheading mx-auto mt-4 animate-on-scroll" style={{maxWidth: '600px', color: 'rgba(255,255,255,0.9)'}}>
+            From idea to published episode — we handle everything. All you need to bring is your story.
+          </p>
+          <div className="scroll-indicator animate-on-scroll mt-12">
+            <ChevronDown size={32} className="text-accent bounce" />
+          </div>
         </div>
       </section>
 
@@ -118,7 +123,7 @@ const BookSession = () => {
                 <li>Brand integration</li>
                 <li>Priority support + strategy call</li>
               </ul>
-              <button className="btn btn-outline w-full">Contact for Pricing</button>
+              <Link to="/contact" className="btn btn-outline w-full">Contact for Pricing</Link>
             </div>
 
           </div>

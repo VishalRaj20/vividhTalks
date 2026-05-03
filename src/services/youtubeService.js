@@ -76,7 +76,12 @@ export const fetchChannelData = async () => {
     const episodes = [];
     const clips = [];
 
-    videosData.items.forEach((video, index) => {
+    // Sort by publication date (latest first)
+    const sortedItems = [...videosData.items].sort((a, b) => 
+      new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt)
+    );
+
+    sortedItems.forEach((video, index) => {
       const { totalSeconds, formatted } = parseDuration(video.contentDetails.duration);
       
       // Determine if short based on duration or title

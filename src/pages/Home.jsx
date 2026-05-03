@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Mic, Play, ArrowRight, CheckCircle2, Headphones, Users, Radio, Star } from 'lucide-react';
+import { Mic, Play, ArrowRight, CheckCircle2, Headphones, Users, Radio, Star, Globe, TrendingUp } from 'lucide-react';
 import PodcastCard from '../components/ui/PodcastCard';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import { testimonials, categories, episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
@@ -53,10 +53,10 @@ const heroImages = [
 ];
 
 const whyReasons = [
-  { icon: '🎙️', title: 'Studio-Quality Production', desc: 'Professional-grade audio and video setup so every episode sounds and looks phenomenal.' },
-  { icon: '🌍', title: 'Global Distribution', desc: 'Published across Spotify, YouTube, Apple Podcasts & more — all from a single recording session.' },
-  { icon: '📈', title: 'Built-in Growth', desc: 'From thumbnails to reels, we create everything you need to grow your audience fast.' },
-  { icon: '🤝', title: 'Expert Collaboration', desc: 'Our experienced hosts and editors work alongside you to craft compelling stories.' },
+  { icon: <Mic size={32} />, title: 'Studio-Quality Production', desc: 'Professional-grade audio and video setup so every episode sounds and looks phenomenal.' },
+  { icon: <Globe size={32} />, title: 'Global Distribution', desc: 'Published across Spotify, YouTube, Apple Podcasts & more — all from a single recording session.' },
+  { icon: <TrendingUp size={32} />, title: 'Built-in Growth', desc: 'From thumbnails to reels, we create everything you need to grow your audience fast.' },
+  { icon: <Users size={32} />, title: 'Expert Collaboration', desc: 'Our experienced hosts and editors work alongside you to craft compelling stories.' },
 ];
 
 const Home = () => {
@@ -83,7 +83,7 @@ const Home = () => {
   }
 
   const safeEpisodes = episodes.length > 0 ? episodes : dummyEpisodes;
-  const safeClips = clips.length >= 3 ? clips : dummyClips;
+  const safeClips = clips.length > 0 ? clips : dummyClips;
 
   return (
     <div className="home-page">
@@ -135,37 +135,39 @@ const Home = () => {
       </section>
 
       {/* ═══════════════ FEATURED EPISODE ═══════════════ */}
-      <section className="featured-section section-padding container">
-        <div className="section-tag animate-on-scroll"><span className="section-tag-dot"></span> LATEST DROP</div>
-        <div className="featured-card animate-on-scroll" style={{ transitionDelay: '0.1s' }}>
-          <div className="featured-image-col" onClick={() => setFeaturedPlaying(true)} style={{ cursor: 'pointer' }}>
-            {featuredPlaying ? (
-              <iframe
-                width="100%" height="100%"
-                src={`https://www.youtube.com/embed/${safeEpisodes[0].id}?autoplay=1&modestbranding=1&playsinline=1`}
-                frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen
-                style={{ objectFit: 'cover', minHeight: '200px' }}
-              />
-            ) : (
-              <>
-                <img src={safeEpisodes[0].image} alt="Featured Episode" />
-                <div className="featured-play"><Play size={32} fill="currentColor" /></div>
-                <div className="featured-img-overlay"></div>
-              </>
-            )}
-          </div>
-          <div className="featured-content-col">
-            <span className="mono-label text-accent">EP. {safeEpisodes[0].number}</span>
-            <h2 className="h2 featured-title">{safeEpisodes[0].title}</h2>
-            <p className="featured-guest subheading">{safeEpisodes[0].guest}</p>
-            <p className="featured-duration">{safeEpisodes[0].duration} <span className="dot">·</span> Video + Audio</p>
-            <div className="featured-tags">
-              {safeEpisodes[0].tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
+      <section className="featured-section section-padding">
+        <div className="container">
+          <div className="section-tag animate-on-scroll"><span className="section-tag-dot"></span> LATEST DROP</div>
+          <div className="featured-card animate-on-scroll" style={{ transitionDelay: '0.1s' }}>
+            <div className="featured-image-col" onClick={() => setFeaturedPlaying(true)} style={{ cursor: 'pointer' }}>
+              {featuredPlaying ? (
+                <iframe
+                  width="100%" height="100%"
+                  src={`https://www.youtube.com/embed/${safeEpisodes[0].id}?autoplay=1&modestbranding=1&playsinline=1`}
+                  frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen
+                  style={{ objectFit: 'cover', minHeight: '200px' }}
+                />
+              ) : (
+                <>
+                  <img src={safeEpisodes[0].image} alt="Featured Episode" />
+                  <div className="featured-play"><Play size={32} fill="currentColor" /></div>
+                  <div className="featured-img-overlay"></div>
+                </>
+              )}
             </div>
-            <div className="featured-actions">
-              <Link to={`/episode/${safeEpisodes[0].id}`} className="btn btn-primary">
-                <Play size={18} fill="currentColor" /> Watch Now
-              </Link>
+            <div className="featured-content-col">
+              <span className="mono-label text-accent">EP. {safeEpisodes[0].number}</span>
+              <h2 className="h2 featured-title">{safeEpisodes[0].title}</h2>
+              <p className="featured-guest subheading">{safeEpisodes[0].guest}</p>
+              <p className="featured-duration">{safeEpisodes[0].duration} <span className="dot">·</span> Video + Audio</p>
+              <div className="featured-tags">
+                {safeEpisodes[0].tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
+              </div>
+              <div className="featured-actions">
+                <Link to={`/episode/${safeEpisodes[0].id}`} className="btn btn-primary">
+                  <Play size={18} fill="currentColor" /> Watch Now
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -179,7 +181,7 @@ const Home = () => {
               <div className="section-tag"><span className="section-tag-dot"></span> OUR PROGRAMMES</div>
               <h2 className="h2" style={{ marginTop: '12px' }}>Featured <span className="text-accent">Episodes</span></h2>
             </div>
-            <Link to="/podcasts" className="btn btn-secondary">View All <ArrowRight size={16} /></Link>
+            <Link to="/episodes" className="btn btn-secondary">View All <ArrowRight size={16} /></Link>
           </div>
 
           <div className="programs-grid">
@@ -202,24 +204,26 @@ const Home = () => {
       </section>
 
       {/* ═══════════════ CATEGORIES ═══════════════ */}
-      <section className="categories-section section-padding container">
-        <div className="section-header animate-on-scroll">
-          <div className="section-tag"><span className="section-tag-dot"></span> EXPLORE BY TOPIC</div>
-          <h2 className="h2" style={{ marginTop: '12px' }}>Find Your <span className="text-accent">Frequency.</span></h2>
-          <p className="subheading" style={{ marginTop: '12px' }}>Every niche. Every voice. One platform.</p>
-        </div>
-        <div className="categories-premium-grid animate-on-scroll">
-          {categories.map((cat, idx) => (
-            <div className="cat-premium-card" key={idx}>
-              <div className="cat-premium-icon">{cat.icon}</div>
-              <div className="cat-premium-content">
-                <h4 className="cat-premium-label">{cat.label}</h4>
-                <span className="cat-premium-tag">{cat.count}</span>
+      <section className="categories-section section-padding">
+        <div className="container">
+          <div className="section-header animate-on-scroll">
+            <div className="section-tag"><span className="section-tag-dot"></span> EXPLORE BY TOPIC</div>
+            <h2 className="h2" style={{ marginTop: '12px' }}>Find Your <span className="text-accent">Frequency.</span></h2>
+            <p className="subheading" style={{ marginTop: '12px' }}>Every niche. Every voice. One platform.</p>
+          </div>
+          <div className="categories-premium-grid animate-on-scroll">
+            {categories.map((cat, idx) => (
+              <div className="cat-premium-card" key={idx}>
+                <div className="cat-premium-icon">{cat.icon}</div>
+                <div className="cat-premium-content">
+                  <h4 className="cat-premium-label">{cat.label}</h4>
+                  <span className="cat-premium-tag">{cat.count}</span>
+                </div>
+                <div className="cat-premium-arrow">→</div>
+                <div className="cat-premium-bar"></div>
               </div>
-              <div className="cat-premium-arrow">→</div>
-              <div className="cat-premium-bar"></div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -232,7 +236,7 @@ const Home = () => {
               <h2 className="h2" style={{ marginTop: '12px' }}>60 Seconds. <span className="text-accent">Full Impact.</span></h2>
               <p className="subheading" style={{ marginTop: '8px' }}>The sharpest moments from every episode.</p>
             </div>
-            <Link to="/podcasts" className="btn btn-secondary">View All <ArrowRight size={16} /></Link>
+            <Link to="/episodes" className="btn btn-secondary">View All <ArrowRight size={16} /></Link>
           </div>
         </div>
         <div className="shorts-scroll-outer">

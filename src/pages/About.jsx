@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Mic, Globe, Star, ArrowRight, Users, Radio, Headphones } from 'lucide-react';
+import { Mic, Globe, Star, ArrowRight, Users, Radio, Headphones, Target, Eye, Shield, CheckCircle2, Zap, TrendingUp, Award } from 'lucide-react';
 import './About.css';
 
 const teamMembers = [
@@ -27,12 +27,6 @@ const teamMembers = [
   },
 ];
 
-const values = [
-  { icon: <Mic size={28} />, title: 'Creator-First', desc: 'We exist to amplify your voice, not ours. Every decision we make starts with the creator.' },
-  { icon: <Globe size={28} />, title: 'India-Rooted', desc: 'Stories from here, heard everywhere. We celebrate what makes Indian voices unique.' },
-  { icon: <Star size={28} />, title: 'No Compromise', desc: 'Studio-grade output, every single time. We never settle for "good enough."' },
-];
-
 const About = () => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -50,16 +44,16 @@ const About = () => {
 
       {/* ─── HERO ─── */}
       <section className="about-hero-section">
-        <div className="about-hero-bg" style={{ backgroundImage: 'url(/images/stats_bg.png)' }}></div>
+        <div className="about-hero-bg" style={{ backgroundImage: 'url(/creators_with_mic.png)' }}></div>
         <div className="about-hero-overlay"></div>
         <div className="container about-hero-content">
-          <div className="section-tag animate-on-scroll"><span className="section-tag-dot"></span> OUR STORY</div>
+          <div className="section-tag animate-on-scroll"><span className="section-tag-dot"></span> ESTABLISHED 2025</div>
           <h1 className="h1 animate-on-scroll" style={{ marginTop: '16px', transitionDelay: '0.1s' }}>
-            We're Not Just a<br />Podcast Studio.<br />
-            <span className="text-accent">We're a Movement.</span>
+            Conversations. Stories.<br />
+            <span className="text-accent">Thought Leadership.</span>
           </h1>
-          <p className="subheading animate-on-scroll" style={{ maxWidth: '650px', marginTop: '24px', color: 'rgba(255,255,255,0.8)', transitionDelay: '0.2s' }}>
-            Vividh Talks was born from one belief: every person has a story worth sharing. We built the platform, the studio, and the community to make that happen.
+          <p className="subheading animate-on-scroll" style={{ maxWidth: '700px', marginTop: '24px', color: 'rgba(255,255,255,0.9)', transitionDelay: '0.2s' }}>
+            Vividh Talks is a content-driven talk show & media platform focused on meaningful conversations. We help individuals turn their experiences into powerful digital influence.
           </p>
           <div className="animate-on-scroll" style={{ marginTop: '36px', transitionDelay: '0.3s' }}>
             <Link to="/book" className="btn btn-primary"><Mic size={18} /> Start Your Story</Link>
@@ -67,67 +61,43 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── STATS BAR ─── */}
-      <section className="about-stats-bar">
-        <div className="container about-stats-grid">
-          {[
-            { icon: <Headphones size={20} />, val: '120K+', label: 'Monthly Listeners' },
-            { icon: <Users size={20} />, val: '300+', label: 'Guest Speakers' },
-            { icon: <Radio size={20} />, val: '40+', label: 'Curated Series' },
-            { icon: <Star size={20} />, val: '98%', label: 'Satisfaction Rate' },
-          ].map((s, i) => (
-            <div className="about-stat-item animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-              <div className="about-stat-icon">{s.icon}</div>
-              <div className="about-stat-val">{s.val}</div>
-              <div className="about-stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ─── THE STORY ─── */}
-      <section className="section-padding container">
-        <div className="story-layout">
-          <div className="story-text animate-on-scroll">
-            <div className="section-tag"><span className="section-tag-dot"></span> WHY WE BUILT THIS</div>
-            <h2 className="h2" style={{ marginTop: '16px', marginBottom: '24px' }}>The Origin<br /><span className="text-accent">of Vividh Talks</span></h2>
-            <p className="body-text" style={{ color: 'rgba(255,255,255,0.75)', lineHeight: '1.8', marginBottom: '16px' }}>
-              In 2023, we noticed something broken about how stories were told in India. The voices that mattered most — young founders, campus innovators, local changemakers — had no platform that truly represented them.
-            </p>
-            <p className="body-text" style={{ color: 'var(--accent-primary)', fontWeight: '700', fontSize: '22px', marginBottom: '16px' }}>
-              So we built one.
-            </p>
-            <p className="body-text" style={{ color: 'rgba(255,255,255,0.75)', lineHeight: '1.8', marginBottom: '16px' }}>
-              Vividh Talks is the content arm of Vividh Communications, built to give India's boldest voices a professional home. We don't just record — we craft, distribute, and amplify stories that move people.
-            </p>
-            <p className="body-text" style={{ color: 'rgba(255,255,255,0.75)', lineHeight: '1.8' }}>
-              From students with a wild idea to brands with a message, we've helped creators at every stage. And we're just getting started.
-            </p>
-            <Link to="/book" className="btn btn-primary" style={{ marginTop: '32px' }}>
-              Be Part of the Story <ArrowRight size={18} />
-            </Link>
-          </div>
-          <div className="story-image animate-on-scroll" style={{ transitionDelay: '0.15s' }}>
-            <div className="story-img-stack">
-              <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=800" alt="Studio Behind The Scenes" />
-              <div className="story-img-badge">
-                <span className="story-img-badge-num">3+</span>
-                <span>Years<br />of Stories</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── VALUES ─── */}
-      <section className="section-padding" style={{ background: 'rgba(0,0,0,0.25)' }}>
+      {/* ─── MISSION & VISION ─── */}
+      <section className="section-padding">
         <div className="container">
-          <div className="text-center animate-on-scroll" style={{ marginBottom: '48px' }}>
-            <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> WHAT WE STAND FOR</div>
-            <h2 className="h2" style={{ marginTop: '12px' }}>Our <span className="text-accent">Core Values</span></h2>
+          <div className="mission-vision-grid">
+            <div className="mv-card animate-on-scroll">
+              <div className="mv-icon"><Target size={32} /></div>
+              <h2 className="h2 mb-4">Our <span className="text-accent">Mission</span></h2>
+              <p className="body-text">
+                Create meaningful conversations delivering real insights, practical learning, and authentic perspectives, while helping guests build a strong personal brand through impactful content.
+              </p>
+            </div>
+            <div className="mv-card animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
+              <div className="mv-icon"><Eye size={32} /></div>
+              <h2 className="h2 mb-4">Our <span className="text-accent">Vision</span></h2>
+              <p className="body-text">
+                Become India’s go-to platform for credible conversations where audiences learn deeply and individuals share their stories while growing their digital presence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CORE VALUES ─── */}
+      <section className="section-padding" style={{ background: 'rgba(255,77,0,0.03)' }}>
+        <div className="container">
+          <div className="text-center animate-on-scroll mb-12">
+            <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> CORE VALUES</div>
+            <h2 className="h2 mt-4">What We <span className="text-accent">Stand For</span></h2>
           </div>
           <div className="values-grid">
-            {values.map((v, i) => (
+            {[
+              { icon: <Star />, title: 'Authentic Storytelling', desc: 'Real experiences over scripted narratives.' },
+              { icon: <Award />, title: 'Knowledge Sharing', desc: 'Practical learning and credible insights.' },
+              { icon: <Mic />, title: 'Meaningful Conversations', desc: 'Focus on depth and authenticity.' },
+              { icon: <Globe />, title: 'Inclusivity of Voices', desc: 'Representing diverse perspectives across India.' },
+              { icon: <Shield />, title: 'Consistency & Credibility', desc: 'Building trust through lasting value.' },
+            ].map((v, i) => (
               <div className="value-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
                 <div className="value-icon">{v.icon}</div>
                 <h3 className="value-title">{v.title}</h3>
@@ -139,57 +109,168 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── TEAM ─── */}
-      <section className="section-padding container">
-        <div className="text-center animate-on-scroll" style={{ marginBottom: '48px' }}>
-          <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> THE TEAM</div>
-          <h2 className="h2" style={{ marginTop: '12px' }}>The People <span className="text-accent">Behind the Mic</span></h2>
-        </div>
-        <div className="team-grid">
-          {teamMembers.map((m, i) => (
-            <div className="team-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-              <div className="team-img-wrap">
-                <img src={m.img} alt={m.name} />
-                <div className="team-img-overlay"></div>
-              </div>
-              <div className="team-card-body">
-                <h3 className="team-name">{m.name}</h3>
-                <span className="team-role">{m.role}</span>
-                <p className="team-bio">{m.bio}</p>
-                <div className="team-socials">
-                  {m.social.linkedin && <a href={m.social.linkedin} className="team-social-link">LinkedIn</a>}
-                  {m.social.instagram && <a href={m.social.instagram} className="team-social-link">Instagram</a>}
-                </div>
+      {/* ─── PHILOSOPHY ─── */}
+      <section className="section-padding">
+        <div className="container">
+          <div className="story-layout">
+            <div className="story-text animate-on-scroll">
+              <div className="section-tag"><span className="section-tag-dot"></span> THE PHILOSOPHY</div>
+              <h2 className="h2 mt-4 mb-6">The Idea Behind<br /><span className="text-accent">Vividh Talks</span></h2>
+              <p className="body-text mb-6">
+                In a fast-paced world of shallow content, Vividh Talks is created to slow conversations down and focus on depth, authenticity and meaningful insights. 
+              </p>
+              <div className="feature-list">
+                <div className="feature-item"><CheckCircle2 size={18} className="text-accent" /> <span>Pan India Reach</span></div>
+                <div className="feature-item"><CheckCircle2 size={18} className="text-accent" /> <span>Digital Influence Building</span></div>
+                <div className="feature-item"><CheckCircle2 size={18} className="text-accent" /> <span>Impactful Storytelling</span></div>
               </div>
             </div>
-          ))}
+            <div className="story-image animate-on-scroll">
+               <div className="glass-card p-8">
+                  <h3 className="h3 mb-6">Who We <span className="text-accent">Feature</span></h3>
+                  <ul className="custom-list">
+                    <li><CheckCircle2 size={16} className="text-accent" /> Founders & Entrepreneurs</li>
+                    <li><CheckCircle2 size={16} className="text-accent" /> Industry Experts & Professionals</li>
+                    <li><CheckCircle2 size={16} className="text-accent" /> Educators, Creators & Influencers</li>
+                    <li><CheckCircle2 size={16} className="text-accent" /> People with impactful life journeys</li>
+                  </ul>
+               </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ─── ECOSYSTEM ─── */}
-      <section className="section-padding" style={{ background: 'rgba(0,0,0,0.25)' }}>
+      {/* ─── CREATORS (PEOPLE WITH THE MIC) ─── */}
+      <section className="section-padding" style={{ background: 'rgba(255,77,0,0.02)' }}>
         <div className="container">
-          <div className="text-center animate-on-scroll" style={{ marginBottom: '48px' }}>
-            <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> THE VIVIDH UNIVERSE</div>
-            <h2 className="h2" style={{ marginTop: '12px' }}>Part of Something <span className="text-accent">Bigger.</span></h2>
-            <p className="subheading" style={{ maxWidth: '560px', margin: '12px auto 0' }}>A full-stack creative ecosystem built for brands, creators, and communities.</p>
+          <div className="creators-layout">
+            <div className="creators-image animate-on-scroll">
+              <div className="creators-img-wrap">
+                <img src="/creators_with_mic.png" alt="Creators With The Mic" />
+                <div className="creators-img-glow"></div>
+              </div>
+            </div>
+            <div className="creators-text animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
+              <div className="section-tag"><span className="section-tag-dot"></span> THE VOICES</div>
+              <h2 className="h2" style={{ marginTop: '16px' }}>The People <span className="text-accent">With the Mic</span></h2>
+              <p className="body-text mt-6" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: '1.8' }}>
+                From visionary startup founders to inspiring campus leaders, our mic has been a home for those who dare to speak their truth. We've hosted over 300+ guests who are shaping the future of India, one conversation at a time.
+              </p>
+              <div className="creators-stats mt-8">
+                <div className="c-stat">
+                  <span className="c-stat-num">300+</span>
+                  <span className="c-stat-label">Voices Heard</span>
+                </div>
+                <div className="c-stat">
+                  <span className="c-stat-num">12+</span>
+                  <span className="c-stat-label">Cities Reached</span>
+                </div>
+                <div className="c-stat">
+                  <span className="c-stat-num">Infinite</span>
+                  <span className="c-stat-label">Impact</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="ecosystem-grid animate-on-scroll">
-            <div className="ecosystem-card glass-card">
-              <h3>Vividh Communications</h3>
-              <p className="text-secondary">Branding, Marketing &amp; Podcast Services</p>
-              <a href="https://www.vividhcommunications.com/" className="text-accent mt-4 inline-block">Visit →</a>
+        </div>
+      </section>
+
+      {/* ─── TEAM (PEOPLE BEHIND THE MIC) ─── */}
+      <section className="section-padding">
+        <div className="container">
+          <div className="text-center animate-on-scroll mb-12">
+            <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> THE TEAM</div>
+            <h2 className="h2 mt-4">The People <span className="text-accent">Behind the Mic</span></h2>
+          </div>
+          <div className="team-grid">
+            {teamMembers.map((m, i) => (
+              <div className="team-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div className="team-img-wrap">
+                  <img src={m.img} alt={m.name} />
+                  <div className="team-img-overlay"></div>
+                </div>
+                <div className="team-card-body">
+                  <h3 className="team-name">{m.name}</h3>
+                  <span className="team-role">{m.role}</span>
+                  <p className="team-bio">{m.bio}</p>
+                  <div className="team-socials">
+                    {m.social.linkedin && <a href={m.social.linkedin} className="team-social-link">LinkedIn</a>}
+                    {m.social.instagram && <a href={m.social.instagram} className="team-social-link">Instagram</a>}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── WHY VIVIDH TALKS & VALUE ─── */}
+      <section className="section-padding" style={{ background: 'rgba(0,0,0,0.2)' }}>
+        <div className="container">
+          <div className="grid grid-2">
+            <div className="animate-on-scroll">
+              <h2 className="h2 mb-8">Why <span className="text-accent">Vividh Talks?</span></h2>
+              <div className="about-why-grid">
+                {[
+                  { title: 'Depth & Visibility', desc: 'Focus on meaningful content that also builds your reach.' },
+                  { title: 'Unscripted', desc: 'Honest, raw, and authentic conversations.' },
+                  { title: 'Strong Storytelling', desc: 'Narratives that highlight your unique journey.' },
+                  { title: 'Personal Brand', desc: 'Digital visibility that establishes authority.' },
+                ].map((w, i) => (
+                  <div className="why-item" key={i}>
+                    <Zap size={20} className="text-accent" />
+                    <div>
+                      <h4 className="font-bold">{w.title}</h4>
+                      <p className="text-secondary text-sm">{w.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="ecosystem-card glass-card highlight">
-              <h3>Vividh Talks</h3>
-              <p className="text-secondary">Podcast Platform &amp; Creator Ecosystem</p>
-              <span className="mono-label text-accent mt-4 inline-block">You Are Here</span>
+            <div className="animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
+              <h2 className="h2 mb-8">Value for <span className="text-accent">Audience</span></h2>
+              <div className="value-audience-box glass-card p-8">
+                <div className="va-item mb-6">
+                  <TrendingUp className="text-accent mb-2" />
+                  <h4>Practical Learning</h4>
+                  <p className="text-secondary">Insights and lessons you can actually use.</p>
+                </div>
+                <div className="va-item mb-6">
+                  <Award className="text-accent mb-2" />
+                  <h4>Credible Voices</h4>
+                  <p className="text-secondary">Knowledge from experts you can trust.</p>
+                </div>
+                <div className="va-item">
+                  <Zap className="text-accent mb-2" />
+                  <h4>Real Motivation</h4>
+                  <p className="text-secondary">Inspiration rooted in real-life struggles and success.</p>
+                </div>
+              </div>
             </div>
-            <div className="ecosystem-card glass-card">
-              <h3>Vividh Events</h3>
-              <p className="text-secondary">Event Management &amp; Experiences</p>
-              <a href="https://www.vividhevents.com/" className="text-accent mt-4 inline-block">Visit →</a>
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FUTURE VISION ─── */}
+      <section className="section-padding">
+        <div className="container">
+          <div className="text-center animate-on-scroll mb-12">
+            <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> LOOKING AHEAD</div>
+            <h2 className="h2 mt-4">Our <span className="text-accent">Future Vision</span></h2>
+          </div>
+          <div className="future-grid">
+            {[
+              'Expanding into panel discussions & live talk formats',
+              'Thematic series on business, culture & society',
+              'Collaborations with national-level voices',
+              'Positioning as a credible digital media platform',
+              'Larger formats for guest features'
+            ].map((v, i) => (
+              <div className="future-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div className="future-dot"></div>
+                <p>{v}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -197,8 +278,8 @@ const About = () => {
       {/* ─── CTA ─── */}
       <section className="about-cta-section section-padding">
         <div className="container text-center animate-on-scroll">
-          <h2 className="h2" style={{ marginBottom: '16px' }}>Ready to Be Part of <span className="text-accent">the Story?</span></h2>
-          <p className="subheading" style={{ marginBottom: '36px' }}>Your voice deserves a platform. We've built it for you.</p>
+          <h2 className="h2 mb-4">Let’s talk about <span className="text-accent">stories that matter.</span></h2>
+          <p className="subheading mb-8">Join the movement of meaningful conversations.</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <Link to="/book" className="btn btn-primary"><Mic size={18} /> Book a Session</Link>
             <Link to="/contact" className="btn btn-secondary">Get In Touch <ArrowRight size={18} /></Link>

@@ -26,15 +26,12 @@ const Navbar = () => {
         <div className="container navbar-container">
           {/* Logo */}
           <Link to="/" className="logo">
-            <div className="logo-icon-wrap">
-              <Radio size={18} />
-            </div>
-            <span className="logo-text">VIVIDH<span className="logo-accent">TALKS</span></span>
+            <img src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="logo-img" />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="desktop-nav">
-            <Link to="/podcasts" className={`nav-link ${location.pathname === '/podcasts' ? 'active' : ''}`}>Episodes</Link>
+            <Link to="/episodes" className={`nav-link ${location.pathname === '/episodes' ? 'active' : ''}`}>Episodes</Link>
             <Link to="/book" className={`nav-link ${location.pathname === '/book' ? 'active' : ''}`}>Studio</Link>
             <div
               className="nav-dropdown-wrapper"
@@ -76,7 +73,7 @@ const Navbar = () => {
           </button>
         </div>
         <nav className="mobile-nav-links">
-          <Link to="/podcasts" className="mobile-link">Episodes</Link>
+          <Link to="/episodes" className="mobile-link">Episodes</Link>
           <Link to="/book" className="mobile-link">Studio</Link>
           <button className="mobile-link mobile-dropdown-toggle" onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}>
             Services <ChevronDown size={18} className={servicesDropdownOpen ? 'rotated' : ''} />

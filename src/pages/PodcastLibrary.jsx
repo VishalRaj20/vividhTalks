@@ -31,11 +31,16 @@ const PodcastLibrary = () => {
     hiddenElements.forEach((el) => observer.observe(el));
 
     return () => hiddenElements.forEach((el) => observer.unobserve(el));
-  }, [loading]);
+  }, [loading, activeFilter, searchQuery, viewMode]);
 
-  const filteredEpisodes = activeFilter === 'All' 
-    ? episodes 
-    : episodes.filter(ep => ep.category === activeFilter);
+  const filteredEpisodes = episodes.filter(ep => {
+    const matchesFilter = activeFilter === 'All' || ep.category === activeFilter;
+    const matchesSearch = 
+      ep.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      ep.guest.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (ep.tags && ep.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
+    return matchesFilter && matchesSearch;
+  });
 
   if (loading) {
     return <div className="page-wrapper" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><div className="loader"></div></div>;
@@ -44,17 +49,21 @@ const PodcastLibrary = () => {
   return (
     <div className="library-page">
       {/* Page Hero */}
-      <section className="library-hero-section container animate-on-scroll">
-        <div className="section-tag"><span className="section-tag-dot"></span> EPISODE LIBRARY</div>
-        <h1 className="h1" style={{ marginTop: '16px' }}>All Episodes.<br/><span className="text-accent">All Stories.</span></h1>
-        <p className="subheading" style={{ maxWidth: '600px', marginTop: '16px' }}>
-          Browse, discover, and binge every conversation we've ever had.
-        </p>
-        <div className="stats-row mono-label" style={{ marginTop: '24px', color: 'var(--text-secondary)' }}>
-          <span>50+ Episodes</span><span className="dot">·</span>
-          <span>30+ Guests</span><span className="dot">·</span>
-          <span>8 Categories</span><span className="dot">·</span>
-          <span style={{ color: 'var(--accent-primary)' }}>Growing Every Week</span>
+      <section className="library-hero-section animate-on-scroll">
+        <div className="library-hero-bg" style={{ backgroundImage: 'url(/podcast_episodes_hero.png)' }}></div>
+        <div className="library-hero-overlay"></div>
+        <div className="container">
+          <div className="section-tag"><span className="section-tag-dot"></span> EPISODE LIBRARY</div>
+          <h1 className="h1" style={{ marginTop: '16px' }}>All Episodes.<br/><span className="text-accent">All Stories.</span></h1>
+          <p className="subheading" style={{ maxWidth: '600px', marginTop: '16px' }}>
+            Browse, discover, and binge every conversation we've ever had.
+          </p>
+          <div className="stats-row mono-label" style={{ marginTop: '24px', color: 'var(--text-secondary)' }}>
+            <span>50+ Episodes</span><span className="dot">·</span>
+            <span>30+ Guests</span><span className="dot">·</span>
+            <span>8 Categories</span><span className="dot">·</span>
+            <span style={{ color: 'var(--accent-primary)' }}>Growing Every Week</span>
+          </div>
         </div>
       </section>
 
@@ -63,7 +72,13 @@ const PodcastLibrary = () => {
         <div className="container filter-bar">
           <div className="search-input-wrapper">
             <Search size={20} className="search-icon" />
-            <input type="text" placeholder="Search episodes, guests, topics..." className="search-input" />
+            <input 
+              type="text" 
+              placeholder="Search episodes, guests, topics..." 
+              className="search-input" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
           
           <div className="filter-pills-scroll">
@@ -79,8 +94,20 @@ const PodcastLibrary = () => {
           </div>
 
           <div className="view-toggles d-none-mobile">
-            <button className="icon-btn-small active"><Grid size={20} /></button>
-            <button className="icon-btn-small"><List size={20} /></button>
+            <button 
+              className={`icon-btn-small ${viewMode === 'grid' ? 'active' : ''}`}
+              onClick={() => setViewMode('grid')}
+              aria-label="Grid view"
+            >
+              <Grid size={20} />
+            </button>
+            <button 
+              className={`icon-btn-small ${viewMode === 'list' ? 'active' : ''}`}
+              onClick={() => setViewMode('list')}
+              aria-label="List view"
+            >
+              <List size={20} />
+            </button>
           </div>
         </div>
       </section>
@@ -112,7 +139,7 @@ const PodcastLibrary = () => {
       <section className="container section-padding">
         {filteredEpisodes.length > 0 ? (
           <>
-            <div className="episode-grid">
+            <div className={`episode-${viewMode}`}>
               {filteredEpisodes.map((ep, idx) => (
                 <div className="animate-on-scroll" style={{ transitionDelay: `${(idx % 3) * 0.1}s` }} key={ep.id}>
                   <PodcastCard episode={ep} />
@@ -134,7 +161,7 @@ const PodcastLibrary = () => {
       </section>
 
       {/* Short Clips */}
-      <section className="clips-section section-padding" style={{ background: 'var(--bg-secondary)' }}>
+      <section className="clips-section section-padding">
         <div className="container animate-on-scroll">
           <div className="section-header">
             <h2 className="h2">Binge the Best Moments</h2>

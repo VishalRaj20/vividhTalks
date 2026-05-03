@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="podcasts" element={<PodcastLibrary />} />
+          <Route path="episodes" element={<PodcastLibrary />} />
           <Route path="episode/:slug" element={<EpisodeDetail />} />
           <Route path="book" element={<BookSession />} />
           <Route path="about" element={<About />} />
