@@ -168,12 +168,12 @@ export const testimonials = [
 ];
 
 export const categories = [
-  { icon: '🌟', label: 'Inspiring Stories', count: 'Latest Episodes' },
-  { icon: '🧠', label: 'Meaningful Insights', count: 'Deep Dives' },
-  { icon: '🌱', label: 'Life Lessons', count: 'Popular' },
-  { icon: '🗣️', label: 'Engaging Conversations', count: 'Trending' },
-  { icon: '🤔', label: 'Thought-Provoking', count: 'Explore' },
-  { icon: '🚀', label: 'Creator Journeys', count: 'Startup Stories' },
-  { icon: '🎓', label: 'Student Perspectives', count: 'Campus Voices' },
-  { icon: '🌍', label: 'Personal Growth', count: 'Self-Improvement' }
+  { icon: '🚀', label: 'Startup', count: 'Latest Episodes' },
+  { icon: '🎓', label: 'Student Life', count: 'Campus Voices' },
+  { icon: '🌍', label: 'Culture', count: 'Engaging Stories' },
+  { icon: '💻', label: 'Tech', count: 'Meaningful Insights' },
+  { icon: '✨', label: 'Personal Branding', count: 'Building Influence' },
+  { icon: '🎙️', label: 'Local Voices', count: 'Trending' },
+  { icon: '🤝', label: 'Social Impact', count: 'Real Stories' },
+  { icon: '📈', label: 'Marketing', count: 'Business Growth' }
 ];

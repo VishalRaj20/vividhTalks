@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { Search, Grid, List, Play } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import PodcastCard from '../components/ui/PodcastCard';
 import ClipCard from '../components/ui/ClipCard';
 import { useYouTubeData } from '../hooks/useYouTubeData';
@@ -8,7 +8,11 @@ import { episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyDat
 import './PodcastLibrary.css';
 
 const PodcastLibrary = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialCategory = queryParams.get('category');
+
+  const [activeFilter, setActiveFilter] = useState(initialCategory || 'All');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState('grid');
   
@@ -16,7 +20,16 @@ const PodcastLibrary = () => {
   const episodes = apiEpisodes.length > 0 ? apiEpisodes : dummyEpisodes;
   const clips = apiClips.length > 0 ? apiClips : dummyClips;
 
-  const filters = ['All', 'Startup', 'Student Life', 'Culture', 'Tech', 'Personal Branding', 'Local Voices', 'Social Impact'];
+  const filters = ['All', 'Startup', 'Student Life', 'Culture', 'Tech', 'Personal Branding', 'Local Voices', 'Social Impact', 'Marketing'];
+
+  useEffect(() => {
+    const category = new URLSearchParams(location.search).get('category');
+    if (category && filters.includes(category)) {
+      setActiveFilter(category);
+    } else if (!category) {
+      setActiveFilter('All');
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {

@@ -213,7 +213,11 @@ const Home = () => {
           </div>
           <div className="categories-premium-grid animate-on-scroll">
             {categories.map((cat, idx) => (
-              <div className="cat-premium-card" key={idx}>
+              <Link 
+                to={`/episodes?category=${encodeURIComponent(cat.label)}`} 
+                className="cat-premium-card" 
+                key={idx}
+              >
                 <div className="cat-premium-icon">{cat.icon}</div>
                 <div className="cat-premium-content">
                   <h4 className="cat-premium-label">{cat.label}</h4>
@@ -221,7 +225,7 @@ const Home = () => {
                 </div>
                 <div className="cat-premium-arrow">→</div>
                 <div className="cat-premium-bar"></div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
