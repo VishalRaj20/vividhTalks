@@ -65,13 +65,13 @@ const PodcastLibrary = () => {
       <section className="library-hero-section animate-on-scroll">
         <div className="library-hero-bg" style={{ backgroundImage: 'url(/podcast_episodes_hero.png)' }}></div>
         <div className="library-hero-overlay"></div>
-        <div className="container">
-          <div className="section-tag"><span className="section-tag-dot"></span> EPISODE LIBRARY</div>
-          <h1 className="h1" style={{ marginTop: '16px' }}>All Episodes.<br/><span className="text-accent">All Stories.</span></h1>
-          <p className="subheading" style={{ maxWidth: '600px', marginTop: '16px' }}>
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> EPISODE LIBRARY</div>
+          <h1 className="h1" style={{ marginTop: '16px', textAlign: 'center' }}>All Episodes.<br/><span className="text-accent">All Stories.</span></h1>
+          <p className="subheading" style={{ maxWidth: '600px', marginTop: '16px', textAlign: 'center' }}>
             Browse, discover, and binge every conversation we've ever had.
           </p>
-          <div className="stats-row mono-label" style={{ marginTop: '24px', color: 'var(--text-secondary)' }}>
+          <div className="stats-row mono-label" style={{ marginTop: '24px', color: 'var(--text-secondary)', justifyContent: 'center' }}>
             <span>50+ Episodes</span><span className="dot">·</span>
             <span>30+ Guests</span><span className="dot">·</span>
             <span>8 Categories</span><span className="dot">·</span>
