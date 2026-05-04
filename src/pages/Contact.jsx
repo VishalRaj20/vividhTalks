@@ -20,7 +20,7 @@ const Contact = () => {
 
       {/* ── Hero ── */}
       <section className="contact-hero section-padding">
-        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/contact_hero_visual.png)' }}></div>
+        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/contact_hero_new.png)' }}></div>
         <div className="contact-hero-overlay"></div>
         <div className="container relative">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> GET IN TOUCH</div>

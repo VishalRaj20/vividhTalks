@@ -26,7 +26,7 @@
 
 .yt-card:hover .yt-thumbnail-wrapper {
   transform: translateY(-6px);
-  box-shadow: 0 15px 30px rgba(255, 77, 0, 0.25);
+  box-shadow: 0 8px 20px rgba(255, 77, 0, 0.15);
 }
 
 .yt-card:hover .yt-thumbnail {

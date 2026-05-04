@@ -231,16 +231,8 @@ a {
   animation: shimmerSweep 1.5s infinite;
 }
 
-.btn-primary {
-  background: var(--gradient-accent);
-  color: #fff;
-  box-shadow: 0 4px 15px rgba(255, 77, 0, 0.2);
-}
-
-.btn-primary:hover {
-  box-shadow: var(--glow-effect);
-  transform: translateY(-2px);
-}
+.btn-primary { background: var(--gradient-accent); color: white; box-shadow: 0 4px 12px rgba(255,77,0,0.25); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,77,0,0.35); }
 
 .btn-secondary {
   background: transparent;

@@ -47,7 +47,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(0.6);
+  filter: brightness(0.8) contrast(1.1);
   z-index: 1;
 }
 
@@ -239,7 +239,7 @@ textarea.form-input { resize: vertical; min-height: 140px; }
   text-align: center;
   transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
 }
-.social-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+.social-card:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
 
 .social-card-icon {
   width: 64px;
@@ -276,7 +276,7 @@ textarea.form-input { resize: vertical; min-height: 140px; }
   text-decoration: none;
   border: none;
 }
-.btn-primary { background: var(--gradient-accent); color: white; box-shadow: 0 4px 20px rgba(255,77,0,0.35); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,77,0,0.5); }
+.btn-primary { background: var(--gradient-accent); color: white; box-shadow: 0 4px 12px rgba(255,77,0,0.25); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,77,0,0.35); }
 .btn-secondary { background: rgba(255,255,255,0.07); color: var(--text-primary); border: 1px solid rgba(255,255,255,0.12); }
 .btn-secondary:hover { background: rgba(255,255,255,0.12); }
