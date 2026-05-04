@@ -23,11 +23,11 @@ const Contact = () => {
         <div className="contact-hero-bg" style={{ backgroundImage: 'url(/contact_hero_visual.png)' }}></div>
         <div className="contact-hero-overlay"></div>
         <div className="container relative">
-          <div className="section-tag animate-on-scroll"><span className="section-tag-dot"></span> GET IN TOUCH</div>
-          <h1 className="h1 animate-on-scroll" style={{ marginTop: '24px', transitionDelay: '0.1s' }}>
+          <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> GET IN TOUCH</div>
+          <h1 className="h1 animate-on-scroll" style={{ marginTop: '24px', transitionDelay: '0.1s', textAlign: 'center' }}>
             Your Story Starts<br />With a <span className="text-accent">Conversation.</span>
           </h1>
-          <p className="subheading animate-on-scroll" style={{ maxWidth: '600px', marginTop: '24px', transitionDelay: '0.15s', color: 'rgba(255,255,255,0.9)' }}>
+          <p className="subheading animate-on-scroll" style={{ maxWidth: '600px', marginTop: '24px', transitionDelay: '0.15s', color: 'rgba(255,255,255,0.9)', textAlign: 'center', margin: '24px auto 0' }}>
             Every revolutionary idea, every viral moment, and every meaningful connection begins with a simple "Hello." Let’s craft your legacy together.
           </p>
         </div>

@@ -94,7 +94,13 @@
 .time { font-family: var(--font-mono); font-size: 12px; }
 
 /* ─── Episode Header Meta ─── */
-.episode-header-meta { padding: 32px 0 48px; }
+.episode-header-meta { 
+  padding: 32px 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
 .episode-info-row {
   display: flex;

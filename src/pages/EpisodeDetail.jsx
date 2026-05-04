@@ -67,21 +67,21 @@ const EpisodeDetail = () => {
             )}
           </div>
 
-          <div className="episode-header-meta">
+          <div className="episode-header-meta" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <span className="mono-label text-accent">EP. {episode.number}</span>
             <h1 className="h1 mt-2 mb-4">{episode.title}</h1>
             
-            <div className="episode-info-row text-secondary mb-4">
+            <div className="episode-info-row text-secondary mb-4" style={{ justifyContent: 'center' }}>
               <span>April 18, 2026</span>
               <span className="dot">·</span>
               <span>{episode.duration}</span>
               <span className="dot">·</span>
-              <div className="tags inline-flex gap-2">
+              <div className="tags inline-flex gap-2" style={{ justifyContent: 'center' }}>
                 {episode.tags.map(tag => <span key={tag}>{tag}</span>)}
               </div>
             </div>
 
-            <div className="episode-actions-row">
+            <div className="episode-actions-row" style={{ justifyContent: 'center' }}>
               <button className="btn btn-primary" onClick={() => setIsPlaying(true)}>
                 <Play size={18} fill="currentColor" /> Play Video
               </button>
