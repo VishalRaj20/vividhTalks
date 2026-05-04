@@ -313,22 +313,99 @@
   background-size: cover;
   background-position: center;
   opacity: 0;
-  animation: hero-fade-loop 15s infinite;
+  animation: hero-fade-loop 12s infinite;
 }
 .slide-1 { animation-delay: 0s; }
-.slide-2 { animation-delay: 5s; }
-.slide-3 { animation-delay: 10s; }
+.slide-2 { animation-delay: 4s; }
+.slide-3 { animation-delay: 8s; }
 
 @keyframes hero-fade-loop {
-  0% { opacity: 0; transform: scale(1.08); }
-  5%, 33% { opacity: 1; transform: scale(1.03); }
-  38%, 100% { opacity: 0; transform: scale(1); }
+  0% { opacity: 0; transform: scale(1.1); }
+  8%, 33.3% { opacity: 1; transform: scale(1.05); }
+  41.6%, 100% { opacity: 0; transform: scale(1); }
+}
+
+.hero-slide-info {
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  pointer-events: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-slide-info-content {
+  text-align: left; /* Changed to left for better reading flow */
+  max-width: 500px;
+  background: #000; /* Solid black for 100% contrast */
+  border-left: 8px solid var(--accent-primary); /* Thick accent line */
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+  margin-right: 40px; /* Offset from edge */
+}
+
+.hero-slide-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #fff;
+  background: var(--accent-primary); /* White text on orange badge */
+  padding: 6px 16px;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.hero-slide-title {
+  font-family: var(--font-display);
+  font-size: 42px; /* Even larger */
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  text-transform: uppercase; /* Powerful look */
+  letter-spacing: -1px;
+}
+
+@media (max-width: 1024px) {
+  .hero-slide-info-content {
+    max-width: 400px;
+    padding: 30px;
+  }
+  .hero-slide-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slide-info {
+    bottom: 40px;
+    justify-content: center;
+  }
+  .hero-slide-info-content {
+    text-align: center;
+    border-left: none;
+    border-top: 8px solid var(--accent-primary);
+    padding: 24px;
+    max-width: 90%;
+    margin-right: 0;
+  }
+  .hero-slide-title {
+    font-size: 24px;
+  }
+  .hero-slide-tag {
+    font-size: 11px;
+    margin-bottom: 12px;
+  }
 }
 
 .hero-overlay-dark {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.5) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
   z-index: 2;
 }
 

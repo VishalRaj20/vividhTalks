@@ -47,7 +47,7 @@ const About = () => {
         <div className="about-hero-bg" style={{ backgroundImage: 'url(/creators_with_mic.png)' }}></div>
         <div className="about-hero-overlay"></div>
         <div className="container about-hero-content">
-          <div className="section-tag animate-on-scroll"><span className="section-tag-dot"></span> ESTABLISHED 2025</div>
+          <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> ESTABLISHED 2025</div>
           <h1 className="h1 animate-on-scroll" style={{ marginTop: '16px', transitionDelay: '0.1s' }}>
             Conversations. Stories.<br />
             <span className="text-accent">Thought Leadership.</span>

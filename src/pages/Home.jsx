@@ -47,9 +47,21 @@ const StatItem = ({ value, suffix, label, icon: Icon }) => {
 };
 
 const heroImages = [
-  "/images/hero_studio.png",
-  "/images/hero_2.png",
-  "/images/hero_3.png",
+  {
+    url: "/images/hero_studio.png",
+    title: "Premium Studio Experience",
+    subtitle: "State-of-the-art equipment for your voice."
+  },
+  {
+    url: "/images/hero_2.png",
+    title: "Dynamic Storytelling",
+    subtitle: "Where every conversation sparks a new idea."
+  },
+  {
+    url: "/images/hero_3.png",
+    title: "Global Reach",
+    subtitle: "Amplifying your message across all platforms."
+  },
 ];
 
 const whyReasons = [
@@ -92,7 +104,14 @@ const Home = () => {
       <section className="hero-echoes-fullscreen">
         <div className="hero-bg-carousel">
           {heroImages.map((img, i) => (
-            <div key={i} className={`hero-bg-slide slide-${i + 1}`} style={{ backgroundImage: `url(${img})` }}></div>
+            <div key={i} className={`hero-bg-slide slide-${i + 1}`} style={{ backgroundImage: `url(${img.url})` }}>
+              <div className="hero-slide-info container">
+                <div className="hero-slide-info-content">
+                  <span className="hero-slide-tag">{img.subtitle}</span>
+                  <h2 className="hero-slide-title">{img.title}</h2>
+                </div>
+              </div>
+            </div>
           ))}
           <div className="hero-overlay-dark"></div>
         </div>
