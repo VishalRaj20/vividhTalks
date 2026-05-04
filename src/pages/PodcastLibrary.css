@@ -277,24 +277,13 @@
 .clips-row { 
   display: flex; 
   gap: 24px; 
-  padding-left: 20px;
-  padding-right: 20px;
   padding-bottom: 40px;
   width: max-content;
 }
 
 @media (min-width: 768px) {
   .clips-row {
-    padding-left: 40px;
-    padding-right: 40px;
     gap: 32px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .clips-row {
-    padding-left: calc((100vw - 1440px) / 2 + 40px);
-    padding-right: calc((100vw - 1440px) / 2 + 40px);
   }
 }
 

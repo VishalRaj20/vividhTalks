@@ -15,7 +15,7 @@ const PodcastLibrary = () => {
   const [activeFilter, setActiveFilter] = useState(initialCategory || 'All');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState('grid');
-  
+
   const { episodes: apiEpisodes, clips: apiClips, loading } = useYouTubeData();
   const episodes = apiEpisodes.length > 0 ? apiEpisodes : dummyEpisodes;
   const clips = apiClips.length > 0 ? apiClips : dummyClips;
@@ -48,8 +48,8 @@ const PodcastLibrary = () => {
 
   const filteredEpisodes = episodes.filter(ep => {
     const matchesFilter = activeFilter === 'All' || ep.category === activeFilter;
-    const matchesSearch = 
-      ep.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch =
+      ep.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       ep.guest.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (ep.tags && ep.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
     return matchesFilter && matchesSearch;
@@ -67,7 +67,7 @@ const PodcastLibrary = () => {
         <div className="library-hero-overlay"></div>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> EPISODE LIBRARY</div>
-          <h1 className="h1" style={{ marginTop: '16px', textAlign: 'center' }}>All Episodes.<br/><span className="text-accent">All Stories.</span></h1>
+          <h1 className="h1" style={{ marginTop: '16px', textAlign: 'center' }}>All Episodes.<br /><span className="text-accent">All Stories.</span></h1>
           <p className="subheading" style={{ maxWidth: '600px', marginTop: '16px', textAlign: 'center' }}>
             Browse, discover, and binge every conversation we've ever had.
           </p>
@@ -85,19 +85,19 @@ const PodcastLibrary = () => {
         <div className="container filter-bar">
           <div className="search-input-wrapper">
             <Search size={20} className="search-icon" />
-            <input 
-              type="text" 
-              placeholder="Search episodes, guests, topics..." 
-              className="search-input" 
+            <input
+              type="text"
+              placeholder="Search episodes, guests, topics..."
+              className="search-input"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          
+
           <div className="filter-pills-scroll">
             {filters.map(f => (
-              <button 
-                key={f} 
+              <button
+                key={f}
                 className={`filter-pill ${activeFilter === f ? 'active' : ''}`}
                 onClick={() => setActiveFilter(f)}
               >
@@ -107,14 +107,14 @@ const PodcastLibrary = () => {
           </div>
 
           <div className="view-toggles d-none-mobile">
-            <button 
+            <button
               className={`icon-btn-small ${viewMode === 'grid' ? 'active' : ''}`}
               onClick={() => setViewMode('grid')}
               aria-label="Grid view"
             >
               <Grid size={20} />
             </button>
-            <button 
+            <button
               className={`icon-btn-small ${viewMode === 'list' ? 'active' : ''}`}
               onClick={() => setViewMode('list')}
               aria-label="List view"
@@ -159,7 +159,7 @@ const PodcastLibrary = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="text-center mt-12 animate-on-scroll">
               <button className="btn btn-secondary">Load More Episodes ↓</button>
             </div>
@@ -179,13 +179,13 @@ const PodcastLibrary = () => {
           <div className="section-header">
             <h2 className="h2">Binge the Best Moments</h2>
           </div>
-        </div>
-        <div className="clips-full-bleed-wrapper">
-          <div className="clips-scroll-container">
-            <div className="clips-row animate-on-scroll">
-              {clips.map(clip => (
-                <ClipCard key={clip.id} clip={clip} />
-              ))}
+          <div className="clips-full-bleed-wrapper">
+            <div className="clips-scroll-container">
+              <div className="clips-row animate-on-scroll">
+                {clips.map(clip => (
+                  <ClipCard key={clip.id} clip={clip} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
