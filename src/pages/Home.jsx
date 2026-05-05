@@ -119,7 +119,6 @@ const Home = () => {
           <div className="hero-overlay-dark"></div>
         </div>
         <div className="container hero-fullscreen-content">
-          <span className="hero-live-badge animate-on-scroll"><span className="live-dot"></span> LIVE ON AIR</span>
           <h1 className="h1 animate-on-scroll" style={{ transitionDelay: '0.1s' }}>
             Where Stories<br />
             <span className="text-accent">Come Alive.</span>
@@ -139,9 +138,9 @@ const Home = () => {
       {/* ═══════════════ STATS BAR ═══════════════ */}
       <section className="stats-bar-section">
         <div className="container stats-bar-grid">
-          <StatItem value={120} suffix="K+" label="Monthly Listeners" icon={Headphones} />
-          <StatItem value={300} suffix="+" label="Guest Speakers" icon={Users} />
-          <StatItem value={40} suffix="+" label="Curated Series" icon={Radio} />
+          <StatItem value={10} suffix="K+" label="Monthly Listeners" icon={Headphones} />
+          <StatItem value={30} suffix="+" label="Guest Speakers" icon={Users} />
+          <StatItem value={20} suffix="+" label="Curated Series" icon={Radio} />
           <StatItem value={98} suffix="%" label="Listener Satisfaction" icon={Star} />
         </div>
       </section>
@@ -150,8 +149,8 @@ const Home = () => {
       <section className="marquee-section">
         <div className="marquee-container">
           <div className="marquee-content">
-            🎙 VIVIDH TALKS <span className="dot">·</span> STORYTELLING FOR THE BOLD <span className="dot">·</span> CREATORS <span className="dot">·</span> FOUNDERS <span className="dot">·</span> BRANDS <span className="dot">·</span> VIVIDH COMMUNICATIONS <span className="dot">·</span> MADE IN INDIA <span className="dot">·</span> RECORD YOUR STORY <span className="dot">·</span>
-            🎙 VIVIDH TALKS <span className="dot">·</span> STORYTELLING FOR THE BOLD <span className="dot">·</span> CREATORS <span className="dot">·</span> FOUNDERS <span className="dot">·</span> BRANDS <span className="dot">·</span> VIVIDH COMMUNICATIONS <span className="dot">·</span> MADE IN INDIA <span className="dot">·</span> RECORD YOUR STORY <span className="dot">·</span>
+            🎙 VIVIDH TALKS <span className="dot">·</span> STORYTELLING FOR THE BOLD <span className="dot">·</span> CREATORS <span className="dot">·</span> FOUNDERS <span className="dot">·</span> BRANDS <span className="dot">·</span> VIVIDH COMMUNICATIONS <span className="dot">·</span> MADE IN INDIA <span className="dot">·</span> RECORD YOUR STORY <span className="dot">·</span> VIVIDH EVENTS <span className="dot">·</span>
+            🎙 VIVIDH TALKS <span className="dot">·</span> STORYTELLING FOR THE BOLD <span className="dot">·</span> CREATORS <span className="dot">·</span> FOUNDERS <span className="dot">·</span> BRANDS <span className="dot">·</span> VIVIDH COMMUNICATIONS <span className="dot">·</span> MADE IN INDIA <span className="dot">·</span> RECORD YOUR STORY <span className="dot">·</span> VIVIDH EVENTS <span className="dot">·</span>
           </div>
         </div>
       </section>
@@ -235,9 +234,9 @@ const Home = () => {
           </div>
           <div className="categories-premium-grid animate-on-scroll">
             {categories.map((cat, idx) => (
-              <Link 
-                to={`/episodes?category=${encodeURIComponent(cat.label)}`} 
-                className="cat-premium-card" 
+              <Link
+                to={`/episodes?category=${encodeURIComponent(cat.label)}`}
+                className="cat-premium-card"
                 key={idx}
               >
                 <div className="cat-premium-icon">{cat.icon}</div>
@@ -366,7 +365,7 @@ const Home = () => {
           <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> LISTENER LOVE</div>
           <h2 className="h2" style={{ marginTop: '12px' }}>Real Stories. <span className="text-accent">Real Impact.</span></h2>
         </div>
-        
+
         <div className="testimonials-wrapper animate-on-scroll" style={{ marginTop: '48px' }}>
           <TestimonialSlider testimonials={actualTestimonials} />
         </div>
