@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Mic, Play, ArrowRight, CheckCircle2, Headphones, Users, Radio, Star, Globe, TrendingUp } from 'lucide-react';
 import PodcastCard from '../components/ui/PodcastCard';
 import TestimonialCard from '../components/ui/TestimonialCard';
-import { testimonials, categories, episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
+import { categories, episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
+import { testimonials as actualTestimonials } from '../data/testimonials';
 import { useYouTubeData } from '../hooks/useYouTubeData';
 import './Home.css';
 
@@ -71,9 +72,54 @@ const whyReasons = [
   { icon: <Users size={32} />, title: 'Expert Collaboration', desc: 'Our experienced hosts and editors work alongside you to craft compelling stories.' },
 ];
 
+const TestimonialSlider = ({ testimonials }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) setItemsPerPage(1);
+      else if (window.innerWidth < 1024) setItemsPerPage(2);
+      else setItemsPerPage(3);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const numDots = Math.ceil(testimonials.length / itemsPerPage);
+
+  return (
+    <div className="testimonials-slider-container">
+      <div 
+        className="testimonials-slider-track" 
+        style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
+      >
+        {testimonials.map((test) => (
+          <div className="testimonial-slide" key={test.id} style={{ flex: `0 0 ${100 / itemsPerPage}%` }}>
+            <TestimonialCard testimonial={test} />
+          </div>
+        ))}
+      </div>
+      
+      <div className="testimonial-dots">
+        {[...Array(numDots)].map((_, idx) => (
+          <button 
+            key={idx} 
+            className={`testimonial-dot ${currentIndex === idx ? 'active' : ''}`}
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`Go to page ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Home = () => {
   const { episodes, clips, loading } = useYouTubeData();
   const [featuredPlaying, setFeaturedPlaying] = useState(false);
+  const [testimonialIdx, setTestimonialIdx] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -363,12 +409,19 @@ const Home = () => {
           <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> LISTENER LOVE</div>
           <h2 className="h2" style={{ marginTop: '12px' }}>Real Stories. <span className="text-accent">Real Impact.</span></h2>
         </div>
-        <div className="testimonials-grid" style={{ marginTop: '48px' }}>
-          {testimonials.map((test, idx) => (
-            <div className="animate-on-scroll" style={{ transitionDelay: `${idx * 0.1}s` }} key={test.id}>
-              <TestimonialCard testimonial={test} />
+        
+        <div className="testimonials-wrapper animate-on-scroll" style={{ marginTop: '48px' }}>
+          {actualTestimonials.length > 3 ? (
+            <TestimonialSlider testimonials={actualTestimonials} />
+          ) : (
+            <div className="testimonials-grid">
+              {actualTestimonials.map((test, idx) => (
+                <div className="animate-on-scroll" style={{ transitionDelay: `${idx * 0.1}s` }} key={test.id}>
+                  <TestimonialCard testimonial={test} />
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       </section>
 

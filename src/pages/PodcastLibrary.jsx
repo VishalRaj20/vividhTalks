@@ -43,7 +43,9 @@ const PodcastLibrary = () => {
     const hiddenElements = document.querySelectorAll('.animate-on-scroll');
     hiddenElements.forEach((el) => observer.observe(el));
 
-    return () => hiddenElements.forEach((el) => observer.unobserve(el));
+    return () => {
+      hiddenElements.forEach((el) => observer.unobserve(el));
+    };
   }, [loading, activeFilter, searchQuery, viewMode]);
 
   const filteredEpisodes = episodes.filter(ep => {

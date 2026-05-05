@@ -3,8 +3,8 @@
 
 :root {
   /* Colors */
-  --bg-primary: #0A0A0C;
-  --bg-secondary: #111116;
+  --bg-primary: #050505;
+  --bg-secondary: #0D0D10;
   --surface-card: #1A1A22;
   --accent-primary: #FF4D00;
   --accent-secondary: #C8FF00;
@@ -66,6 +66,9 @@ body {
   font-weight: 700;
   line-height: 1.1;
   font-size: 32px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 @media (min-width: 768px) {
@@ -125,7 +128,11 @@ a {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 20px;
+}
+
+@media (min-width: 480px) {
+  .container { padding: 0 32px; }
 }
 
 @media (min-width: 768px) {
@@ -560,3 +567,33 @@ a {
   position: relative;
   z-index: 2;
 }
+
+/* Global Loader */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255, 77, 0, 0.2);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: #FF4D00;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} 

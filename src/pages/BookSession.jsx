@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mic2, Video, Scissors, Paintbrush, Radio, TrendingUp, ChevronDown } from 'lucide-react';
 import FeatureCard from '../components/ui/FeatureCard';
 import TestimonialCard from '../components/ui/TestimonialCard';
-import { testimonials } from '../data/dummyData';
+import { testimonials } from '../data/testimonials';
 import './BookSession.css';
 
 const BookSession = () => {
@@ -25,11 +25,47 @@ const BookSession = () => {
     return () => hiddenElements.forEach((el) => observer.unobserve(el));
   }, []);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "918252754340";
+    const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
+
+    // 1. Prepare WhatsApp Message
+    const message = `*New Podcast Booking Request*%0A%0A` +
+      `*Name:* ${data.name}%0A` +
+      `*Email:* ${data.email}%0A` +
+      `*Phone:* ${data.phone}%0A` +
+      `*Type:* ${data.userType}%0A` +
+      `*Date:* ${data.date}%0A` +
+      `*Topic:* ${data.topic}%0A%0A` +
+      `_Sent from Vividh Talks Website_`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    // 2. Optional: Send to Formspree (Email)
+    if (formspreeId) {
+      try {
+        const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          console.log("Email sent successfully to Formspree");
+        }
+      } catch (err) {
+        console.error("Email sending failed", err);
+      }
+    }
+
+    // 3. Success Feedback & Open WhatsApp
     setFormStatus('success');
+    window.open(whatsappUrl, '_blank');
     e.target.reset();
-    setTimeout(() => setFormStatus(''), 5000);
+    setTimeout(() => setFormStatus(''), 8000);
   };
 
   const faqs = [
@@ -128,7 +164,7 @@ const BookSession = () => {
 
           </div>
           <div className="text-center mt-8 animate-on-scroll">
-            <p className="text-secondary">💬 Not sure which plan fits? <a href="https://wa.me/91XXXXXXXXXX" className="text-accent font-bold">WhatsApp us →</a></p>
+            <p className="text-secondary">💬 Not sure which plan fits? <a href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || '918252754340'}`} className="text-accent font-bold">WhatsApp us →</a></p>
           </div>
         </div>
       </section>
@@ -142,19 +178,19 @@ const BookSession = () => {
             
             <form className="booking-form" onSubmit={handleFormSubmit}>
               <div className="form-group">
-                <input type="text" placeholder="Full Name *" required className="form-input" />
+                <input type="text" name="name" placeholder="Full Name *" required className="form-input" />
               </div>
               <div className="form-grid">
                 <div className="form-group">
-                  <input type="email" placeholder="Email Address *" required className="form-input" />
+                  <input type="email" name="email" placeholder="Email Address *" required className="form-input" />
                 </div>
                 <div className="form-group">
-                  <input type="tel" placeholder="Phone (WhatsApp) *" required className="form-input" />
+                  <input type="tel" name="phone" placeholder="Phone (WhatsApp) *" required className="form-input" />
                 </div>
               </div>
               <div className="form-group">
-                <select className="form-select" required>
-                  <option value="" disabled selected>I am a...</option>
+                <select className="form-select" name="userType" required defaultValue="">
+                  <option value="" disabled>I am a...</option>
                   <option value="student">Student</option>
                   <option value="entrepreneur">Entrepreneur</option>
                   <option value="influencer">Influencer</option>
@@ -163,10 +199,10 @@ const BookSession = () => {
                 </select>
               </div>
               <div className="form-group">
-                <textarea placeholder="Episode Idea / Topic..." rows="4" required className="form-input"></textarea>
+                <textarea name="topic" placeholder="Episode Idea / Topic..." rows="4" required className="form-input"></textarea>
               </div>
               <div className="form-group">
-                <input type="date" className="form-input text-secondary" required />
+                <input type="date" name="date" className="form-input text-secondary" required />
               </div>
               
               <button type="submit" className="btn btn-primary w-full mt-2">Book My Session →</button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Play, Download, Share2, Heart, ChevronDown, ChevronUp } from 'lucide-react';
+import { Play, Share2, Heart, ChevronDown, ChevronUp } from 'lucide-react';
 import PodcastCard from '../components/ui/PodcastCard';
 import ClipCard from '../components/ui/ClipCard';
 import { episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
@@ -9,9 +9,12 @@ import './EpisodeDetail.css';
 
 const EpisodeDetail = () => {
   const { slug } = useParams();
-  const [showTranscript, setShowTranscript] = useState(false);
   const [timestampsOpen, setTimestampsOpen] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
+  
+  const [startTime, setStartTime] = useState(0);
+  const [isDescExpanded, setIsDescExpanded] = useState(false);
+  const [playerKey, setPlayerKey] = useState(0);
   
   const { episodes: apiEpisodes, clips: apiClips, loading } = useYouTubeData();
   const episodes = apiEpisodes.length > 0 ? apiEpisodes : dummyEpisodes;
@@ -19,6 +22,9 @@ const EpisodeDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0,0);
+    setStartTime(0);
+    setIsPlaying(false);
+    setIsDescExpanded(false);
   }, [slug]);
 
   if (loading) {
@@ -26,6 +32,56 @@ const EpisodeDetail = () => {
   }
 
   const episode = episodes.find(ep => ep.id === slug) || episodes[0];
+
+  const parseTimestamps = (desc) => {
+    if (!desc) return null;
+    const regex = /(\d{1,2}:\d{2}(?::\d{2})?)\s*[-:]?\s*(.*)/g;
+    const matches = [...desc.matchAll(regex)];
+    if (matches.length > 0) {
+      return matches.map(match => ({
+        time: match[1],
+        label: match[2].trim()
+      })).slice(0, 10); // Limit to 10 for UI
+    }
+    return null;
+  };
+
+  const videoTimestamps = parseTimestamps(episode.description) || [
+    { time: "00:00", label: "Intro & Welcome" },
+    { time: "05:00", label: "The Conversation Starts" },
+    { time: "15:00", label: "Deep Dive into Topic" },
+    { time: "30:00", label: "Final Thoughts" }
+  ];
+
+  const handleTimestampClick = (timeString) => {
+    const parts = timeString.split(':');
+    let seconds = 0;
+    if (parts.length === 3) {
+      seconds = parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2]);
+    } else {
+      seconds = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+    }
+    setStartTime(seconds);
+    setPlayerKey(prev => prev + 1);
+    setIsPlaying(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleShare = () => {
+    const shareData = {
+      title: episode.title,
+      text: `Check out this episode of Vividh Talks: ${episode.title}`,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      navigator.share(shareData).catch((err) => console.log('Error sharing', err));
+    } else {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => alert('Link copied to clipboard!'))
+        .catch((err) => console.error('Could not copy text: ', err));
+    }
+  };
 
   return (
     <div className="episode-page">
@@ -49,7 +105,8 @@ const EpisodeDetail = () => {
               </div>
             ) : episode.videoUrl && episode.videoUrl.includes('youtube.com') ? (
               <iframe 
-                src={`https://www.youtube.com/embed/${episode.id}?autoplay=1&modestbranding=1&rel=0`} 
+                key={playerKey}
+                src={`https://www.youtube.com/embed/${episode.id}?autoplay=1&start=${startTime}&modestbranding=1&rel=0`} 
                 className="w-full h-full" 
                 frameBorder="0" 
                 allow="autoplay; encrypted-media; fullscreen" 
@@ -72,7 +129,7 @@ const EpisodeDetail = () => {
             <h1 className="h1 mt-2 mb-4">{episode.title}</h1>
             
             <div className="episode-info-row text-secondary mb-4" style={{ justifyContent: 'center' }}>
-              <span>April 18, 2026</span>
+              <span>{episode.timeAgo || 'Recently Released'}</span>
               <span className="dot">·</span>
               <span>{episode.duration}</span>
               <span className="dot">·</span>
@@ -85,8 +142,9 @@ const EpisodeDetail = () => {
               <button className="btn btn-primary" onClick={() => setIsPlaying(true)}>
                 <Play size={18} fill="currentColor" /> Play Video
               </button>
-              <button className="btn btn-secondary" onClick={() => alert('Download started.')}><Download size={18} /> Download</button>
-              <button className="btn btn-outline" onClick={() => alert('Link copied to clipboard!')}><Share2 size={18} /> Share</button>
+              <button className="btn btn-secondary" onClick={handleShare}>
+                <Share2 size={18} /> Share
+              </button>
             </div>
           </div>
         </div>
@@ -99,12 +157,17 @@ const EpisodeDetail = () => {
           <div className="episode-main-col">
             <div className="about-episode mb-12">
               <h3 className="h3 mb-4">About This Episode</h3>
-              <p className="body-text mb-4">
-                In this highly anticipated episode, we sit down with {episode.guest.replace('Featuring ', '')} to uncover the raw, unfiltered truth behind their journey. From facing early rejections to scaling new heights, this conversation dives deep into the mindset required to succeed in today's fast-paced environment.
-              </p>
-              <p className="body-text mb-6">
-                Whether you're a budding entrepreneur or a seasoned professional, the actionable advice shared in this episode will change the way you approach your daily challenges.
-              </p>
+              <div className={`body-text mb-6 ${!isDescExpanded ? 'line-clamp-6' : ''}`} style={{ whiteSpace: 'pre-line' }}>
+                {episode.description || "No description available for this episode."}
+              </div>
+              {episode.description && episode.description.length > 300 && (
+                <button 
+                  className="text-accent font-bold cursor-pointer bg-transparent border-none p-0 mb-8"
+                  onClick={() => setIsDescExpanded(!isDescExpanded)}
+                >
+                  {isDescExpanded ? "Show Less ↑" : "Read Full Description ↓"}
+                </button>
+              )}
 
               {/* Timestamps */}
               <div className="timestamps-box glass-card">
@@ -118,36 +181,18 @@ const EpisodeDetail = () => {
                 
                 {timestampsOpen && (
                   <div className="timestamps-list">
-                    <div className="timestamp-item"><span className="text-accent mono-label">00:00</span> Intro & Welcome</div>
-                    <div className="timestamp-item"><span className="text-accent mono-label">04:20</span> The Origin Story</div>
-                    <div className="timestamp-item"><span className="text-accent mono-label">12:45</span> First Major Failure</div>
-                    <div className="timestamp-item"><span className="text-accent mono-label">28:10</span> The Pivot That Changed Everything</div>
-                    <div className="timestamp-item"><span className="text-accent mono-label">44:00</span> Advice for Young Creators</div>
-                    <div className="timestamp-item"><span className="text-accent mono-label">50:30</span> Rapid Fire Round</div>
+                    {videoTimestamps.map((item, idx) => (
+                      <div 
+                        key={idx} 
+                        className="timestamp-item cursor-pointer hover-text-primary"
+                        onClick={() => handleTimestampClick(item.time)}
+                      >
+                        <span className="text-accent mono-label">{item.time}</span> {item.label || "Jump to segment"}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
-            </div>
-
-            {/* Transcript Preview */}
-            <div className="transcript-section mb-12">
-              <div 
-                className="flex items-center gap-2 cursor-pointer mb-4"
-                onClick={() => setShowTranscript(!showTranscript)}
-              >
-                <h3 className="h3">Episode Transcript</h3>
-                {showTranscript ? <ChevronUp size={24} className="text-accent"/> : <ChevronDown size={24} className="text-accent"/>}
-              </div>
-              
-              {showTranscript && (
-                <div className="transcript-content body-text text-secondary">
-                  <p className="mb-4"><strong>Host:</strong> Welcome back to Vividh Talks, the platform where India's boldest stories come alive. Today, we have a very special guest with us...</p>
-                  <p className="mb-4"><strong>Guest:</strong> Thank you for having me. I've been a huge fan of what Vividh Communications is building...</p>
-                  <p className="mb-4"><strong>Host:</strong> Let's start from the beginning. You mentioned earlier that your first venture was a complete disaster. Tell us about that.</p>
-                  <p><strong>Guest:</strong> Oh, absolutely. It was 2019, and I had put all my savings into this idea that I thought was foolproof. Within six months, we were out of cash. It taught me the most valuable lesson of my career...</p>
-                  <button className="text-accent mt-4 bg-transparent border-none font-bold cursor-pointer">Read Full Transcript →</button>
-                </div>
-              )}
             </div>
           </div>
 

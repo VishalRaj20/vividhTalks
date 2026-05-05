@@ -3,9 +3,12 @@ import { MessageCircle } from 'lucide-react';
 import './FloatingElements.css';
 
 const WhatsAppFab = () => {
+  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "918252754340";
+  const defaultMessage = encodeURIComponent("Hi Vividh Talks! I'm interested in recording a podcast episode. Can you help me with more details?");
+
   return (
     <a 
-      href="https://wa.me/91XXXXXXXXXX?text=Hi%20Vividh%20Talks!%20I'd%20like%20to%20know%20more%20about..."
+      href={`https://wa.me/${whatsappNumber}?text=${defaultMessage}`}
       className="whatsapp-fab"
       target="_blank"
       rel="noreferrer"

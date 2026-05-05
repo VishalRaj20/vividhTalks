@@ -6,25 +6,21 @@ const TestimonialCard = ({ testimonial }) => {
   const { quote, name, title, image, rating } = testimonial;
 
   return (
-    <div className="testimonial-card glass-card">
-      <div className="quote-icon-wrapper">
-        <Quote size={32} className="quote-icon" />
-      </div>
+    <div className="testimonial-card-premium">
+      <h4 className="testimonial-author-name">{name}</h4>
       
-      <p className="testimonial-quote">"{quote}"</p>
+      <p className="testimonial-text">"{quote}"</p>
       
-      <div className="testimonial-rating">
-        {[...Array(rating)].map((_, i) => (
-          <Star key={i} size={16} fill="var(--accent-secondary)" className="text-accent-secondary" />
-        ))}
-      </div>
-      
-      <div className="testimonial-author">
-        <img src={image} alt={name} className="author-image" loading="lazy" />
-        <div className="author-info">
-          <h4 className="author-name">{name}</h4>
-          <p className="author-title text-secondary">{title}</p>
+      <div className="testimonial-footer">
+        <div className="testimonial-stars">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={18} fill={i < rating ? "#E51D24" : "transparent"} stroke={i < rating ? "#E51D24" : "#ccc"} />
+          ))}
         </div>
+      </div>
+
+      <div className="testimonial-bg-quote">
+        <Quote size={120} />
       </div>
     </div>
   );

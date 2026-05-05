@@ -140,32 +140,6 @@ export const clips = [
   }
 ];
 
-export const testimonials = [
-  {
-    id: 1,
-    quote: "Recording with Vividh Talks was the best decision I made for my brand. The team made everything seamless — from scripting to distribution. My episode hit 5,000 plays in the first week.",
-    name: "Priya Sharma",
-    title: "Founder, StyleByPriya",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150"
-  },
-  {
-    id: 2,
-    quote: "As a student, I had zero idea how podcasting worked. Vividh Talks made me feel like a pro from day one. My campus episode got picked up by 3 colleges!",
-    name: "Rohit Nair",
-    title: "MBA Student, XLRI",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150"
-  },
-  {
-    id: 3,
-    quote: "We used Vividh Talks to launch our brand's podcast series. The production quality is world-class. It's not just recording — it's storytelling with strategy.",
-    name: "Neha Kapoor",
-    title: "CMO, BrandWave India",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150"
-  }
-];
 
 export const categories = [
   { icon: '🚀', label: 'Startup', count: 'Latest Episodes' },

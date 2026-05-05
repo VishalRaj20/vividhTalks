@@ -178,41 +178,58 @@
 
 .pinned-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   overflow: hidden;
-  border-radius: var(--radius-md);
-  background: rgba(26,26,34,0.7);
-  border: 1px solid rgba(255,255,255,0.07);
-  transition: all 0.45s cubic-bezier(0.23,1,0.32,1);
+  border-radius: 16px;
+  background: #0D0D10;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  margin-bottom: 40px;
 }
+
+@media (min-width: 992px) {
+  .pinned-card {
+    grid-template-columns: 1.2fr 1fr;
+    min-height: 400px;
+  }
+}
+
 .pinned-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255,77,0,0.3);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  transform: translateY(-5px);
+  border-color: rgba(255, 77, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .pinned-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--accent-primary);
+  top: 20px;
+  left: 20px;
+  background: var(--gradient-accent);
   color: #fff;
   font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 800;
   letter-spacing: 2px;
-  padding: 4px 10px;
-  border-radius: 4px;
-  z-index: 2;
+  padding: 6px 14px;
+  border-radius: 6px;
+  z-index: 5;
+  box-shadow: 0 4px 15px rgba(255, 77, 0, 0.4);
 }
 
 .pinned-img {
   position: relative;
-  aspect-ratio: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
   overflow: hidden;
 }
-.pinned-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-.pinned-card:hover .pinned-img img { transform: scale(1.06); }
+
+.pinned-img img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block; 
+}
 
 .play-overlay {
   position: absolute;
@@ -238,7 +255,24 @@
 }
 .play-btn.large { width: 80px; height: 80px; }
 
-.pinned-content { padding: 28px; display: flex; flex-direction: column; justify-content: center; }
+.pinned-content { 
+  padding: 48px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  background: #0D0D10;
+}
+
+.pinned-content .h3 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.pinned-content .text-secondary {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
 
 /* ─── Episode Grid ─── */
 .episode-grid {

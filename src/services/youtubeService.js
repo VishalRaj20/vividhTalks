@@ -37,7 +37,35 @@ const getTimeAgo = (dateString) => {
   return `${Math.floor(diffInDays / 365)} years ago`;
 };
 
+// Helper for timeout
+const fetchWithTimeout = async (url, options = {}, timeout = 6000) => {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    clearTimeout(id);
+    return response;
+  } catch (err) {
+    clearTimeout(id);
+    throw err;
+  }
+};
+
 export const fetchChannelData = async () => {
+  // Check Cache first
+  try {
+    const cached = localStorage.getItem('vividh_yt_cache');
+    if (cached) {
+      const { data, timestamp } = JSON.parse(cached);
+      // 1 hour cache
+      if (Date.now() - timestamp < 3600000) {
+        return { ...data, fromCache: true };
+      }
+    }
+  } catch (e) {
+    console.error("Cache read error", e);
+  }
+
   if (!API_KEY) {
     console.warn("⚠️ No VITE_YOUTUBE_API_KEY found. Falling back to dummy data.");
     return { episodes: dummyEpisodes, clips: dummyClips, isDummy: true };
@@ -48,29 +76,31 @@ export const fetchChannelData = async () => {
 
     // 1. Get Channel ID from Handle if not provided directly
     if (!targetChannelId) {
-      const searchRes = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${HANDLE}&key=${API_KEY}`);
+      const searchRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${HANDLE}&key=${API_KEY}`);
       const searchData = await searchRes.json();
       if (!searchData.items || searchData.items.length === 0) throw new Error("Channel not found");
       targetChannelId = searchData.items[0].id.channelId;
     }
 
     // 2. Get Uploads Playlist ID
-    const channelRes = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${targetChannelId}&key=${API_KEY}`);
+    const channelRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${targetChannelId}&key=${API_KEY}`);
     const channelData = await channelRes.json();
     const uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
 
     // 3. Get recent videos from uploads (max 50)
-    const playlistRes = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${API_KEY}`);
+    const playlistRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${API_KEY}`);
     const playlistData = await playlistRes.json();
     
     if (!playlistData.items || playlistData.items.length === 0) {
-      return { episodes: dummyEpisodes, clips: dummyClips, isDummy: true };
+      const result = { episodes: dummyEpisodes, clips: dummyClips, isDummy: true };
+      localStorage.setItem('vividh_yt_cache', JSON.stringify({ data: result, timestamp: Date.now() }));
+      return result;
     }
 
     const videoIds = playlistData.items.map(item => item.snippet.resourceId.videoId).join(',');
 
     // 4. Get detailed video stats (duration, views)
-    const videosRes = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id=${videoIds}&key=${API_KEY}`);
+    const videosRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/videos?part=contentDetails,statistics,snippet&id=${videoIds}&key=${API_KEY}`);
     const videosData = await videosRes.json();
 
     const episodes = [];
@@ -128,8 +158,11 @@ export const fetchChannelData = async () => {
         episodes.push(item);
       }
     });
+    
+    const result = { episodes, clips, isDummy: false };
+    localStorage.setItem('vividh_yt_cache', JSON.stringify({ data: result, timestamp: Date.now() }));
 
-    return { episodes, clips, isDummy: false };
+    return result;
   } catch (error) {
     console.error("Error fetching YouTube data:", error);
     return { episodes: dummyEpisodes, clips: dummyClips, isDummy: true };

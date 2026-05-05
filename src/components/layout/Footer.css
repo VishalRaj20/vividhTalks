@@ -539,36 +539,7 @@
   color: rgba(255, 255, 255, 0.18);
   font-size: 12px;
 }
-
-/* ── Scroll To Top ── */
-.footer-scroll-top {
-  position: absolute;
-  bottom: 28px;
-  right: 28px;
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 77, 0, 0.12);
-  border: 1px solid rgba(255, 77, 0, 0.3);
-  border-radius: 9px;
-  color: var(--accent-primary);
-  cursor: pointer;
-  font-size: 17px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.25s ease;
-  z-index: 10;
-}
-
-.footer-scroll-top:hover {
-  background: var(--accent-primary);
-  color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 77, 0, 0.4);
-}
-
-/* ── Mobile overrides for shared elements ── */
+/* Mobile overrides for bottom bar */
 @media (max-width: 640px) {
   .footer-bottom-inner {
     justify-content: center;
@@ -580,15 +551,5 @@
     color: rgba(255, 255, 255, 0.38);
     text-align: center;
     width: 100%;
-  }
-
-  .footer-scroll-top {
-    bottom: auto;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    position: fixed;
-    bottom: 80px;
-    top: auto;
   }
 }

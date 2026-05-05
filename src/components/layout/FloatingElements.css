@@ -12,7 +12,16 @@
   justify-content: center;
   box-shadow: 0 4px 14px rgba(0,0,0,0.4);
   z-index: 99;
-  transition: transform 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (max-width: 768px) {
+  .whatsapp-fab {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
 }
 
 .whatsapp-fab:hover {
@@ -57,6 +66,15 @@
   pointer-events: none;
   transform: translateY(20px);
   transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 85px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .back-to-top.visible {
