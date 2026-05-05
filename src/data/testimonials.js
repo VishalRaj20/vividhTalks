@@ -5,7 +5,7 @@ export const testimonials = [
     name: "Shreya Bharti",
     title: "Client",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150"
+    date: "12 Oct 2025"
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const testimonials = [
     name: "Sahil Singh Rathaur",
     title: "Entrepreneur",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150"
+    date: "28 Jan 2026"
   },
   {
     id: 3,
@@ -21,14 +21,14 @@ export const testimonials = [
     name: "Neha Kapoor",
     title: "CMO, BrandWave India",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150"
+    date: "05 Mar 2026"
   },
   {
     id: 4,
-    quote: "Working with Vividh Talks has been an absolute game changer for our brand visibility. The production quality and the way they handle the narrative is unmatched in the industry today.",
-    name: "Neha Kapoor",
-    title: "CMO, BrandWave India",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150"
+    quote: "The studio environment at Vividh is top-notch. They really know how to make a guest feel comfortable while ensuring the technical side is flawless. Highly recommended for anyone looking to start their podcast journey.",
+    name: "Arjun Mehta",
+    title: "Founder, NxtGenX",
+    rating: 4,
+    date: "15 Apr 2026"
   }
 ];
