@@ -52,4 +52,6 @@ tmp/
 private_assets/
 
 # Local-only media assets (ignored from Git/GitHub)
-# (Removed to allow deployment to Vercel)
+# public/guests/
+# public/studio/
+# public/Vividh Talks DP With Tagline White.png

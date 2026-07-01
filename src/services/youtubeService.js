@@ -119,11 +119,11 @@ const fetchWithTimeout = async (url, options = {}, timeout = 6000) => {
 export const fetchChannelData = async () => {
   // Check Cache first
   try {
-    const cached = localStorage.getItem('vividh_yt_cache_v5');
+    const cached = localStorage.getItem('vividh_yt_cache_v4');
     if (cached) {
-      const { data, timestamp, apiKey, channelId, handle } = JSON.parse(cached);
-      // 1 hour cache - invalidates immediately if API Key, Channel ID, or Handle has changed
-      if (apiKey === API_KEY && channelId === CHANNEL_ID && handle === HANDLE && (Date.now() - timestamp < 3600000)) {
+      const { data, timestamp, apiKey, channelId } = JSON.parse(cached);
+      // 1 hour cache - invalidates immediately if API Key or Channel ID has changed
+      if (apiKey === API_KEY && channelId === CHANNEL_ID && (Date.now() - timestamp < 3600000)) {
         // Re-evaluate categories of cached items on the fly to ensure that any filter logic updates apply immediately
         const reevaluatedEpisodes = (data.episodes || []).map(ep => ({
           ...ep,
@@ -147,26 +147,19 @@ export const fetchChannelData = async () => {
 
   try {
     let targetChannelId = CHANNEL_ID;
-    let targetHandle = import.meta.env.VITE_YOUTUBE_HANDLE;
-    let uploadsPlaylistId = null;
 
-    // 1. If CHANNEL_ID is provided in .env, use it directly
-    if (targetChannelId) {
-      const channelRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${targetChannelId}&key=${API_KEY}`);
-      const channelData = await channelRes.json();
-      if (!channelData.items || channelData.items.length === 0) throw new Error("Channel not found by ID");
-      uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
-    } else {
-      // 2. Otherwise use the Handle (default to @TalksVividh if not provided)
-      const handleToUse = targetHandle || '@TalksVividh';
-      const handleClean = handleToUse.startsWith('@') ? handleToUse : `@${handleToUse}`;
-      const channelRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${handleClean}&key=${API_KEY}`);
-      const channelData = await channelRes.json();
-      if (!channelData.items || channelData.items.length === 0) throw new Error(`Channel not found by handle: ${handleClean}`);
-      
-      targetChannelId = channelData.items[0].id;
-      uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
+    // 1. Get Channel ID from Handle if not provided directly
+    if (!targetChannelId) {
+      const searchRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&q=${HANDLE}&key=${API_KEY}`);
+      const searchData = await searchRes.json();
+      if (!searchData.items || searchData.items.length === 0) throw new Error("Channel not found");
+      targetChannelId = searchData.items[0].id.channelId;
     }
+
+    // 2. Get Uploads Playlist ID
+    const channelRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${targetChannelId}&key=${API_KEY}`);
+    const channelData = await channelRes.json();
+    const uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
 
     // 3. Get recent videos from uploads (max 50)
     const playlistRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${API_KEY}`);
@@ -174,12 +167,11 @@ export const fetchChannelData = async () => {
     
     if (!playlistData.items || playlistData.items.length === 0) {
       const result = { episodes: dummyEpisodes, clips: dummyClips, isDummy: true };
-      localStorage.setItem('vividh_yt_cache_v5', JSON.stringify({ 
+      localStorage.setItem('vividh_yt_cache_v4', JSON.stringify({ 
         data: result, 
         timestamp: Date.now(),
         apiKey: API_KEY,
-        channelId: CHANNEL_ID,
-        handle: HANDLE
+        channelId: CHANNEL_ID
       }));
       return result;
     }
@@ -285,12 +277,11 @@ export const fetchChannelData = async () => {
     });
     
     const result = { episodes, clips, isDummy: false };
-    localStorage.setItem('vividh_yt_cache_v5', JSON.stringify({ 
+    localStorage.setItem('vividh_yt_cache_v4', JSON.stringify({ 
       data: result, 
       timestamp: Date.now(),
       apiKey: API_KEY,
-      channelId: CHANNEL_ID,
-      handle: HANDLE
+      channelId: CHANNEL_ID
     }));
 
     return result;
