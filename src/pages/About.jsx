@@ -18,7 +18,7 @@ const hosts = [
       { label: 'Her Mission', text: 'Building a platform for diverse stories and ambitious minds.' }
     ],
     expertise: ['Empathetic Hosting', 'Branding & Stories', 'Impact Conversations'],
-    img: '/guests/Shradhha Suman.jpeg',
+    img: '/guests/Shradhha Suman.webp',
     social: { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' },
     quote: "Every person has a story powerful enough to inspire change"
   }
@@ -52,62 +52,62 @@ const featuredGuests = [
   {
     name: 'Deepak Thakur',
     role: 'Playback Singer & Bigg Boss Fame',
-    img: '/guests/Deepak Thakur.JPG'
+    img: '/guests/Deepak Thakur.webp'
   },
   {
     name: 'Shubham Raj',
     role: 'Director - Garda Media',
-    img: '/guests/Shubham Raj.JPG'
+    img: '/guests/Shubham Raj.webp'
   },
   {
     name: 'Sujit Kumar Mishra',
     role: 'Founder & CEO - Thikedaar.com',
-    img: '/guests/Sujit Kumar Mishra.png'
+    img: '/guests/Sujit Kumar Mishra.webp'
   },
   {
     name: 'Preeti Singh',
     role: 'Associate Professor - RSMT College',
-    img: '/guests/Preeti Singh.png'
+    img: '/guests/Preeti Singh.webp'
   },
   {
     name: 'Abhishek Tiwary',
     role: 'Political Analyst & Election Psychologist',
-    img: '/guests/Abhishek Tiwary.JPG'
+    img: '/guests/Abhishek Tiwary.webp'
   },
   {
     name: 'Aditya Raj',
     role: 'National President - Yuva Wahini Bharat',
-    img: '/guests/Aditya Raj.JPG'
+    img: '/guests/Aditya Raj.webp'
   },
   {
     name: 'Dr. Kishlay',
     role: 'Metabolic Doctor',
-    img: '/guests/Dr. Kishlay.JPG'
+    img: '/guests/Dr. Kishlay.webp'
   },
   {
     name: 'Dr. Shubhash Krishna',
     role: 'Programminng Director & DGM - Radio City',
-    img: '/guests/Dr. Shubhash Krishna.png'
+    img: '/guests/Dr. Shubhash Krishna.webp'
   },
   {
     name: 'Sneham Choudhary',
     role: 'Internationally Certified Image Consultant & Fashion Stylist',
-    img: '/guests/Sneham Choudhary.jpeg'
+    img: '/guests/Sneham Choudhary.webp'
   },
   {
     name: 'Satyam Parkhi',
     role: 'Founder - Chicka Litti & Parkhi Production',
-    img: '/guests/Satyam Parkhi.JPG'
+    img: '/guests/Satyam Parkhi.webp'
   },
   {
     name: 'Vikash Aryan',
     role: 'Actor & Founder - Actor Chaiwala',
-    img: '/guests/Vikash Aryan.JPG'
+    img: '/guests/Vikash Aryan.webp'
   },
   {
     name: 'Pd. Shree Abhay Krishan Jee Maharaj',
     role: 'Political Astrologer',
-    img: '/guests/Pd. Shree Abhay Krishan Jee Maharaj.JPG'
+    img: '/guests/Pd. Shree Abhay Krishan Jee Maharaj.webp'
   }
 ];
 
@@ -234,7 +234,7 @@ const About = () => {
           <div className="creators-layout">
             <div className="creators-image animate-on-scroll">
               <div className="creators-img-wrap">
-                <img src="/guests/creators_with_mic.jpeg" alt="Creators With The Mic" />
+                <img src="/guests/creators_with_mic.webp" alt="Creators With The Mic" />
                 <div className="creators-img-glow"></div>
               </div>
             </div>

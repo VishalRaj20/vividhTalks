@@ -102,7 +102,7 @@ const getGuestDetails = (episode) => {
     linkedin: '#',
     instagram: '#',
     hostName: 'Shraddha Suman',
-    hostImage: '/guests/Shradhha Suman.jpeg',
+    hostImage: '/guests/Shradhha Suman.webp',
     hostTitle: 'Host, Vividh Talks'
   };
 };

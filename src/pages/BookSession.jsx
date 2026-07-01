@@ -312,22 +312,22 @@ const BookSession = () => {
 
         <div className="studio-gallery-grid animate-on-scroll">
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-55-53.jpg" alt="Studio Setup 1" />
+            <img src="/studio/photo_2026-07-01_20-55-53.webp" alt="Studio Setup 1" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-10.jpg" alt="Studio Setup 2" />
+            <img src="/studio/photo_2026-07-01_20-58-10.webp" alt="Studio Setup 2" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-15.jpg" alt="Studio Setup 3" />
+            <img src="/studio/photo_2026-07-01_20-58-15.webp" alt="Studio Setup 3" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-18.jpg" alt="Studio Setup 4" />
+            <img src="/studio/photo_2026-07-01_20-58-18.webp" alt="Studio Setup 4" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-23.jpg" alt="Studio Setup 5" />
+            <img src="/studio/photo_2026-07-01_20-58-23.webp" alt="Studio Setup 5" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-26.jpg" alt="Studio Setup 6" />
+            <img src="/studio/photo_2026-07-01_20-58-26.webp" alt="Studio Setup 6" />
           </div>
         </div>
       </section>

@@ -439,7 +439,7 @@ const Home = () => {
         <div className="host-preview-card-wrapper animate-on-scroll">
           <div className="host-preview-grid">
             <div className="host-preview-img-wrap">
-              <img src="/guests/Shradhha Suman.jpeg" alt="Shraddha Suman" />
+              <img src="/guests/Shradhha Suman.webp" alt="Shraddha Suman" />
               <div className="host-preview-badge">Main Host</div>
             </div>
             <div className="host-preview-content">

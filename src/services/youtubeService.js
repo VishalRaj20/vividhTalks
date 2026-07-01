@@ -147,23 +147,24 @@ export const fetchChannelData = async () => {
 
   try {
     let targetChannelId = CHANNEL_ID;
+    let targetHandle = import.meta.env.VITE_YOUTUBE_HANDLE;
     let uploadsPlaylistId = null;
 
-    // 1. Get Channel ID and uploads playlist from Handle if not provided directly
-    if (!targetChannelId) {
-      // Use forHandle endpoint which is exact and reliable for youtube handles
-      const handleClean = HANDLE.startsWith('@') ? HANDLE : `@${HANDLE}`;
-      const channelRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${handleClean}&key=${API_KEY}`);
-      const channelData = await channelRes.json();
-      if (!channelData.items || channelData.items.length === 0) throw new Error("Channel not found by handle");
-      
-      targetChannelId = channelData.items[0].id;
-      uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
-    } else {
-      // 2. Get Uploads Playlist ID if we only had the channel ID
+    // 1. If CHANNEL_ID is provided in .env, use it directly
+    if (targetChannelId) {
       const channelRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${targetChannelId}&key=${API_KEY}`);
       const channelData = await channelRes.json();
       if (!channelData.items || channelData.items.length === 0) throw new Error("Channel not found by ID");
+      uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
+    } else {
+      // 2. Otherwise use the Handle (default to @TalksVividh if not provided)
+      const handleToUse = targetHandle || '@TalksVividh';
+      const handleClean = handleToUse.startsWith('@') ? handleToUse : `@${handleToUse}`;
+      const channelRes = await fetchWithTimeout(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${handleClean}&key=${API_KEY}`);
+      const channelData = await channelRes.json();
+      if (!channelData.items || channelData.items.length === 0) throw new Error(`Channel not found by handle: ${handleClean}`);
+      
+      targetChannelId = channelData.items[0].id;
       uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
     }
 
