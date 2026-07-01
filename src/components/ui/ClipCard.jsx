@@ -3,7 +3,7 @@ import { MoreVertical } from 'lucide-react';
 import VideoModal from './VideoModal';
 import './ClipCard.css';
 
-const ClipCard = ({ clip }) => {
+const ClipCard = ({ clip, onClick }) => {
   const { id, title, duration, views, timeAgo, image, videoUrl } = clip;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -35,11 +35,19 @@ const ClipCard = ({ clip }) => {
     };
   }, []);
 
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      setIsModalOpen(true);
+    }
+  };
+
   return (
     <>
       <div 
         className="yt-card clip-yt-card" 
-        onClick={() => setIsModalOpen(true)}
+        onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

@@ -49,3 +49,9 @@ tmp/
 
 # Vite specific
 .vite/
+private_assets/
+
+# Local-only media assets (ignored from Git/GitHub)
+public/guests/
+public/studio/
+public/Vividh Talks DP With Tagline White.png

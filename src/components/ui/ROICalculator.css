@@ -1,0 +1,285 @@
+/* Podcast ROI Calculator Styles */
+
+.roi-calculator-container {
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 40px;
+}
+
+.roi-calculator-container:hover {
+  transform: none; /* Keep flat inside section */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 77, 0, 0.15);
+}
+
+.roi-calculator-header {
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.roi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 77, 0, 0.15);
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 77, 0, 0.2);
+}
+
+.roi-calculator-header h3 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.roi-grid-wrapper {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+}
+
+/* Sliders Styling */
+.roi-sliders-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.roi-slider-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.roi-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.slider-value {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.roi-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.roi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.roi-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 15px var(--accent-primary);
+}
+
+.slider-limits {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+/* Metrics Dashboard Styling */
+.roi-metrics-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.metrics-summary-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.metric-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.metric-val {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 700;
+  margin: 6px 0;
+  line-height: 1.1;
+  text-shadow: 0 0 15px rgba(255, 77, 0, 0.1);
+}
+
+.metric-subtext {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.metrics-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.metric-mini-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.card-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.card-val {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.card-sub {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* Annual value banner with glows */
+.roi-impact-banner {
+  background: linear-gradient(135deg, rgba(255, 77, 0, 0.08) 0%, rgba(200, 255, 0, 0.04) 100%);
+  border: 1px solid rgba(255, 77, 0, 0.15);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.banner-glow {
+  position: absolute;
+  top: -50%;
+  right: -5%;
+  width: 150px;
+  height: 150px;
+  background: var(--accent-primary);
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.banner-lbl {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+.banner-val {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-top: 4px;
+}
+
+.banner-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.banner-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 14px;
+  line-height: 1.4;
+}
+
+.calculator-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+.calculator-info svg {
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .roi-grid-wrapper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .roi-calculator-container {
+    padding: 20px;
+  }
+  .roi-calculator-header h3 {
+    font-size: 24px;
+  }
+  .metric-val {
+    font-size: 28px;
+  }
+  .banner-val {
+    font-size: 26px;
+  }
+}

@@ -39,6 +39,35 @@
   --radius-full: 9999px;
 }
 
+/* Theme Overrides */
+body.theme-lava {
+  --accent-primary: #FF4D00;
+  --accent-secondary: #C8FF00;
+  --gradient-accent: linear-gradient(135deg, #FF4D00 0%, #FF8C00 100%);
+  --glow-effect: 0 0 40px rgba(255, 77, 0, 0.3);
+}
+
+body.theme-acid {
+  --accent-primary: #C8FF00;
+  --accent-secondary: #00E5FF;
+  --gradient-accent: linear-gradient(135deg, #C8FF00 0%, #87FF00 100%);
+  --glow-effect: 0 0 40px rgba(200, 255, 0, 0.3);
+}
+
+body.theme-cyber {
+  --accent-primary: #A020F0;
+  --accent-secondary: #FF007F;
+  --gradient-accent: linear-gradient(135deg, #A020F0 0%, #FF007F 100%);
+  --glow-effect: 0 0 40px rgba(160, 32, 240, 0.3);
+}
+
+body.theme-gold {
+  --accent-primary: #FFD700;
+  --accent-secondary: #FF4D00;
+  --gradient-accent: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  --glow-effect: 0 0 40px rgba(255, 215, 0, 0.3);
+}
+
 /* Reset & Base Styles */
 * {
   margin: 0;
@@ -48,6 +77,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -145,18 +176,20 @@ a {
 
 /* Glassmorphism */
 .glass-card {
-  background: rgba(26, 26, 34, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-md);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(26, 26, 34, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .glass-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(255, 77, 0, 0.15);
-  border-color: rgba(255, 77, 0, 0.3);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 77, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(26, 26, 34, 0.6);
 }
 
 /* Scrollbar */
@@ -596,4 +629,23 @@ a {
 @keyframes rotation {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Site-wide interactive cursor-glow background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+    rgba(255, 77, 0, 0.08) 0%,
+    rgba(200, 255, 0, 0.02) 40%,
+    transparent 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 } 

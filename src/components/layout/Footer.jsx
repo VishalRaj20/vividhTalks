@@ -42,31 +42,27 @@ const Footer = () => {
               India's boldest podcast platform. Where creators, founders, and voices that deserve to be heard come alive.
             </p>
             <div className="ft-social-row">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Facebook">
+              <a href="https://www.facebook.com/vividhtalks" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Facebook">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="X / Twitter">
+              <a href="https://www.x.com/VividhTalks" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="X / Twitter">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z" /></svg>
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Instagram">
+              <a href="https://www.instagram.com/vividhtalks" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Instagram">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="YouTube">
+              <a href="https://www.youtube.com/@TalksVividh" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="YouTube">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
               </a>
             </div>
             <div className="footer-platforms">
               <span className="footer-platforms-label">LISTEN ON</span>
               <div className="footer-platform-chips">
-                <a href="#" className="f-chip">
+                <a href="https://open.spotify.com/show/6VuPnQLjpYCCymWC1q3D1Z?si=a3e5efbd65f34d51" target="_blank" rel="noreferrer" className="f-chip">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.3c-.2.4-.7.5-1.1.3-2.9-1.8-6.6-2.2-10.9-1.2-.4.1-.8-.2-.9-.6-.1-.4.2-.8.6-.9 4.7-1.1 8.8-.6 12 1.4.4.2.5.7.3 1zm1.5-3.3c-.3.5-.9.6-1.3.3-3.3-2-8.4-2.6-12.3-1.4-.5.2-1.1-.1-1.2-.6-.2-.5.1-1.1.6-1.2 4.5-1.4 10.1-.7 13.9 1.7.4.2.6.9.3 1.2zm.1-3.4C15.2 8.2 8.5 8 4.7 9.2c-.6.2-1.3-.2-1.4-.8-.2-.6.2-1.3.8-1.4 4.4-1.3 11.8-1.1 16.4 1.8.5.3.7 1 .4 1.5-.3.6-1 .7-1.6.3z" /></svg>
                   Spotify
                 </a>
-                <a href="#" className="f-chip">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 4.9c3.9 0 7.1 3.2 7.1 7.1 0 3.9-3.2 7.1-7.1 7.1S4.9 15.9 4.9 12 8.1 4.9 12 4.9zm0 2.8c-2.4 0-4.3 1.9-4.3 4.3s1.9 4.3 4.3 4.3 4.3-1.9 4.3-4.3-1.9-4.3-4.3-4.3z" /></svg>
-                  Apple
-                </a>
-                <a href="#" className="f-chip">
+                <a href="https://www.youtube.com/@TalksVividh" target="_blank" rel="noreferrer" className="f-chip">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
                   YouTube
                 </a>
@@ -108,7 +104,7 @@ const Footer = () => {
             </form>
             <div className="footer-contact-info">
               <div className="footer-contact-row"><Mail size={13} className="footer-contact-icon" /><span>vividhtalks@gmail.com</span></div>
-              <div className="footer-contact-row"><MapPin size={13} className="footer-contact-icon" /><span>Patna, Bihar, India</span></div>
+              <div className="footer-contact-row"><MapPin size={13} className="footer-contact-icon" /><span style={{ fontSize: '11px', lineHeight: '1.4' }}>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</span></div>
             </div>
           </div>
 
@@ -149,28 +145,28 @@ const Footer = () => {
           {/* Address */}
           <div className="mob-footer-address">
             <span>vividhtalks@gmail.com</span>
-            <span>Patna, Bihar, India</span>
+            <span style={{ fontSize: '11px', lineHeight: '1.4', marginTop: '6px' }}>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</span>
           </div>
 
           {/* Social Icons */}
           <div className="mob-footer-socials">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="mob-social-btn" aria-label="Facebook">
+            <a href="https://www.facebook.com/vividhtalks" target="_blank" rel="noreferrer" className="mob-social-btn" aria-label="Facebook">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="mob-social-btn" aria-label="Instagram">
+            <a href="https://www.instagram.com/vividhtalks" target="_blank" rel="noreferrer" className="mob-social-btn" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noreferrer" className="mob-social-btn" aria-label="YouTube">
+            <a href="https://www.youtube.com/@TalksVividh" target="_blank" rel="noreferrer" className="mob-social-btn" aria-label="YouTube">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
             </a>
           </div>
 
           {/* Streaming Platform Round Icons */}
           <div className="mob-footer-platforms">
-            <a href="#" className="mob-platform-icon spotify" aria-label="Spotify">
+            <a href="https://open.spotify.com/show/6VuPnQLjpYCCymWC1q3D1Z?si=a3e5efbd65f34d51" target="_blank" rel="noreferrer" className="mob-platform-icon spotify" aria-label="Spotify">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.3c-.2.4-.7.5-1.1.3-2.9-1.8-6.6-2.2-10.9-1.2-.4.1-.8-.2-.9-.6-.1-.4.2-.8.6-.9 4.7-1.1 8.8-.6 12 1.4.4.2.5.7.3 1zm1.5-3.3c-.3.5-.9.6-1.3.3-3.3-2-8.4-2.6-12.3-1.4-.5.2-1.1-.1-1.2-.6-.2-.5.1-1.1.6-1.2 4.5-1.4 10.1-.7 13.9 1.7.4.2.6.9.3 1.2zm.1-3.4C15.2 8.2 8.5 8 4.7 9.2c-.6.2-1.3-.2-1.4-.8-.2-.6.2-1.3.8-1.4 4.4-1.3 11.8-1.1 16.4 1.8.5.3.7 1 .4 1.5-.3.6-1 .7-1.6.3z" /></svg>
             </a>
-            <a href="#" className="mob-platform-icon youtube" aria-label="YouTube">
+            <a href="https://www.youtube.com/@TalksVividh" target="_blank" rel="noreferrer" className="mob-platform-icon youtube" aria-label="YouTube">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
             </a>
           </div>

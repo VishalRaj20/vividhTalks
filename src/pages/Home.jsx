@@ -1,13 +1,19 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Mic, Play, ArrowRight, CheckCircle2, Headphones, Users, Radio, Star, Globe, TrendingUp } from 'lucide-react';
+import { Mic, Play, ArrowRight, Headphones, CheckCircle2, Users, Radio, Star, Globe, TrendingUp } from 'lucide-react';
 import PodcastCard from '../components/ui/PodcastCard';
-import TestimonialCard from '../components/ui/TestimonialCard';
 import TestimonialSlider from '../components/ui/TestimonialSlider';
+import ClipCard from '../components/ui/ClipCard';
+import ShortsReel from '../components/ui/ShortsReel';
 import { episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
 import { categories } from '../data/categories';
 import { testimonials as actualTestimonials } from '../data/testimonials';
 import { useYouTubeData } from '../hooks/useYouTubeData';
+import ROICalculator from '../components/ui/ROICalculator';
+import HeroVisualizer from '../components/ui/HeroVisualizer';
+import LiveConsoleWidget from '../components/ui/LiveConsoleWidget';
+import SEO from '../components/SEO';
+import { FadeIn, SlideUp, StaggerContainer, StaggerItem } from '../components/ui/Animated';
 import './Home.css';
 
 // Animated counter hook
@@ -74,8 +80,66 @@ const whyReasons = [
   { icon: <Users size={32} />, title: 'Expert Collaboration', desc: 'Our experienced hosts and editors work alongside you to craft compelling stories.' },
 ];
 
+const VintageMicSVG = () => (
+  <svg width="70" height="105" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0 4px 15px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 15px rgba(255, 77, 0, 0.4))' }}>
+    <defs>
+      <linearGradient id="goldGloss" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#F39C12" />
+        <stop offset="25%" stopColor="#F1C40F" />
+        <stop offset="50%" stopColor="#FFEAA7" />
+        <stop offset="75%" stopColor="#F1C40F" />
+        <stop offset="100%" stopColor="#D35400" />
+      </linearGradient>
+      <linearGradient id="darkMetal" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#1E1E24" />
+        <stop offset="100%" stopColor="#0B0B0D" />
+      </linearGradient>
+      <linearGradient id="metalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#8E8E93" />
+        <stop offset="100%" stopColor="#3A3A3C" />
+      </linearGradient>
+    </defs>
+
+    {/* U-Shaped Bracket Mount */}
+    <path d="M 18,50 C 18,85 62,85 62,50" stroke="url(#goldGloss)" strokeWidth="3.5" fill="none" strokeLinecap="round" />
+    <path d="M 40,75 L 40,105" stroke="url(#goldGloss)" strokeWidth="4.5" strokeLinecap="round" />
+    <rect x="28" y="105" width="24" height="6" rx="3" fill="url(#goldGloss)" />
+
+    {/* Joint knobs */}
+    <circle cx="18" cy="50" r="3.5" fill="url(#goldGloss)" />
+    <circle cx="62" cy="50" r="3.5" fill="url(#goldGloss)" />
+
+    {/* Microphone Body */}
+    <rect x="24" y="38" width="32" height="32" rx="6" fill="url(#goldGloss)" stroke="#962D00" strokeWidth="1" />
+
+    {/* Inner Capsule Glow */}
+    <circle cx="40" cy="24" r="8" fill="#FF4D00" opacity="0.95" filter="blur(2px)" />
+    <circle cx="40" cy="24" r="4" fill="#FFEAA7" opacity="0.95" />
+
+    {/* Microphone Grille Mesh (tapered top) */}
+    <rect x="24" y="12" width="32" height="24" rx="8" fill="url(#darkMetal)" stroke="url(#goldGloss)" strokeWidth="2.2" />
+
+    {/* Grille Ribs (Vertical) */}
+    <line x1="30" y1="13" x2="30" y2="35" stroke="url(#goldGloss)" strokeWidth="1" opacity="0.85" />
+    <line x1="35" y1="12" x2="35" y2="36" stroke="url(#goldGloss)" strokeWidth="1.2" opacity="0.85" />
+    <line x1="40" y1="12" x2="40" y2="36" stroke="url(#goldGloss)" strokeWidth="1.5" opacity="0.9" />
+    <line x1="45" y1="12" x2="45" y2="36" stroke="url(#goldGloss)" strokeWidth="1.2" opacity="0.85" />
+    <line x1="50" y1="13" x2="50" y2="35" stroke="url(#goldGloss)" strokeWidth="1" opacity="0.85" />
+
+    {/* Grille Ribs (Horizontal Mesh) */}
+    <line x1="24" y1="18" x2="56" y2="18" stroke="url(#goldGloss)" strokeWidth="0.8" opacity="0.6" />
+    <line x1="24" y1="24" x2="56" y2="24" stroke="url(#goldGloss)" strokeWidth="0.8" opacity="0.6" />
+    <line x1="24" y1="30" x2="56" y2="30" stroke="url(#goldGloss)" strokeWidth="0.8" opacity="0.6" />
+
+    {/* Horizontal Center Band */}
+    <rect x="22" y="34" width="36" height="4.5" fill="url(#goldGloss)" stroke="#962D00" strokeWidth="0.5" />
+  </svg>
+);
+
 const Home = () => {
   const { episodes, clips, loading } = useYouTubeData();
+  const [isShortsModalOpen, setIsShortsModalOpen] = useState(false);
+  const [selectedShortIndex, setSelectedShortIndex] = useState(0);
   const [featuredPlaying, setFeaturedPlaying] = useState(false);
 
   useEffect(() => {
@@ -102,35 +166,99 @@ const Home = () => {
 
   return (
     <div className="home-page">
+      <SEO 
+        title="Home"
+      />
 
       {/* ═══════════════ HERO ═══════════════ */}
       <section className="hero-echoes-fullscreen">
-        <div className="hero-bg-carousel">
-          {heroImages.map((img, i) => (
-            <div key={i} className={`hero-bg-slide slide-${i + 1}`} style={{ backgroundImage: `url(${img.url})` }}>
-              <div className="hero-slide-info container">
-                <div className="hero-slide-info-content">
-                  <span className="hero-slide-tag">{img.subtitle}</span>
-                  <h2 className="hero-slide-title">{img.title}</h2>
+        <HeroVisualizer />
+        <div className="hero-overlay-dark"></div>
+        <div className="container hero-fullscreen-content">
+          <div className="hero-split-layout">
+            <StaggerContainer className="hero-text-col" staggerDelay={0.15}>
+              <StaggerItem className="hero-badge">🎙️ VIVIDH TALKS &amp; STUDIO</StaggerItem>
+              <StaggerItem>
+                <h1 className="h1">
+                  Where Stories<br />
+                  <span className="text-accent">Come Alive.</span>
+                </h1>
+              </StaggerItem>
+              <StaggerItem>
+                <p className="hero-subtext subheading" style={{ maxWidth: '560px', marginTop: '20px', color: 'rgba(255,255,255,0.85)' }}>
+                  India's boldest podcast platform and production suite for creators, founders, and brands that deserve to be heard.
+                </p>
+              </StaggerItem>
+              <StaggerItem>
+                <div className="hero-ctas" style={{ marginTop: '36px' }}>
+                  <Link to="/book" className="btn btn-primary"><Mic size={18} /> Start Your Podcast</Link>
+                  <Link to={`/episode/${safeEpisodes[0].id}`} className="btn btn-secondary">
+                    <Play size={18} /> Watch Latest
+                  </Link>
+                </div>
+              </StaggerItem>
+            </StaggerContainer>
+            <FadeIn delay={0.3} duration={1} className="hero-widget-col">
+              {/* Glowing cables / wires (refined paths) */}
+              <svg className="hero-cables-svg" viewBox="0 0 500 500" fill="none" style={{ overflow: 'visible' }}>
+                <path d="M 15,100 Q 60,110 50,150" stroke="url(#wireGrad)" strokeWidth="2.2" fill="none" className="glowing-cable" />
+                <path d="M 15,400 Q 60,390 50,350" stroke="url(#wireGrad)" strokeWidth="2.2" fill="none" className="glowing-cable" />
+                <path d="M 480,100 Q 420,110 450,150" stroke="url(#wireGrad)" strokeWidth="1.5" fill="none" className="glowing-cable-thin" />
+                <path d="M 480,250 Q 420,250 450,270" stroke="url(#wireGrad)" strokeWidth="1.5" fill="none" className="glowing-cable-thin" />
+                <path d="M 480,400 Q 420,390 450,350" stroke="url(#wireGrad)" strokeWidth="1.5" fill="none" className="glowing-cable-thin" />
+                <defs>
+                  <linearGradient id="wireGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#FFF2B2" />
+                    <stop offset="30%" stopColor="#FF8C00" />
+                    <stop offset="70%" stopColor="#FF4D00" />
+                    <stop offset="100%" stopColor="#AA7C11" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {/* Floating Top-Left Microphone */}
+              <div className="floating-element mic-top-left">
+                <VintageMicSVG />
+              </div>
+
+              {/* Floating Bottom-Left Microphone */}
+              <div className="floating-element mic-bottom-left">
+                <VintageMicSVG />
+              </div>
+
+              {/* Floating Top-Right Soundwave Badge */}
+              <div className="floating-element badge-top-right">
+                <div className="badge-circle">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#F1C40F" strokeWidth="2.5" strokeLinecap="round" style={{ filter: 'drop-shadow(0 0 4px #FF4D00)' }}>
+                    <line x1="5" y1="12" x2="5" y2="12" strokeWidth="3" />
+                    <line x1="9" y1="8" x2="9" y2="16" strokeWidth="3" />
+                    <line x1="13" y1="4" x2="13" y2="20" strokeWidth="3" />
+                    <line x1="17" y1="7" x2="17" y2="17" strokeWidth="3" />
+                    <line x1="21" y1="11" x2="21" y2="13" strokeWidth="3" />
+                  </svg>
                 </div>
               </div>
-            </div>
-          ))}
-          <div className="hero-overlay-dark"></div>
-        </div>
-        <div className="container hero-fullscreen-content">
-          <h1 className="h1 animate-on-scroll" style={{ transitionDelay: '0.1s' }}>
-            Where Stories<br />
-            <span className="text-accent">Come Alive.</span>
-          </h1>
-          <p className="hero-subtext subheading animate-on-scroll" style={{ transitionDelay: '0.15s', maxWidth: '560px', marginTop: '20px', color: 'rgba(255,255,255,0.85)' }}>
-            India's boldest podcast platform for creators, founders, and voices that deserve to be heard.
-          </p>
-          <div className="hero-ctas animate-on-scroll" style={{ transitionDelay: '0.2s', marginTop: '36px' }}>
-            <Link to="/book" className="btn btn-primary"><Mic size={18} /> Start Your Podcast</Link>
-            <Link to={`/episode/${safeEpisodes[0].id}`} className="btn btn-secondary" style={{ marginLeft: '14px' }}>
-              <Play size={18} /> Watch Latest
-            </Link>
+
+              {/* Floating Middle-Right Slider Badge */}
+              <div className="floating-element badge-mid-right">
+                <div className="badge-faders">
+                  <div className="fader-track"><div className="fader-thumb" style={{ bottom: '60%' }}></div></div>
+                  <div className="fader-track"><div className="fader-thumb" style={{ bottom: '30%' }}></div></div>
+                  <div className="fader-track"><div className="fader-thumb" style={{ bottom: '75%' }}></div></div>
+                </div>
+              </div>
+
+              {/* Floating Bottom-Right Slider Badge */}
+              <div className="floating-element badge-bot-right">
+                <div className="badge-faders">
+                  <div className="fader-track"><div className="fader-thumb" style={{ bottom: '40%' }}></div></div>
+                  <div className="fader-track"><div className="fader-thumb" style={{ bottom: '65%' }}></div></div>
+                  <div className="fader-track"><div className="fader-thumb" style={{ bottom: '20%' }}></div></div>
+                </div>
+              </div>
+
+              <LiveConsoleWidget />
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -138,8 +266,8 @@ const Home = () => {
       {/* ═══════════════ STATS BAR ═══════════════ */}
       <section className="stats-bar-section">
         <div className="container stats-bar-grid">
-          <StatItem value={10} suffix="K+" label="Monthly Listeners" icon={Headphones} />
-          <StatItem value={30} suffix="+" label="Guest Speakers" icon={Users} />
+          <StatItem value={30} suffix="K+" label="Monthly Listeners" icon={Headphones} />
+          <StatItem value={40} suffix="+" label="Guest Speakers" icon={Users} />
           <StatItem value={20} suffix="+" label="Curated Series" icon={Radio} />
           <StatItem value={98} suffix="%" label="Listener Satisfaction" icon={Star} />
         </div>
@@ -166,7 +294,7 @@ const Home = () => {
                   width="100%" height="100%"
                   src={`https://www.youtube.com/embed/${safeEpisodes[0].id}?autoplay=1&modestbranding=1&playsinline=1`}
                   frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen
-                  style={{ objectFit: 'cover', minHeight: '200px' }}
+                  style={{ objectFit: 'contain', minHeight: '200px', backgroundColor: '#000' }}
                 />
               ) : (
                 <>
@@ -263,28 +391,29 @@ const Home = () => {
             </div>
             <Link to="/episodes" className="btn btn-secondary">View All <ArrowRight size={16} /></Link>
           </div>
-        </div>
-        <div className="shorts-scroll-outer">
-          <div className="shorts-scroll-track animate-on-scroll">
-            {safeClips.map((clip, idx) => (
-              <div className="short-card" key={clip.id} style={{ transitionDelay: `${idx * 0.07}s` }}>
-                <div className="short-card-thumb">
-                  <img src={clip.image} alt={clip.title} />
-                  <div className="short-card-overlay"></div>
-                  <span className="short-duration">{clip.duration}</span>
-                  <div className="short-play-btn">
-                    <Play size={22} fill="currentColor" />
-                  </div>
-                  <div className="short-views">{clip.views}</div>
-                </div>
-                <div className="short-card-body">
-                  <p className="short-card-title">{clip.title}</p>
-                  <span className="short-card-meta">{clip.timeAgo}</span>
-                </div>
+
+          <div className="video-testimonial-grid animate-on-scroll mt-8">
+            {safeClips.slice(0, 8).map((clip, idx) => (
+              <div className="video-testimonial-card" style={{ padding: '0', border: 'none', background: 'transparent' }} key={clip.id}>
+                <ClipCard 
+                  clip={clip} 
+                  onClick={() => {
+                    setSelectedShortIndex(idx);
+                    setIsShortsModalOpen(true);
+                  }} 
+                />
               </div>
             ))}
           </div>
+
+          <ShortsReel 
+            clips={safeClips.slice(0, 8)} 
+            isOpen={isShortsModalOpen}
+            onClose={() => setIsShortsModalOpen(false)}
+            initialIndex={selectedShortIndex}
+          />
         </div>
+
       </section>
       <section className="why-section section-padding">
         <div className="container">
@@ -305,7 +434,79 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ═══════════════ MEET THE HOST PREVIEW ═══════════════ */}
+      <section className="host-preview-section section-padding container">
+        <div className="host-preview-card-wrapper animate-on-scroll">
+          <div className="host-preview-grid">
+            <div className="host-preview-img-wrap">
+              <img src="/guests/Shradhha Suman.jpeg" alt="Shraddha Suman" />
+              <div className="host-preview-badge">Main Host</div>
+            </div>
+            <div className="host-preview-content">
+              <div className="section-tag"><span className="section-tag-dot"></span> MEET THE HOST</div>
+              <h2 className="h2" style={{ marginTop: '12px' }}>Shraddha <span className="text-accent">Suman</span></h2>
+              <p className="subheading" style={{ marginTop: '4px' }}>Entrepreneur, Host & Storyteller</p>
+
+              <p className="host-preview-bio mt-6" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '15px', lineHeight: '1.7', fontStyle: 'italic' }}>
+                "Every person has a story powerful enough to inspire change"
+              </p>
+
+              <div className="host-preview-features mt-6">
+                <div className="host-pref-item">
+                  <span className="pref-bullet">✨</span>
+                  <div>
+                    <strong>The Visionary</strong>
+                    <p className="text-secondary text-sm">Entrepreneur, host and storyteller passionate about creating meaningful conversations.</p>
+                  </div>
+                </div>
+                <div className="host-pref-item">
+                  <span className="pref-bullet">🎨</span>
+                  <div>
+                    <strong>The Foundation</strong>
+                    <p className="text-secondary text-sm">Utilizing her communication background to foster deeply impactful conversations.</p>
+                  </div>
+                </div>
+                <div className="host-pref-item">
+                  <span className="pref-bullet">💬</span>
+                  <div>
+                    <strong>Hosting Style</strong>
+                    <p className="text-secondary text-sm">Known for a calm presence and guiding genuine conversations.</p>
+                  </div>
+                </div>
+                <div className="host-pref-item">
+                  <span className="pref-bullet">🎯</span>
+                  <div>
+                    <strong>Her Mission</strong>
+                    <p className="text-secondary text-sm">Building a platform for diverse stories and ambitious minds.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="host-preview-actions mt-8">
+                <Link to="/about#hosts" className="btn btn-primary">Know More About Host</Link>
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="btn btn-secondary">Connect on LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ ROI CALCULATOR SECTION ═══════════════ */}
+      <section className="roi-calculator-section section-padding container">
+        <div className="text-center animate-on-scroll">
+          <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> ROI ESTIMATOR</div>
+          <h2 className="h2" style={{ marginTop: '12px' }}>Calculate Your <span className="text-accent">Podcast Impact.</span></h2>
+          <p className="subheading" style={{ maxWidth: '600px', margin: '12px auto 0' }}>
+            Discover how podcasting generates brand equity, social footprint, and sponsorship revenue.
+          </p>
+        </div>
+        <div className="animate-on-scroll" style={{ marginTop: '48px' }}>
+          <ROICalculator />
+        </div>
+      </section>
+
       {/* ═══════════════ CREATOR CTA (STUDIO) ═══════════════ */}
+
       <section className="creator-cta-section section-padding">
         <div className="container">
           <div className="creator-cta-card animate-on-scroll">
@@ -359,6 +560,44 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ═══════════════ VIDEO TESTIMONIALS ═══════════════ */}
+      <section className="video-testimonials-section section-padding container">
+        <div className="text-center animate-on-scroll">
+          <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> CREATOR STORIES</div>
+          <h2 className="h2" style={{ marginTop: '12px' }}>Voices of <span className="text-accent">Success.</span></h2>
+          <p className="subheading" style={{ marginTop: '12px' }}>Hear directly from the creators who trust Vividh Talks.</p>
+        </div>
+
+        <div className="video-testimonial-grid animate-on-scroll" style={{ marginTop: '48px' }}>
+          <div className="video-testimonial-card glass-card">
+            {/* Note for User: To use local videos from private_assets, you would typically place them in the public folder (e.g. public/private_assets/) 
+                or import them directly. For now, here is a placeholder you can replace with your own dummy video. */}
+            <video
+              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              controls
+              className="video-testimonial-player"
+              poster="/images/hero_2.png"
+            ></video>
+            <div className="video-testimonial-info">
+              <h4 className="h4">Akshat Soni</h4>
+              <p className="text-secondary text-sm">Finance Creator & Entrepreneur</p>
+            </div>
+          </div>
+          <div className="video-testimonial-card glass-card">
+            <video
+              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              controls
+              className="video-testimonial-player"
+              poster="/images/hero_3.png"
+            ></video>
+            <div className="video-testimonial-info">
+              <h4 className="h4">Shraddha Suman</h4>
+              <p className="text-secondary text-sm">Main Host</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════ TESTIMONIALS ═══════════════ */}
       <section className="testimonials-section section-padding container">
         <div className="text-center animate-on-scroll">
@@ -399,23 +638,6 @@ const Home = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════ NEWSLETTER ═══════════════ */}
-      <section className="newsletter-section section-padding">
-        <div className="container">
-          <div className="newsletter-card animate-on-scroll">
-            <div className="newsletter-icon">📬</div>
-            <h2 className="h2" style={{ textAlign: 'center' }}>Stay In The Loop</h2>
-            <p className="subheading" style={{ textAlign: 'center', marginTop: '12px' }}>
-              Get fresh episode drops, behind-the-scenes content, and studio updates.
-            </p>
-            <form className="newsletter-form-row" onSubmit={e => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email address" className="newsletter-input-main" />
-              <button type="submit" className="btn btn-primary">Subscribe <ArrowRight size={16} /></button>
-            </form>
           </div>
         </div>
       </section>

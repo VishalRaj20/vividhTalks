@@ -11,7 +11,14 @@ export const episodes = [
     category: 'Startup',
     channelName: 'Vividh Talks and NxtGenX',
     views: '12K views',
-    timeAgo: '2 days ago'
+    timeAgo: '2 days ago',
+    guestImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150',
+    guestBio: 'Arjun Mehta is a serial entrepreneur and the founder of NxtGenX. With over a decade of experience in bootstrapping and scaling SaaS ventures, he is dedicated to mentoring early-stage founders in India.',
+    guestLinkedin: 'https://linkedin.com/in/arjun-mehta-nxtgenx',
+    guestInstagram: 'https://instagram.com/arjun.nxtgenx',
+    hostName: 'Vikram Singh',
+    hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
+    hostTitle: 'Host, Vividh Talks'
   },
   {
     id: 'ep-041',
@@ -25,7 +32,14 @@ export const episodes = [
     category: 'Personal Branding',
     channelName: 'Vividh Talks',
     views: '8.4K views',
-    timeAgo: '5 days ago'
+    timeAgo: '5 days ago',
+    guestImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150',
+    guestBio: 'Sarah Jones is a leading global brand strategist who has shaped the visual narratives of Fortune 500 executives. She specializes in narrative storytelling and visual authority.',
+    guestLinkedin: 'https://linkedin.com/in/sarah-jones-brand',
+    guestInstagram: 'https://instagram.com/sarah.branding',
+    hostName: 'Neha Sharma',
+    hostImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150',
+    hostTitle: 'Co-Host, Vividh Talks'
   },
   {
     id: 'ep-040',
@@ -39,7 +53,14 @@ export const episodes = [
     category: 'Tech',
     channelName: 'Vividh Talks and AI Institute',
     views: '45K views',
-    timeAgo: '1 week ago'
+    timeAgo: '1 week ago',
+    guestImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150',
+    guestBio: 'Dr. Anil Kumar is an associate professor and researcher specializing in computer vision and artificial neural networks. He is focused on human-centered AI systems in creative arts.',
+    guestLinkedin: 'https://linkedin.com/in/anil-kumar-ai',
+    guestInstagram: 'https://instagram.com/anil.kumar.ai',
+    hostName: 'Vikram Singh',
+    hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
+    hostTitle: 'Host, Vividh Talks'
   },
   {
     id: 'ep-039',
@@ -52,7 +73,14 @@ export const episodes = [
     category: 'Student Life',
     channelName: 'Vividh Talks',
     views: '2.1K views',
-    timeAgo: '2 weeks ago'
+    timeAgo: '2 weeks ago',
+    guestImage: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=150',
+    guestBio: 'Priya Sharma is a seasoned Human Resources leader with a passion for university recruitment. She helps bridging the gap between student competencies and corporate requirements.',
+    guestLinkedin: 'https://linkedin.com/in/priya-sharma-hr',
+    guestInstagram: 'https://instagram.com/priya.hr.talks',
+    hostName: 'Vikram Singh',
+    hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
+    hostTitle: 'Host, Vividh Talks'
   },
   {
     id: 'ep-038',
@@ -65,7 +93,14 @@ export const episodes = [
     category: 'Social Impact',
     channelName: 'Vividh Talks',
     views: '3.5K views',
-    timeAgo: '3 weeks ago'
+    timeAgo: '3 weeks ago',
+    guestImage: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150',
+    guestBio: 'Rohan Das has organized community movements across five metro cities in India. He acts as a catalyst for local civic programs, creating structured and self-sustaining neighborhood groups.',
+    guestLinkedin: 'https://linkedin.com/in/rohan-das-community',
+    guestInstagram: 'https://instagram.com/rohan.community',
+    hostName: 'Neha Sharma',
+    hostImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150',
+    hostTitle: 'Co-Host, Vividh Talks'
   },
   {
     id: 'ep-037',
@@ -78,7 +113,14 @@ export const episodes = [
     category: 'Marketing',
     channelName: 'Vividh Talks and BrandWave',
     views: '15K views',
-    timeAgo: '1 month ago'
+    timeAgo: '1 month ago',
+    guestImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150',
+    guestBio: 'Neha Kapoor is a metrics-driven Chief Marketing Officer who pioneered storytelling-first marketing funnels in high-growth retail brands. She writes and talks about consumer psychological behaviors.',
+    guestLinkedin: 'https://linkedin.com/in/neha-kapoor-cmo',
+    guestInstagram: 'https://instagram.com/neha.marketing',
+    hostName: 'Vikram Singh',
+    hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
+    hostTitle: 'Host, Vividh Talks'
   }
 ];
 

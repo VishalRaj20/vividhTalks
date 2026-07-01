@@ -1,0 +1,74 @@
+/* ── Custom Cursor ── */
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  transform: translate3d(calc(var(--mouse-x, -100px) - 4px), calc(var(--mouse-y, -100px) - 4px), 0);
+  pointer-events: none;
+  z-index: 10001;
+  transition: transform 0.1s ease, opacity 0.25s ease;
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent-primary);
+  background: color-mix(in srgb, var(--accent-primary) 15%, transparent);
+  border-radius: 50%;
+  transform: translate3d(calc(var(--mouse-x, -100px) - 18px), calc(var(--mouse-y, -100px) - 18px), 0);
+  pointer-events: none;
+  z-index: 10000;
+  transition: transform 0.08s ease-out, background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+/* Hidden state (when mouse leaves window) */
+.custom-cursor-dot.hidden,
+.custom-cursor-follower.hidden {
+  opacity: 0;
+}
+
+/* Hover States (interacting with links/buttons) */
+.custom-cursor-dot.hovered {
+  transform: translate3d(calc(var(--mouse-x, -100px) - 2px), calc(var(--mouse-y, -100px) - 2px), 0) scale(0.5);
+  opacity: 0;
+}
+
+.custom-cursor-follower.hovered {
+  transform: translate3d(calc(var(--mouse-x, -100px) - 24px), calc(var(--mouse-y, -100px) - 24px), 0) scale(1.33);
+  background: color-mix(in srgb, var(--accent-primary) 30%, transparent);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent-primary) 50%, transparent);
+}
+
+/* Clicked States */
+.custom-cursor-dot.clicked {
+  transform: translate3d(calc(var(--mouse-x, -100px) - 4px), calc(var(--mouse-y, -100px) - 4px), 0) scale(0.8);
+}
+
+.custom-cursor-follower.clicked {
+  transform: translate3d(calc(var(--mouse-x, -100px) - 18px), calc(var(--mouse-y, -100px) - 18px), 0) scale(0.8);
+  background: color-mix(in srgb, var(--accent-primary) 40%, transparent);
+}
+
+/* ── Enable Custom Cursor only for desktop pointing devices ── */
+@media (pointer: fine) {
+  html, body, a, button, [role="button"], input, select, textarea, .btn, .clickable, .hamburger-btn, .close-btn {
+    cursor: none !important;
+  }
+}
+
+/* ── Hide on touch screens (mobiles/tablets) ── */
+@media (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-follower {
+    display: none !important;
+  }
+}

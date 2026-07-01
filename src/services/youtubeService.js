@@ -4,6 +4,71 @@ const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID;
 const HANDLE = import.meta.env.VITE_YOUTUBE_HANDLE || '@TalksVividh';
 
+// Helper to dynamically assign category based on keywords
+const detectCategory = (title = '', description = '', tags = []) => {
+  const text = `${title} ${description}`.toLowerCase();
+  const tagsStr = tags.map(t => t.toLowerCase()).join(' ');
+
+  // Startup category
+  if (
+    /\b(startup|founder|founders|entrepreneur|entrepreneurs|business|crore|bootstrap|bootstrapped)\b/i.test(text) ||
+    /\b(startup|business)\b/i.test(tagsStr)
+  ) {
+    return 'Startup';
+  }
+  // Student Life category
+  if (
+    /\b(student|students|college|campus|transition|career|corporate)\b/i.test(text) ||
+    /\b(student|college|career)\b/i.test(tagsStr)
+  ) {
+    return 'Student Life';
+  }
+  // Personal Branding category
+  if (
+    /\b(branding|personal brand|influence|influencer|influencers)\b/i.test(text) ||
+    /\b(branding|influence)\b/i.test(tagsStr)
+  ) {
+    return 'Personal Branding';
+  }
+  // Tech category (using word boundaries to avoid matching words like "again" or "maintain")
+  if (
+    /\b(tech|technology|technical|software|ai|artificial intelligence|machine learning|developer|developers|coding|programmer)\b/i.test(text) ||
+    /\b(tech|ai)\b/i.test(tagsStr)
+  ) {
+    return 'Tech';
+  }
+  // Marketing category
+  if (
+    /\b(marketing|sales|cmo|advertising|seo)\b/i.test(text) ||
+    /\b(marketing)\b/i.test(tagsStr)
+  ) {
+    return 'Marketing';
+  }
+  // Social Impact category
+  if (
+    /\b(social impact|civic|ngo|community|social work|activist|activism)\b/i.test(text) ||
+    /\b(social|community)\b/i.test(tagsStr)
+  ) {
+    return 'Social Impact';
+  }
+  // Local Voices category
+  if (
+    /\b(local|regional|patna|bihar|city|patnaite|regional voices)\b/i.test(text) ||
+    /\b(local|bihar)\b/i.test(tagsStr)
+  ) {
+    return 'Local Voices';
+  }
+  // Culture category (art is matched with boundary to avoid matching "startup" or "part")
+  if (
+    /\b(culture|art|arts|music|musician|singer|singing|actor|acting|theatre|bollywood|film|creative)\b/i.test(text) ||
+    /\b(culture|art|music)\b/i.test(tagsStr)
+  ) {
+    return 'Culture';
+  }
+  
+  return 'Startup'; // Fallback default category
+};
+
 // Helper to parse ISO 8601 duration (e.g., PT1H2M10S)
 const parseDuration = (duration) => {
   const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
@@ -54,12 +119,21 @@ const fetchWithTimeout = async (url, options = {}, timeout = 6000) => {
 export const fetchChannelData = async () => {
   // Check Cache first
   try {
-    const cached = localStorage.getItem('vividh_yt_cache');
+    const cached = localStorage.getItem('vividh_yt_cache_v4');
     if (cached) {
-      const { data, timestamp } = JSON.parse(cached);
-      // 1 hour cache
-      if (Date.now() - timestamp < 3600000) {
-        return { ...data, fromCache: true };
+      const { data, timestamp, apiKey, channelId } = JSON.parse(cached);
+      // 1 hour cache - invalidates immediately if API Key or Channel ID has changed
+      if (apiKey === API_KEY && channelId === CHANNEL_ID && (Date.now() - timestamp < 3600000)) {
+        // Re-evaluate categories of cached items on the fly to ensure that any filter logic updates apply immediately
+        const reevaluatedEpisodes = (data.episodes || []).map(ep => ({
+          ...ep,
+          category: detectCategory(ep.title, ep.description, ep.tags || [])
+        }));
+        const reevaluatedClips = (data.clips || []).map(clip => ({
+          ...clip,
+          category: detectCategory(clip.title, clip.description, clip.tags || [])
+        }));
+        return { episodes: reevaluatedEpisodes, clips: reevaluatedClips, fromCache: true };
       }
     }
   } catch (e) {
@@ -93,7 +167,12 @@ export const fetchChannelData = async () => {
     
     if (!playlistData.items || playlistData.items.length === 0) {
       const result = { episodes: dummyEpisodes, clips: dummyClips, isDummy: true };
-      localStorage.setItem('vividh_yt_cache', JSON.stringify({ data: result, timestamp: Date.now() }));
+      localStorage.setItem('vividh_yt_cache_v4', JSON.stringify({ 
+        data: result, 
+        timestamp: Date.now(),
+        apiKey: API_KEY,
+        channelId: CHANNEL_ID
+      }));
       return result;
     }
 
@@ -137,10 +216,47 @@ export const fetchChannelData = async () => {
                         video.snippet.thumbnails.high?.url || 
                         video.snippet.thumbnails.medium?.url;
 
+      // Clean up the title to remove guest names, episode numbers, or channel branding after separators
+      let cleanTitle = video.snippet.title;
+      
+      // Remove trailing part after '|'
+      if (cleanTitle.includes('|')) {
+        cleanTitle = cleanTitle.split('|')[0].trim();
+      }
+      
+      // Remove trailing part after '-' if it contains channel name or common branding
+      if (cleanTitle.includes('-')) {
+        const parts = cleanTitle.split('-');
+        const lastPart = parts[parts.length - 1].toLowerCase();
+        if (lastPart.includes('vividh') || lastPart.includes('talk') || lastPart.includes('ep') || lastPart.includes('ft.')) {
+          cleanTitle = parts.slice(0, -1).join('-').trim();
+        }
+      }
+
+      const tags = video.snippet.tags || [];
+      const category = detectCategory(video.snippet.title, video.snippet.description, tags);
+
+      // Exclude spammy/SEO keywords from tags
+      const tagBlacklist = [
+        'bjp', 'modi', 'narendra modi', 'raj shamani', 'rajshamani', 'shubhankar', 'mishra', 'shubhankar mishra',
+        'beerbiceps', 'ranveer', 'podcast', 'vividh', 'vividhtalks', 'vividh talks', 'talk show', 'interview',
+        'hindi podcast', 'indian podcast'
+      ];
+      
+      const cleanTags = tags.filter(tag => {
+        const t = tag.toLowerCase().trim();
+        return !tagBlacklist.some(blacklisted => t.includes(blacklisted) || blacklisted.includes(t));
+      });
+      
+      const finalTags = cleanTags.slice(0, 3);
+      if (finalTags.length === 0) {
+        finalTags.push('Talks', 'Insights');
+      }
+
       const item = {
         id: video.id,
         number: String(index + 1).padStart(3, '0'),
-        title: video.snippet.title,
+        title: cleanTitle,
         description: video.snippet.description,
         duration: formatted,
         image: thumbnail,
@@ -148,8 +264,9 @@ export const fetchChannelData = async () => {
         channelName: video.snippet.channelTitle,
         views: formattedViews,
         timeAgo: getTimeAgo(video.snippet.publishedAt),
-        tags: video.snippet.tags?.slice(0, 3) || ['Podcast', 'Vividh'],
-        guest: guest
+        tags: finalTags,
+        guest: guest,
+        category: category
       };
 
       if (isShort) {
@@ -160,7 +277,12 @@ export const fetchChannelData = async () => {
     });
     
     const result = { episodes, clips, isDummy: false };
-    localStorage.setItem('vividh_yt_cache', JSON.stringify({ data: result, timestamp: Date.now() }));
+    localStorage.setItem('vividh_yt_cache_v4', JSON.stringify({ 
+      data: result, 
+      timestamp: Date.now(),
+      apiKey: API_KEY,
+      channelId: CHANNEL_ID
+    }));
 
     return result;
   } catch (error) {

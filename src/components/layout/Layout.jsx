@@ -3,15 +3,25 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import WhatsAppFab from './WhatsAppFab';
-import BackToTop from './BackToTop';
+import StudioSettingsWidget from '../ui/StudioSettingsWidget';
+import CustomCursor from './CustomCursor';
 
 const Layout = () => {
   const { pathname } = useLocation();
 
-  // Scroll to top on route change
+  // Scroll to top on route change and track mouse movement for interactive glowing
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   return (
     <div className="app-layout">
@@ -25,7 +35,8 @@ const Layout = () => {
         <Footer />
       </div>
       <WhatsAppFab />
-      <BackToTop />
+      <StudioSettingsWidget />
+      <CustomCursor />
     </div>
   );
 };

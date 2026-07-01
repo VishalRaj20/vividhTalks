@@ -1,7 +1,7 @@
 .clip-yt-card {
   cursor: pointer;
   min-width: 200px;
-  width: 220px; /* Specific width for horizontal scrolling list */
+  width: 100%; /* Fill parent container to prevent gap */
 }
 
 .clip-yt-card .vertical-wrapper {
@@ -20,6 +20,6 @@
 @media (max-width: 600px) {
   .clip-yt-card {
     min-width: 160px;
-    width: 160px;
+    width: 100%;
   }
 }

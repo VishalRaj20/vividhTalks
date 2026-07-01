@@ -1,0 +1,231 @@
+/* Modal Overlay */
+.shorts-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 2147483647; /* Maximum z-index to cover everything including navbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shorts-modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2147483647;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.shorts-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* The scrollable viewport inside the modal */
+.shorts-reel-viewport {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: transparent;
+}
+
+.shorts-reel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.short-video-wrapper {
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.short-video-container {
+  width: 100vw;
+  max-width: 460px; /* Slightly wider for desktop viewing, looks better */
+  height: 100%;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .short-video-container {
+    height: 95%; /* slight padding top/bottom on larger screens */
+    border-radius: 16px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.8);
+  }
+}
+
+.short-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.short-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none; /* Let clicks pass through to container */
+}
+
+/* Gradient overlay at bottom */
+.short-overlay::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.short-top-controls {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end; /* Top left is empty, close button is outside */
+  pointer-events: auto; /* Re-enable clicks for buttons */
+  z-index: 2;
+}
+
+.short-control-btn {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s;
+}
+
+.short-control-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.short-center-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.short-bottom-info {
+  padding: 20px 16px 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.short-title {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.short-channel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.short-channel-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-primary, #FF4D00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.short-channel-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.short-channel-name {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.short-progress-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 3;
+}
+
+.short-progress-bar {
+  height: 100%;
+  background: var(--accent-primary, #FF4D00);
+  width: 0%;
+  transition: width 0.1s linear;
+}

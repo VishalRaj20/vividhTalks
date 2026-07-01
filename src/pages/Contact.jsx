@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { MessageCircle, Mail, MapPin, ArrowRight, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './Contact.css';
 
 const Contact = () => {
@@ -57,7 +58,10 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-
+      <SEO 
+        title="Contact Us"
+        description="Get in touch with Vividh Talks. We'd love to hear from you."
+      />
       {/* ── Hero ── */}
       <section className="contact-hero section-padding">
         <div className="contact-hero-bg" style={{ backgroundImage: 'url(/contact_hero_new.png)' }}></div>
@@ -104,7 +108,7 @@ const Contact = () => {
             </div>
             <div className="contact-option-body">
               <h3>Visit the Studio</h3>
-              <p>4th Floor, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar 800024</p>
+              <p>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</p>
             </div>
             <div className="contact-option-arrow">→</div>
           </a>
@@ -140,7 +144,7 @@ const Contact = () => {
                 <div className="contact-info-item-icon"><MapPin size={18} /></div>
                 <div>
                   <div className="contact-info-item-label">Studio</div>
-                  <div>4th Floor, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar 800024</div>
+                  <div>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</div>
                 </div>
               </div>
             </div>

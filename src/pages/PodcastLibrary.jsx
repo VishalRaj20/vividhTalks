@@ -5,6 +5,7 @@ import PodcastCard from '../components/ui/PodcastCard';
 import ClipCard from '../components/ui/ClipCard';
 import { useYouTubeData } from '../hooks/useYouTubeData';
 import { episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
+import SEO from '../components/SEO';
 import './PodcastLibrary.css';
 
 const PodcastLibrary = () => {
@@ -15,6 +16,7 @@ const PodcastLibrary = () => {
   const [activeFilter, setActiveFilter] = useState(initialCategory || 'All');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState('grid');
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const { episodes: apiEpisodes, clips: apiClips, loading } = useYouTubeData();
   const episodes = apiEpisodes.length > 0 ? apiEpisodes : dummyEpisodes;
@@ -46,7 +48,7 @@ const PodcastLibrary = () => {
     return () => {
       hiddenElements.forEach((el) => observer.unobserve(el));
     };
-  }, [loading, activeFilter, searchQuery, viewMode]);
+  }, [loading, activeFilter, searchQuery, viewMode, visibleCount]);
 
   const filteredEpisodes = episodes.filter(ep => {
     const matchesFilter = activeFilter === 'All' || ep.category === activeFilter;
@@ -57,12 +59,18 @@ const PodcastLibrary = () => {
     return matchesFilter && matchesSearch;
   });
 
+  const visibleEpisodes = filteredEpisodes.slice(0, visibleCount);
+
   if (loading) {
     return <div className="page-wrapper" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><div className="loader"></div></div>;
   }
 
   return (
     <div className="library-page">
+      <SEO 
+        title="Podcast Library"
+        description="Browse all Vividh Talks episodes and clips."
+      />
       {/* Page Hero */}
       <section className="library-hero-section animate-on-scroll">
         <div className="library-hero-bg" style={{ backgroundImage: 'url(/podcast_episodes_hero.png)' }}></div>
@@ -97,11 +105,14 @@ const PodcastLibrary = () => {
           </div>
 
           <div className="filter-pills-scroll">
-            {filters.map(f => (
+            {filters.map((f) => (
               <button
                 key={f}
                 className={`filter-pill ${activeFilter === f ? 'active' : ''}`}
-                onClick={() => setActiveFilter(f)}
+                onClick={() => {
+                  setActiveFilter(f);
+                  setVisibleCount(6); // Reset pagination
+                }}
               >
                 {f}
               </button>
@@ -155,16 +166,18 @@ const PodcastLibrary = () => {
         {filteredEpisodes.length > 0 ? (
           <>
             <div className={`episode-${viewMode}`}>
-              {filteredEpisodes.map((ep, idx) => (
+              {visibleEpisodes.map((ep, idx) => (
                 <div className="animate-on-scroll" style={{ transitionDelay: `${(idx % 3) * 0.1}s` }} key={ep.id}>
                   <PodcastCard episode={ep} />
                 </div>
               ))}
             </div>
 
-            <div className="text-center mt-12 animate-on-scroll">
-              <button className="btn btn-secondary">Load More Episodes ↓</button>
-            </div>
+            {visibleCount < filteredEpisodes.length && (
+              <div className="text-center mt-12 animate-on-scroll">
+                <button className="btn btn-secondary" onClick={() => setVisibleCount(prev => prev + 6)}>Load More Episodes ↓</button>
+              </div>
+            )}
           </>
         ) : (
           <div className="empty-state text-center py-12 animate-on-scroll">

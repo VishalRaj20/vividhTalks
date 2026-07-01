@@ -28,7 +28,8 @@
 .video-player-placeholder img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #000;
   display: block;
 }
 
@@ -50,19 +51,30 @@
 .play-btn {
   width: 72px;
   height: 72px;
-  background: var(--accent-primary);
-  border-radius: 50%;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  box-shadow: 0 0 50px rgba(255,77,0,0.6);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.play-btn:hover { transform: scale(1.1); box-shadow: 0 0 70px rgba(255,77,0,0.8); }
+.play-btn:hover { transform: scale(1.1); }
 .play-btn.large { width: 80px; height: 80px; }
+
+.yt-duration-pill {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
 
 .player-controls {
   position: absolute;
@@ -80,7 +92,7 @@
 }
 .progress {
   height: 100%;
-  width: 30%;
+  width: 0%;
   background: var(--accent-primary);
   border-radius: 2px;
 }
@@ -219,11 +231,104 @@
 .btn-outline:hover { background: var(--accent-primary); color: white; }
 
 .glass-card {
-  background: rgba(26,26,34,0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+.hover-text-primary:hover { color: var(--accent-primary); }
+.cursor-pointer { cursor: pointer; }
+
+/* ═══════════════ NEW ANIMATIONS & CREATIVITY ═══════════════ */
+/* Staggered Animations */
+.animate-stagger-1, .animate-stagger-2, .animate-stagger-3 {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.animate-stagger-1.is-visible {
+  animation: slideUpFade 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: 0.1s;
+}
+
+.animate-stagger-2.is-visible {
+  animation: slideUpFade 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: 0.3s;
+}
+
+.animate-stagger-3.is-visible {
+  animation: slideUpFade 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+/* Button Glows & Magnetic Effects */
+.btn-glow {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  background: inherit;
+  z-index: -1;
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+}
+
+.btn-glow:hover::after {
+  opacity: 0.6;
+}
+
+.btn-magnetic {
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.05);
+}
+
+/* Profile Hover Glow */
+.profile-glow {
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.profile-glow:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 77, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(255, 77, 0, 0.1);
+}
+
+/* Hero Parallax effect for video placeholder */
+.video-player-placeholder img {
+  transition: transform 10s ease-out; /* Slow zoom over time */
+}
+
+.video-player-placeholder:hover img {
+  transform: scale(1.05);
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .mono-label { font-family: var(--font-mono); text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
 .inline-flex { display: inline-flex; }
 
