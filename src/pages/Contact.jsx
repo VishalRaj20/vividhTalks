@@ -69,10 +69,10 @@ const Contact = () => {
         <div className="container relative">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> GET IN TOUCH</div>
           <h1 className="h1 animate-on-scroll" style={{ marginTop: '24px', transitionDelay: '0.1s', textAlign: 'center' }}>
-            Your Story Starts<br />With a <span className="text-accent">Conversation.</span>
+            Let's <span className="text-accent">Connect</span>
           </h1>
           <p className="subheading animate-on-scroll" style={{ maxWidth: '600px', marginTop: '24px', transitionDelay: '0.15s', color: 'rgba(255,255,255,0.9)', textAlign: 'center', margin: '24px auto 0' }}>
-            Every revolutionary idea, every viral moment, and every meaningful connection begins with a simple "Hello." Let’s craft your legacy together.
+            Get in touch with the Vividh Talks team for Business inquiries, Collaborations, Media partnerships, Guest opportunities, and Sponsorship discussions.
           </p>
         </div>
       </section>
@@ -184,11 +184,11 @@ const Contact = () => {
                   <label className="form-label">I want to...</label>
                   <select name="inquiryType" className="form-input form-select" required defaultValue="">
                     <option value="" disabled>Select an option</option>
-                    <option value="book">Book a Session</option>
-                    <option value="guest">Be a Guest</option>
-                    <option value="brand">Brand Partnership</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="other">Other</option>
+                    <option value="business">Business inquiries</option>
+                    <option value="collab">Collaborations</option>
+                    <option value="media">Media partnerships</option>
+                    <option value="guest">Guest opportunities</option>
+                    <option value="sponsor">Sponsorship discussions</option>
                   </select>
                 </div>
               </div>

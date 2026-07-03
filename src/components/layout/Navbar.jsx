@@ -7,6 +7,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ const Navbar = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
+    setMoreDropdownOpen(false);
   }, [location]);
 
   return (
@@ -32,6 +34,7 @@ const Navbar = () => {
           {/* Desktop Nav */}
           <nav className="desktop-nav">
             <Link to="/episodes" className={`nav-link ${location.pathname === '/episodes' ? 'active' : ''}`}>Episodes</Link>
+            <Link to="/blog" className={`nav-link ${location.pathname === '/blog' ? 'active' : ''}`}>Blog</Link>
             <Link to="/book" className={`nav-link ${location.pathname === '/book' ? 'active' : ''}`}>Studio</Link>
             <div
               className="nav-dropdown-wrapper"
@@ -45,6 +48,19 @@ const Navbar = () => {
                 <Link to="/services/talks" className="dropdown-item">Talks</Link>
                 <a href="https://vividhevents.com/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Events</a>
                 <a href="https://www.vividhcommunications.com/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Communications</a>
+              </div>
+            </div>
+            <div
+              className="nav-dropdown-wrapper"
+              onMouseEnter={() => setMoreDropdownOpen(true)}
+              onMouseLeave={() => setMoreDropdownOpen(false)}
+            >
+              <button className="nav-link dropdown-toggle">
+                More <ChevronDown size={13} className={moreDropdownOpen ? 'rotated' : ''} />
+              </button>
+              <div className={`dropdown-menu ${moreDropdownOpen ? 'show' : ''}`}>
+                <Link to="/partner" className="dropdown-item">Partner With Us</Link>
+                <Link to="/nominate-guest" className="dropdown-item">Nominate Guest</Link>
               </div>
             </div>
             <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}>About</Link>
@@ -74,6 +90,7 @@ const Navbar = () => {
         </div>
         <nav className="mobile-nav-links">
           <Link to="/episodes" className="mobile-link">Episodes</Link>
+          <Link to="/blog" className="mobile-link">Blog</Link>
           <Link to="/book" className="mobile-link">Studio</Link>
           <button className="mobile-link mobile-dropdown-toggle" onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}>
             Services <ChevronDown size={18} className={servicesDropdownOpen ? 'rotated' : ''} />
@@ -83,6 +100,15 @@ const Navbar = () => {
               <Link to="/services/talks" className="mobile-dropdown-item">Talks</Link>
               <a href="https://vividhevents.com/" className="mobile-dropdown-item" target="_blank" rel="noopener noreferrer">Events</a>
               <a href="https://www.vividhcommunications.com/" className="mobile-dropdown-item" target="_blank" rel="noopener noreferrer">Communications</a>
+            </div>
+          )}
+          <button className="mobile-link mobile-dropdown-toggle" onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}>
+            More <ChevronDown size={18} className={moreDropdownOpen ? 'rotated' : ''} />
+          </button>
+          {moreDropdownOpen && (
+            <div className="mobile-dropdown-content">
+              <Link to="/partner" className="mobile-dropdown-item">Partner With Us</Link>
+              <Link to="/nominate-guest" className="mobile-dropdown-item">Nominate Guest</Link>
             </div>
           )}
           <Link to="/about" className="mobile-link">About</Link>

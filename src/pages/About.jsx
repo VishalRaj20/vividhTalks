@@ -8,19 +8,19 @@ const hosts = [
   {
     name: 'Shraddha Suman',
     role: 'Main Host & Creator',
-    subtitle: 'Entrepreneur, Host & Storyteller',
-    bio: 'Shraddha Suman is an entrepreneur, host, and storyteller passionate about creating meaningful conversations.',
-    style: 'Known for a calm presence and guiding genuine conversations.',
+    subtitle: 'Entrepreneur, Podcast Host, and Storyteller',
+    bio: 'Shraddha Suman is an entrepreneur, podcast host, and storyteller passionate about creating meaningful conversations that inspire people, challenge perspectives, and bring real stories to the forefront.',
+    style: 'Known for her calm presence, thoughtful questions, and ability to create genuine conversations that go beyond scripted interviews.',
     points: [
-      { label: 'The Visionary', text: 'Entrepreneur, host and storyteller passionate about creating meaningful conversations.' },
-      { label: 'The Foundation', text: 'Utilizing her communication background to foster deeply impactful conversations.' },
-      { label: 'Hosting Style', text: 'Known for a calm presence and guiding genuine conversations.' },
-      { label: 'Her Mission', text: 'Building a platform for diverse stories and ambitious minds.' }
+      { label: 'The Visionary', text: 'Coming from a business and communication background, Shraddha always believed that conversations have the power to educate, connect, and create impact beyond social media trends and surface-level content.' },
+      { label: 'Her Journey', text: 'What started as an idea to create meaningful content gradually evolved into a platform featuring entrepreneurs, creators, leaders, doctors, educators, artists, and inspiring personalities from across India.' },
+      { label: 'Hosting Style', text: 'Known for her calm presence, thoughtful questions, and ability to create genuine conversations that go beyond scripted interviews.' },
+      { label: 'Her Mission', text: 'Through Vividh Talks, her vision is to build a platform that represents ambitious minds, diverse stories, and conversations that truly matter in today’s world.' }
     ],
     expertise: ['Empathetic Hosting', 'Branding & Stories', 'Impact Conversations'],
     img: '/guests/Shradhha Suman.webp',
     social: { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' },
-    quote: "Every person has a story powerful enough to inspire change"
+    quote: "Every person has a story powerful enough to inspire change."
   }
 ];
 
@@ -136,11 +136,11 @@ const About = () => {
         <div className="container about-hero-content">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> ESTABLISHED 2025</div>
           <h1 className="h1 animate-on-scroll" style={{ marginTop: '16px', transitionDelay: '0.1s' }}>
-            Conversations. Stories.<br />
-            <span className="text-accent">Thought Leadership.</span>
+            About<br />
+            <span className="text-accent">Vividh Talks</span>
           </h1>
           <p className="subheading animate-on-scroll" style={{ maxWidth: '700px', marginTop: '24px', color: 'rgba(255,255,255,0.9)', transitionDelay: '0.2s' }}>
-            Vividh Talks is a content-driven talk show & media platform focused on meaningful conversations. We help individuals turn their experiences and expertise into powerful digital content that builds influence. The platform brings real stories, expert insights and diverse perspectives to audiences through honest dialogue and impactful storytelling.
+            Vividh Talks is a modern Indian media and podcast platform focused on meaningful conversations with inspiring personalities, industry experts, creators, entrepreneurs, and thought leaders from across the country. Our goal is to create conversations that inform, inspire, and spark new perspectives through authentic storytelling and impactful discussions.
           </p>
           <div className="animate-on-scroll" style={{ marginTop: '36px', transitionDelay: '0.3s' }}>
             <Link to="/book" className="btn btn-primary"><Mic size={18} /> Start Your Story</Link>
@@ -156,14 +156,14 @@ const About = () => {
               <div className="mv-icon"><Target size={32} /></div>
               <h2 className="h2 mb-4">Our <span className="text-accent">Mission</span></h2>
               <p className="body-text">
-                Create meaningful conversations delivering real insights, practical learning, and authentic perspectives, while helping guests build a strong personal brand through impactful content.
+                To create meaningful conversations that inspire ideas, awareness, and positive change across India.
               </p>
             </div>
             <div className="mv-card animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
               <div className="mv-icon"><Eye size={32} /></div>
               <h2 className="h2 mb-4">Our <span className="text-accent">Vision</span></h2>
               <p className="body-text">
-                Become India’s go-to platform for credible conversations where audiences learn deeply and individuals share their stories while growing their digital presence.
+                To become one of India’s most trusted digital conversation platforms for impactful stories, diverse perspectives, and modern ideas.
               </p>
             </div>
           </div>
@@ -214,13 +214,16 @@ const About = () => {
             </div>
             <div className="story-image animate-on-scroll">
               <div className="glass-card p-8">
-                <h3 className="h3 mb-6">Who We <span className="text-accent">Feature</span></h3>
+                <h3 className="h3 mb-6">What We <span className="text-accent">Cover</span></h3>
                 <ul className="custom-list">
-                  <li><CheckCircle2 size={16} className="text-accent" /> Founders & Entrepreneurs</li>
-                  <li><CheckCircle2 size={16} className="text-accent" /> Industry Experts & Professionals</li>
-                  <li><CheckCircle2 size={16} className="text-accent" /> Educators, Creators & Influencers</li>
-                  <li><CheckCircle2 size={16} className="text-accent" /> Artists & Cultural Voices</li>
-                  <li><CheckCircle2 size={16} className="text-accent" /> People with impactful life journeys</li>
+                  <li><CheckCircle2 size={16} className="text-accent" /> Politics & Society</li>
+                  <li><CheckCircle2 size={16} className="text-accent" /> Entrepreneurship</li>
+                  <li><CheckCircle2 size={16} className="text-accent" /> Health & Wellness</li>
+                  <li><CheckCircle2 size={16} className="text-accent" /> Bihar Stories</li>
+                  <li><CheckCircle2 size={16} className="text-accent" /> Women Empowerment</li>
+                  <li><CheckCircle2 size={16} className="text-accent" /> Youth & Career</li>
+                  <li><CheckCircle2 size={16} className="text-accent" /> Creator Economy</li>
+                  <li><CheckCircle2 size={16} className="text-accent" /> Social Issues & Personal Growth</li>
                 </ul>
               </div>
             </div>

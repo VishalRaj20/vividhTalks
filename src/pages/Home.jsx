@@ -180,20 +180,23 @@ const Home = () => {
               <StaggerItem className="hero-badge">🎙️ VIVIDH TALKS &amp; STUDIO</StaggerItem>
               <StaggerItem>
                 <h1 className="h1">
-                  Where Stories<br />
-                  <span className="text-accent">Come Alive.</span>
+                  Real Conversations<br />
+                  <span className="text-accent">That Matter.</span>
                 </h1>
               </StaggerItem>
               <StaggerItem>
                 <p className="hero-subtext subheading" style={{ maxWidth: '560px', marginTop: '20px', color: 'rgba(255,255,255,0.85)' }}>
-                  India's boldest podcast platform and production suite for creators, founders, and brands that deserve to be heard.
+                  India's emerging podcast platform exploring politics, business, society, health, youth culture, entrepreneurship, personal growth and modern India and inspiring human stories.
                 </p>
               </StaggerItem>
               <StaggerItem>
                 <div className="hero-ctas" style={{ marginTop: '36px' }}>
-                  <Link to="/book" className="btn btn-primary"><Mic size={18} /> Start Your Podcast</Link>
-                  <Link to={`/episode/${safeEpisodes[0].id}`} className="btn btn-secondary">
-                    <Play size={18} /> Watch Latest
+                  <Link to={`/episode/${safeEpisodes[0]?.id}`} className="btn btn-primary"><Play size={18} /> Watch Episodes</Link>
+                  <Link to="/partner" className="btn btn-secondary">
+                     Partner With Us
+                  </Link>
+                  <Link to="/episodes" className="btn btn-outline" style={{marginLeft: '10px'}}>
+                     Explore Conversations
                   </Link>
                 </div>
               </StaggerItem>
@@ -322,6 +325,41 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ═══════════════ FEATURED GUESTS (NEW) ═══════════════ */}
+      <section className="featured-guests-section section-padding">
+        <div className="container">
+          <div className="section-header-row animate-on-scroll">
+            <div>
+              <div className="section-tag"><span className="section-tag-dot"></span> WHY VIVIDH TALKS?</div>
+              <h2 className="h2" style={{ marginTop: '12px' }}>Voices That <span className="text-accent">Inspire India</span></h2>
+              <p className="subheading" style={{ marginTop: '8px', maxWidth: '800px' }}>
+                Meaningful conversations with founders, creators, politicians, doctors, educators, artists and change-makers shaping modern India.
+                From entrepreneurs to public leaders, we feature guests with stories, experiences and ideas that create impact.
+              </p>
+            </div>
+            <Link to="/episodes" className="btn btn-secondary">Watch Episodes <ArrowRight size={16} /></Link>
+          </div>
+          <div className="programs-grid mt-8">
+            {[
+              {name: 'Shraddha Suman', title: 'Entrepreneur & Host', img: '/guests/Shradhha Suman.webp'},
+              {name: 'Akshat Soni', title: 'Finance Creator', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600&h=600'},
+              {name: 'Guest 3', title: 'Politician', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600&h=600'},
+            ].map((guest, idx) => (
+              <div className="program-card animate-on-scroll" key={idx} style={{ transitionDelay: `${idx * 0.08}s` }}>
+                <div className="program-card-img-wrap">
+                  <img src={guest.img} alt={guest.name} style={{objectFit: 'cover', width: '100%', height: '100%'}} />
+                  <div className="program-card-overlay"></div>
+                </div>
+                <div className="program-card-body text-center">
+                  <h4 className="program-card-title">{guest.name}</h4>
+                  <p className="program-card-meta text-accent">{guest.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══════════════ FEATURED PROGRAMS GRID ═══════════════ */}
       <section className="programs-section section-padding">
         <div className="container">
@@ -356,9 +394,9 @@ const Home = () => {
       <section className="categories-section section-padding">
         <div className="container">
           <div className="section-header animate-on-scroll">
-            <div className="section-tag"><span className="section-tag-dot"></span> EXPLORE BY TOPIC</div>
-            <h2 className="h2" style={{ marginTop: '12px' }}>Find Your <span className="text-accent">Frequency.</span></h2>
-            <p className="subheading" style={{ marginTop: '12px' }}>Every niche. Every voice. One platform.</p>
+            <div className="section-tag"><span className="section-tag-dot"></span> EPISODES SECTION</div>
+            <h2 className="h2" style={{ marginTop: '12px' }}>Watch Latest <span className="text-accent">Episodes.</span></h2>
+            <p className="subheading" style={{ marginTop: '12px' }}>Deep conversations on: Politics, Entrepreneurship, Health, Society, Bihar, Youth Issues, Personal Growth.</p>
           </div>
           <div className="categories-premium-grid animate-on-scroll">
             {categories.map((cat, idx) => (
@@ -386,8 +424,8 @@ const Home = () => {
           <div className="section-header-row animate-on-scroll">
             <div>
               <div className="section-tag"><span className="section-tag-dot"></span> SHORTS &amp; CLIPS</div>
-              <h2 className="h2" style={{ marginTop: '12px' }}>60 Seconds. <span className="text-accent">Full Impact.</span></h2>
-              <p className="subheading" style={{ marginTop: '8px' }}>The sharpest moments from every episode.</p>
+              <h2 className="h2" style={{ marginTop: '12px' }}>Short Conversations. <span className="text-accent">Big Impact.</span></h2>
+              <p className="subheading" style={{ marginTop: '8px' }}>Explore viral podcast clips, emotional moments, trending discussions, and powerful insights from Vividh Talks for today’s fast-moving digital audience.</p>
             </div>
             <Link to="/episodes" className="btn btn-secondary">View All <ArrowRight size={16} /></Link>
           </div>

@@ -9,6 +9,9 @@ const EpisodeDetail = lazy(() => import('./pages/EpisodeDetail'));
 const BookSession = lazy(() => import('./pages/BookSession'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Partner = lazy(() => import('./pages/Partner'));
+const GuestNomination = lazy(() => import('./pages/GuestNomination'));
+const Blog = lazy(() => import('./pages/Blog'));
 
 const PageLoader = () => (
   <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#050505' }}>
@@ -28,6 +31,9 @@ function App() {
             <Route path="book" element={<BookSession />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="partner" element={<Partner />} />
+            <Route path="nominate-guest" element={<GuestNomination />} />
+            <Route path="blog" element={<Blog />} />
           </Route>
         </Routes>
       </Suspense>
