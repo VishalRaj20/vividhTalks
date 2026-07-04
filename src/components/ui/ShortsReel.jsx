@@ -84,7 +84,7 @@ const ShortVideo = ({ clip, isActive }) => {
             allowFullScreen
           />
         ) : (
-          <img src={clip.image} alt={clip.title} className="short-video-player" style={{ objectFit: 'cover' }} />
+          <img loading="lazy" src={clip.image} alt={clip.title} className="short-video-player" style={{ objectFit: 'cover' }} />
         )
       ) : (
         <video
@@ -118,7 +118,7 @@ const ShortVideo = ({ clip, isActive }) => {
             <h3 className="short-title">{clip.title}</h3>
             <div className="short-channel">
               <div className="short-channel-avatar">
-                <img src="/logo.svg" alt={clip.channelName || "Vividh Talks"} onError={(e) => { e.target.style.display = 'none'; }} />
+                <img loading="lazy" src="/logo.svg" alt={clip.channelName || "Vividh Talks"} onError={(e) => { e.target.style.display = 'none'; }} />
               </div>
               <span className="short-channel-name">{clip.channelName || "Vividh Talks"}</span>
             </div>

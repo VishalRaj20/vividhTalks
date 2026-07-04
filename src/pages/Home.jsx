@@ -166,7 +166,7 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      <SEO 
+      <SEO
         title="Home"
       />
 
@@ -193,10 +193,10 @@ const Home = () => {
                 <div className="hero-ctas" style={{ marginTop: '36px' }}>
                   <Link to={`/episode/${safeEpisodes[0]?.id}`} className="btn btn-primary"><Play size={18} /> Watch Episodes</Link>
                   <Link to="/partner" className="btn btn-secondary">
-                     Partner With Us
+                    Partner With Us
                   </Link>
-                  <Link to="/episodes" className="btn btn-outline" style={{marginLeft: '10px'}}>
-                     Explore Conversations
+                  <Link to="/episodes" className="btn btn-outline" style={{ marginLeft: '10px' }}>
+                    Explore Conversations
                   </Link>
                 </div>
               </StaggerItem>
@@ -301,7 +301,7 @@ const Home = () => {
                 />
               ) : (
                 <>
-                  <img src={safeEpisodes[0].image} alt="Featured Episode" />
+                  <img loading="lazy" src={safeEpisodes[0].image} alt="Featured Episode" />
                   <div className="featured-play"><Play size={32} fill="currentColor" /></div>
                   <div className="featured-img-overlay"></div>
                 </>
@@ -341,13 +341,13 @@ const Home = () => {
           </div>
           <div className="programs-grid mt-8">
             {[
-              {name: 'Shraddha Suman', title: 'Entrepreneur & Host', img: '/guests/Shradhha Suman.webp'},
-              {name: 'Akshat Soni', title: 'Finance Creator', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600&h=600'},
-              {name: 'Guest 3', title: 'Politician', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600&h=600'},
+              { name: 'Shraddha Suman', title: 'Entrepreneur & Host', img: '/guests/Shradhha Suman.webp' },
+              { name: 'Akshat Soni', title: 'Finance Creator', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600&h=600' },
+              { name: 'Guest 3', title: 'Politician', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600&h=600' },
             ].map((guest, idx) => (
               <div className="program-card animate-on-scroll" key={idx} style={{ transitionDelay: `${idx * 0.08}s` }}>
                 <div className="program-card-img-wrap">
-                  <img src={guest.img} alt={guest.name} style={{objectFit: 'cover', width: '100%', height: '100%'}} />
+                  <img loading="lazy" src={guest.img} alt={guest.name} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                   <div className="program-card-overlay"></div>
                 </div>
                 <div className="program-card-body text-center">
@@ -375,7 +375,7 @@ const Home = () => {
             {safeEpisodes.slice(0, 6).map((ep, idx) => (
               <Link to={`/episode/${ep.id}`} className="program-card animate-on-scroll" key={ep.id} style={{ transitionDelay: `${idx * 0.08}s` }}>
                 <div className="program-card-img-wrap">
-                  <img src={ep.image} alt={ep.title} />
+                  <img loading="lazy" src={ep.image} alt={ep.title} />
                   <div className="program-card-overlay"></div>
                   <span className="program-ep-badge">EP. {ep.number}</span>
                   <div className="program-play-btn"><Play size={20} fill="currentColor" /></div>
@@ -433,19 +433,19 @@ const Home = () => {
           <div className="video-testimonial-grid animate-on-scroll mt-8">
             {safeClips.slice(0, 8).map((clip, idx) => (
               <div className="video-testimonial-card" style={{ padding: '0', border: 'none', background: 'transparent' }} key={clip.id}>
-                <ClipCard 
-                  clip={clip} 
+                <ClipCard
+                  clip={clip}
                   onClick={() => {
                     setSelectedShortIndex(idx);
                     setIsShortsModalOpen(true);
-                  }} 
+                  }}
                 />
               </div>
             ))}
           </div>
 
-          <ShortsReel 
-            clips={safeClips.slice(0, 8)} 
+          <ShortsReel
+            clips={safeClips.slice(0, 8)}
             isOpen={isShortsModalOpen}
             onClose={() => setIsShortsModalOpen(false)}
             initialIndex={selectedShortIndex}
@@ -477,7 +477,7 @@ const Home = () => {
         <div className="host-preview-card-wrapper animate-on-scroll">
           <div className="host-preview-grid">
             <div className="host-preview-img-wrap">
-              <img src="/guests/Shradhha Suman.webp" alt="Shraddha Suman" />
+              <img loading="lazy" src="/guests/Shradhha Suman.webp" alt="Shraddha Suman" />
               <div className="host-preview-badge">Main Host</div>
             </div>
             <div className="host-preview-content">
@@ -637,7 +637,7 @@ const Home = () => {
       </section>
 
       {/* ═══════════════ TESTIMONIALS ═══════════════ */}
-      <section className="testimonials-section section-padding container">
+      {/* <section className="testimonials-section section-padding container">
         <div className="text-center animate-on-scroll">
           <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> LISTENER LOVE</div>
           <h2 className="h2" style={{ marginTop: '12px' }}>Real Stories. <span className="text-accent">Real Impact.</span></h2>
@@ -646,10 +646,10 @@ const Home = () => {
         <div className="testimonials-wrapper animate-on-scroll" style={{ marginTop: '48px' }}>
           <TestimonialSlider testimonials={actualTestimonials} />
         </div>
-      </section>
+      </section> */}
 
       {/* ═══════════════ GALLERY ═══════════════ */}
-      <section className="gallery-section section-padding">
+      {/* <section className="gallery-section section-padding">
         <div className="container">
           <div className="section-header-row animate-on-scroll">
             <div>
@@ -670,7 +670,7 @@ const Home = () => {
               'https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&q=80&w=600&h=400',
             ].map((img, i) => (
               <div className="gallery-item" key={i} style={{ transitionDelay: `${i * 0.06}s` }}>
-                <img src={img} alt={`Studio Moment ${i + 1}`} />
+                <img loading="lazy" src={img} alt={`Studio Moment ${i + 1}`} />
                 <div className="gallery-overlay">
                   <div className="gallery-plus">+</div>
                 </div>
@@ -678,7 +678,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ═══════════════ BRAND ECOSYSTEM ═══════════════ */}
       <section className="ecosystem-section section-padding container">

@@ -12,6 +12,8 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Partner = lazy(() => import('./pages/Partner'));
 const GuestNomination = lazy(() => import('./pages/GuestNomination'));
 const Blog = lazy(() => import('./pages/Blog'));
+const Host = lazy(() => import('./pages/Host'));
+const FeaturedGuests = lazy(() => import('./pages/FeaturedGuests'));
 
 const PageLoader = () => (
   <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#050505' }}>
@@ -34,6 +36,8 @@ function App() {
             <Route path="partner" element={<Partner />} />
             <Route path="nominate-guest" element={<GuestNomination />} />
             <Route path="blog" element={<Blog />} />
+            <Route path="host" element={<Host />} />
+            <Route path="featured-guests" element={<FeaturedGuests />} />
           </Route>
         </Routes>
       </Suspense>

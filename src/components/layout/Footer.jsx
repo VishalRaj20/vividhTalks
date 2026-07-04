@@ -36,7 +36,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="footer-brand">
             <Link to="/" className="footer-logo-link">
-              <img src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="footer-logo-img" style={{ height: '100px', width: 'auto' }} />
+              <img loading="lazy" src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="footer-logo-img" style={{ height: '100px', width: 'auto' }} />
             </Link>
             <p className="footer-tagline">
               India's boldest podcast platform. Where creators, founders, and voices that deserve to be heard come alive.

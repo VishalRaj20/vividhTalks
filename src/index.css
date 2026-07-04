@@ -648,3 +648,187 @@ body::before {
   pointer-events: none;
   transition: opacity 0.5s ease;
 } 
+
+/* ========================================================================= */
+/* HOST PAGE STYLES */
+/* ========================================================================= */
+.host-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 60px;
+}
+.host-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(255, 77, 0, 0.15), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(200, 255, 0, 0.05), transparent 40%);
+  z-index: 0;
+}
+.host-hero-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.host-hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.host-hero-bio {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.host-hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.host-hero-image-inner {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.host-hero-image-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.host-hero-image-deco {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,77,0,0.2) 0%, transparent 100%);
+  pointer-events: none;
+}
+.host-points-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.host-point-card {
+  transition: transform 0.3s ease;
+}
+.host-point-card:hover {
+  transform: translateY(-10px);
+}
+
+/* ========================================================================= */
+/* FEATURED GUESTS PAGE STYLES */
+/* ========================================================================= */
+.guests-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+.guest-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 40px;
+  border-radius: 20px;
+}
+.guest-row-reverse {
+  direction: rtl;
+}
+.guest-row-reverse > * {
+  direction: ltr;
+}
+.guest-video-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.guest-review-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-play-overlay-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 77, 0, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.video-play-overlay-btn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--accent-primary);
+}
+.guest-avatar-small {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-primary);
+}
+.guest-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.episode-link-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.3s ease;
+}
+.episode-link-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.episode-link-card img {
+  width: 80px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+@media (max-width: 991px) {
+  .host-hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .host-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .guest-row {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .guest-row-reverse {
+    direction: ltr;
+  }
+}

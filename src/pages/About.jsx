@@ -125,7 +125,7 @@ const About = () => {
 
   return (
     <div className="about-page">
-      <SEO 
+      <SEO
         title="About Us"
         description="Vividh Talks is a content-driven talk show & media platform focused on meaningful conversations. Learn about our hosts and our mission."
       />
@@ -237,7 +237,7 @@ const About = () => {
           <div className="creators-layout">
             <div className="creators-image animate-on-scroll">
               <div className="creators-img-wrap">
-                <img src="/guests/creators_with_mic.webp" alt="Creators With The Mic" />
+                <img loading="lazy" src="/guests/creators_with_mic.webp" alt="Creators With The Mic" />
                 <div className="creators-img-glow"></div>
               </div>
             </div>
@@ -281,11 +281,11 @@ const About = () => {
             {hosts.map((host, i) => (
               <div className="host-profile-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.15}s` }}>
                 <div className="host-image-container">
-                  <img src={host.img} alt={host.name} />
+                  <img loading="lazy" src={host.img} alt={host.name} />
                   <div className="host-image-overlay"></div>
                   <div className="host-social-links">
-                    <a href={host.social.linkedin} target="_blank" rel="noreferrer" className="host-social-link-btn">LinkedIn</a>
-                    <a href={host.social.instagram} target="_blank" rel="noreferrer" className="host-social-link-btn">Instagram</a>
+                    <a href="https://www.linkedin.com/in/shraddha-suman-7b71b363" target="_blank" rel="noreferrer" className="host-social-link-btn">LinkedIn</a>
+                    <a href="https://www.instagram.com/shraddd_ha" target="_blank" rel="noreferrer" className="host-social-link-btn">Instagram</a>
                   </div>
                 </div>
                 <div className="host-info-container">
@@ -331,7 +331,7 @@ const About = () => {
       </section>
 
       {/* ─── TEAM (PEOPLE BEHIND THE MIC) ─── */}
-      <section className="section-padding">
+      {/* <section className="section-padding">
         <div className="container">
           <div className="text-center animate-on-scroll mb-12">
             <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> THE TEAM</div>
@@ -341,7 +341,7 @@ const About = () => {
             {teamMembers.map((m, i) => (
               <div className="team-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
                 <div className="team-img-wrap">
-                  <img src={m.img} alt={m.name} />
+                  <img loading="lazy" src={m.img} alt={m.name} />
                   <div className="team-img-overlay"></div>
                 </div>
                 <div className="team-card-body">
@@ -357,7 +357,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ─── FEATURED GUESTS ─── */}
       <section className="featured-guests-section section-padding">
@@ -381,7 +381,7 @@ const About = () => {
             {featuredGuests.map((guest, i) => (
               <div className="featured-guest-card animate-on-scroll" key={i} style={{ transitionDelay: `${(i % 6) * 0.08}s` }}>
                 <div className="featured-guest-img-wrap">
-                  <img src={guest.img} alt={guest.name} />
+                  <img loading="lazy" src={guest.img} alt={guest.name} />
                 </div>
                 <div className="featured-guest-info">
                   <h4 className="featured-guest-name">{guest.name}</h4>

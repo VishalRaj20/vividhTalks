@@ -256,7 +256,7 @@ const AudioPlayer = () => {
         {/* Track Thumbnail Info */}
         <div className="player-track-info">
           <div className="track-thumb-wrap">
-            <img src={track.image} alt={track.title} />
+            <img loading="lazy" src={track.image} alt={track.title} />
             <div className="track-pulse-disc">
               <Music size={12} className={isPlaying ? 'spin' : ''} />
             </div>

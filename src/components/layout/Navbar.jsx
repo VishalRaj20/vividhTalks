@@ -28,13 +28,14 @@ const Navbar = () => {
         <div className="container navbar-container">
           {/* Logo */}
           <Link to="/" className="logo">
-            <img src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="logo-img" />
+            <img loading="lazy" src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="logo-img" />
           </Link>
 
           {/* Desktop Nav */}
           <nav className="desktop-nav">
             <Link to="/episodes" className={`nav-link ${location.pathname === '/episodes' ? 'active' : ''}`}>Episodes</Link>
-            <Link to="/blog" className={`nav-link ${location.pathname === '/blog' ? 'active' : ''}`}>Blog</Link>
+            <Link to="/host" className={`nav-link ${location.pathname === '/host' ? 'active' : ''}`}>Our Host</Link>
+            <Link to="/featured-guests" className={`nav-link ${location.pathname === '/featured-guests' ? 'active' : ''}`}>Featured Guests</Link>
             <Link to="/book" className={`nav-link ${location.pathname === '/book' ? 'active' : ''}`}>Studio</Link>
             <div
               className="nav-dropdown-wrapper"
@@ -61,6 +62,7 @@ const Navbar = () => {
               <div className={`dropdown-menu ${moreDropdownOpen ? 'show' : ''}`}>
                 <Link to="/partner" className="dropdown-item">Partner With Us</Link>
                 <Link to="/nominate-guest" className="dropdown-item">Nominate Guest</Link>
+                <Link to="/blog" className="dropdown-item">Blog</Link>
               </div>
             </div>
             <Link to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}>About</Link>
@@ -109,6 +111,8 @@ const Navbar = () => {
             <div className="mobile-dropdown-content">
               <Link to="/partner" className="mobile-dropdown-item">Partner With Us</Link>
               <Link to="/nominate-guest" className="mobile-dropdown-item">Nominate Guest</Link>
+              <Link to="/host" className="mobile-dropdown-item">Our Host</Link>
+              <Link to="/featured-guests" className="mobile-dropdown-item">Featured Guests</Link>
             </div>
           )}
           <Link to="/about" className="mobile-link">About</Link>

@@ -37,8 +37,8 @@ const Blog = () => {
         title="Stories, Ideas & Perspectives"
         description="Read insights on Entrepreneurship, Politics & Society, Health & Wellness, Startups, and more."
       />
-      <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingBottom: '40px' }}>
-        <div className="parallax-bg" style={{ animation: 'pulse-dot 10s infinite alternate' }}></div>
+      <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingTop: '160px', paddingBottom: '100px' }}>
+        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/generated/podcast_blog_1783165019144.png)', filter: 'brightness(0.5)' }}></div>
         <div className="contact-hero-overlay"></div>
         <div className="container relative text-center">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> VIVIDH BLOG</div>

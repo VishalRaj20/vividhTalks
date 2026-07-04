@@ -33,19 +33,19 @@ const Partner = () => {
 
   return (
     <div className="contact-page">
-      <SEO 
+      <SEO
         title="Partner With Us"
         description="Grow your brand with Vividh Talks. Partner with a growing Indian podcast platform."
       />
-      <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* Parallax Background */}
-        <div className="parallax-bg" ref={heroRef}></div>
+      <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingTop: '160px', paddingBottom: '100px' }}>
+        {/* Hero Background */}
+        <div className="contact-hero-bg" ref={heroRef} style={{ backgroundImage: 'url(/generated/podcast_partner_clean_1783164552184.png)', filter: 'brightness(0.5)' }}></div>
         <div className="contact-hero-overlay"></div>
         
         <div className="container relative text-center">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> PARTNER WITH US</div>
           <h1 className="h1 animate-on-scroll" style={{ marginTop: '24px', transitionDelay: '0.1s' }}>
-            Grow Your Brand<br/>With <span className="text-accent">Vividh Talks</span>
+            Grow Your Brand<br />With <span className="text-accent">Vividh Talks</span>
           </h1>
           <p className="subheading animate-on-scroll" style={{ maxWidth: '600px', margin: '24px auto 0', transitionDelay: '0.15s', color: 'rgba(255,255,255,0.9)' }}>
             Partner with a growing Indian podcast platform to reach an engaged, diverse, and fast-growing audience.

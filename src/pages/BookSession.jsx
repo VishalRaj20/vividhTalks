@@ -312,22 +312,22 @@ const BookSession = () => {
 
         <div className="studio-gallery-grid animate-on-scroll">
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-55-53.webp" alt="Studio Setup 1" />
+            <img loading="lazy" src="/studio/photo_2026-07-01_20-55-53.webp" alt="Studio Setup 1" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-10.webp" alt="Studio Setup 2" />
+            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-10.webp" alt="Studio Setup 2" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-15.webp" alt="Studio Setup 3" />
+            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-15.webp" alt="Studio Setup 3" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-18.webp" alt="Studio Setup 4" />
+            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-18.webp" alt="Studio Setup 4" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-23.webp" alt="Studio Setup 5" />
+            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-23.webp" alt="Studio Setup 5" />
           </div>
           <div className="gallery-item">
-            <img src="/studio/photo_2026-07-01_20-58-26.webp" alt="Studio Setup 6" />
+            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-26.webp" alt="Studio Setup 6" />
           </div>
         </div>
       </section>

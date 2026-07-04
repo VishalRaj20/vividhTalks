@@ -7,7 +7,7 @@
   height: 100vh;
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.95);
-  z-index: 2147483647; /* Maximum z-index to cover everything including navbar */
+  z-index: 9999; /* Maximum z-index to cover everything including navbar */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 2147483647;
+  z-index: 9999;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: background 0.2s, transform 0.2s;

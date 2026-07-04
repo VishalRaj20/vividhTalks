@@ -6,7 +6,7 @@ const FeatureCard = ({ icon, title, description, image, highlight = false }) => 
     <div className={`feature-card glass-card ${highlight ? 'highlight' : ''}`}>
       {image && (
         <div className="feature-image-wrapper">
-          <img src={image} alt={title} className="feature-card-img" />
+          <img loading="lazy" src={image} alt={title} className="feature-card-img" />
           <div className="feature-image-overlay"></div>
         </div>
       )}

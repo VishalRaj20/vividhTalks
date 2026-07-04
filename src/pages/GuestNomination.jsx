@@ -17,7 +17,17 @@ const GuestNomination = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for the nomination!');
+    const formData = new FormData(e.target);
+    const nominatorName = formData.get('nominatorName');
+    const guestName = formData.get('guestName');
+    const guestLink = formData.get('guestLink');
+    const reason = formData.get('reason');
+
+    const waNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915';
+    const text = `*New Guest Nomination* 🎙️\n\n*Nominator:* ${nominatorName}\n*Guest Name:* ${guestName}\n*Guest Link:* ${guestLink || 'N/A'}\n*Why feature them?*\n${reason}`;
+    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
+    
+    window.open(waUrl, '_blank');
     e.target.reset();
   };
 
@@ -27,7 +37,9 @@ const GuestNomination = () => {
         title="Suggest A Guest"
         description="Know someone with an inspiring story? Suggest guests for upcoming Vividh Talks conversations."
       />
-      <section className="contact-hero section-padding" style={{ paddingBottom: '0' }}>
+      <section className="contact-hero section-padding" style={{ paddingBottom: '0', paddingTop: '160px', position: 'relative', overflow: 'hidden' }}>
+        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/generated/podcast_partner_clean_1783164552184.png)', filter: 'brightness(0.5)' }}></div>
+        <div className="contact-hero-overlay"></div>
         <div className="container relative text-center">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> GUEST NOMINATION</div>
           <h1 className="h1 animate-on-scroll" style={{ marginTop: '24px', transitionDelay: '0.1s' }}>

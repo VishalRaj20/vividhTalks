@@ -146,7 +146,7 @@ const PodcastLibrary = () => {
               <div className="pinned-card glass-card" key={ep.id}>
                 <div className="pinned-badge">FEATURED</div>
                 <div className="pinned-img">
-                  <img src={ep.image} alt={ep.title} />
+                  <img loading="lazy" src={ep.image} alt={ep.title} />
                   <div className="play-overlay"><div className="play-btn"><Play fill="currentColor" /></div></div>
                 </div>
                 <div className="pinned-content">
