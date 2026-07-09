@@ -56,7 +56,6 @@ const ClipCard = ({ clip, onClick }) => {
             src={image} 
             alt={title} 
             className="yt-thumbnail" 
-            loading="lazy" 
             style={{ opacity: isHovered ? 0 : 1, transition: 'opacity 0.3s ease' }}
           />
           {videoUrl && !videoUrl.includes('youtube.com') && (

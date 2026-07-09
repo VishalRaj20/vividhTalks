@@ -116,7 +116,7 @@ const EpisodeDetail = () => {
   
   const { episodes: apiEpisodes, clips: apiClips, loading } = useYouTubeData();
   const episodes = apiEpisodes.length > 0 ? apiEpisodes : dummyEpisodes;
-  const clips = apiClips.length > 0 || apiEpisodes.length > 0 ? apiClips : dummyClips;
+  const clips = apiClips.length > 0 ? apiClips : dummyClips;
 
   const cleanDescription = (desc) => {
     if (!desc) return '';

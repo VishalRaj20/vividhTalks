@@ -82,7 +82,7 @@ const featuredGuests = [
   {
     name: 'Dr. Kishlay',
     role: 'Metabolic Doctor',
-    img: '/guests/Dr. Kishlay.webp'
+    img: '/guests/Dr. Kishlay.jpg'
   },
   {
     name: 'Dr. Shubhash Krishna',

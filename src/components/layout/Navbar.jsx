@@ -42,14 +42,14 @@ const Navbar = () => {
               onMouseEnter={() => setServicesDropdownOpen(true)}
               onMouseLeave={() => setServicesDropdownOpen(false)}
             >
-              <button className="nav-link dropdown-toggle">
+              {/* <button className="nav-link dropdown-toggle">
                 Services <ChevronDown size={13} className={servicesDropdownOpen ? 'rotated' : ''} />
               </button>
               <div className={`dropdown-menu ${servicesDropdownOpen ? 'show' : ''}`}>
                 <Link to="/services/talks" className="dropdown-item">Talks</Link>
                 <a href="https://vividhevents.com/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Events</a>
                 <a href="https://www.vividhcommunications.com/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Communications</a>
-              </div>
+              </div> */}
             </div>
             <div
               className="nav-dropdown-wrapper"

@@ -269,7 +269,7 @@ const BookSession = () => {
 
   return (
     <div className="book-page">
-      <SEO 
+      <SEO
         title="Book A Session"
         description="Book your podcast session with Vividh Talks. Premium studio, expert production, and hassle-free recording."
       />
@@ -893,25 +893,30 @@ const BookSession = () => {
                 </>
               )}
               <div className="form-group">
-                <input type="date" name="date" className="form-input text-secondary" required />
+                <input 
+                  type="date" 
+                  name="date" 
+                  className="form-input text-secondary" 
+                  required 
+                  min={new Date().toISOString().split('T')[0]}
+                />
               </div>
 
               {serviceType === 'studio' && (
                 <div className="form-group">
                   <label className="text-secondary text-xs font-mono uppercase block mb-2">Select Time Slot *</label>
-                  <div className="slot-grid">
+                  <select 
+                    className="form-select" 
+                    name="timeSlot" 
+                    required 
+                    value={selectedTimeSlot}
+                    onChange={(e) => setSelectedTimeSlot(e.target.value)}
+                  >
+                    <option value="" disabled>Select a time</option>
                     {['10:00 AM', '01:00 PM', '04:00 PM', '07:00 PM'].map(slot => (
-                      <button
-                        type="button"
-                        key={slot}
-                        className={`slot-btn ${selectedTimeSlot === slot ? 'active' : ''}`}
-                        onClick={() => setSelectedTimeSlot(slot)}
-                      >
-                        {slot}
-                      </button>
+                      <option key={slot} value={slot}>{slot}</option>
                     ))}
-                  </div>
-                  <input type="hidden" name="timeSlot" value={selectedTimeSlot} />
+                  </select>
                 </div>
               )}
 
@@ -963,7 +968,7 @@ const BookSession = () => {
                 <div className="dot"></div>
                 <div className="content">
                   <h4>Episode Goes Live</h4>
-                  <p className="text-secondary">Edited, branded, and published within 5–7 business days.</p>
+                  <p className="text-secondary">Edited, branded, and published within 3–5 business days.</p>
                 </div>
               </div>
             </div>
@@ -994,7 +999,7 @@ const BookSession = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding container" style={{ paddingTop: '100px' }}>
+      {/* <section className="section-padding container" style={{ paddingTop: '100px' }}>
         <div className="text-center animate-on-scroll" style={{ marginBottom: '48px' }}>
           <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> WHAT GUESTS SAY</div>
           <h2 className="h2" style={{ marginTop: '12px' }}>Real Stories. <span className="text-accent">Real Impact.</span></h2>
@@ -1002,7 +1007,7 @@ const BookSession = () => {
         <div className="animate-on-scroll">
           <TestimonialSlider testimonials={testimonials} />
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

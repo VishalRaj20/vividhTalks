@@ -341,9 +341,9 @@ const Home = () => {
           </div>
           <div className="programs-grid mt-8">
             {[
-              { name: 'Shraddha Suman', title: 'Entrepreneur & Host', img: '/guests/Shradhha Suman.webp' },
-              { name: 'Akshat Soni', title: 'Finance Creator', img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600&h=600' },
-              { name: 'Guest 3', title: 'Politician', img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600&h=600' },
+              { name: 'Deepak Thakur', title: 'Playback Singer & Bigg Boss Fame', img: "/guests/Deepak Thakur.webp" },
+              { name: 'Sujit Kumar Mishra', title: 'Founder & CEO - Thikedaar.com', img: "/guests/Sujit Kumar Mishra.webp" },
+              { name: '"Pd. Shree Abhay Krishan Jee Maharaj"', title: "Political Astrologer", img: "/guests/Pd. Shree Abhay Krishan Jee Maharaj.webp" },
             ].map((guest, idx) => (
               <div className="program-card animate-on-scroll" key={idx} style={{ transitionDelay: `${idx * 0.08}s` }}>
                 <div className="program-card-img-wrap">
@@ -432,7 +432,7 @@ const Home = () => {
 
           <div className="video-testimonial-grid animate-on-scroll mt-8">
             {safeClips.slice(0, 8).map((clip, idx) => (
-              <div className="video-testimonial-card" style={{ padding: '0', border: 'none', background: 'transparent' }} key={clip.id}>
+              <div className="video-testimonial-card" style={{ padding: '0', border: 'none', background: 'transparent', flex: '0 0 auto' }} key={clip.id}>
                 <ClipCard
                   clip={clip}
                   onClick={() => {
@@ -478,7 +478,7 @@ const Home = () => {
           <div className="host-preview-grid">
             <div className="host-preview-img-wrap">
               <img loading="lazy" src="/guests/Shradhha Suman.webp" alt="Shraddha Suman" />
-              <div className="host-preview-badge">Main Host</div>
+              <div className="host-preview-badge">Our Host</div>
             </div>
             <div className="host-preview-content">
               <div className="section-tag"><span className="section-tag-dot"></span> MEET THE HOST</div>
@@ -522,7 +522,7 @@ const Home = () => {
 
               <div className="host-preview-actions mt-8">
                 <Link to="/about#hosts" className="btn btn-primary">Know More About Host</Link>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="btn btn-secondary">Connect on LinkedIn</a>
+                <a href="https://www.linkedin.com/in/shraddha-suman-7b71b363" target="_blank" rel="noreferrer" className="btn btn-secondary">Connect on LinkedIn</a>
               </div>
             </div>
           </div>
@@ -611,7 +611,7 @@ const Home = () => {
             {/* Note for User: To use local videos from private_assets, you would typically place them in the public folder (e.g. public/private_assets/) 
                 or import them directly. For now, here is a placeholder you can replace with your own dummy video. */}
             <video
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              src="/reviews/review1.mp4"
               controls
               className="video-testimonial-player"
               poster="/images/hero_2.png"
@@ -623,7 +623,7 @@ const Home = () => {
           </div>
           <div className="video-testimonial-card glass-card">
             <video
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              src="/reviews/review1.mp4"
               controls
               className="video-testimonial-player"
               poster="/images/hero_3.png"

@@ -1,7 +1,7 @@
 .clip-yt-card {
   cursor: pointer;
-  min-width: 200px;
-  width: 100%; /* Fill parent container to prevent gap */
+  width: 180px;
+  flex: 0 0 180px;
 }
 
 .clip-yt-card .vertical-wrapper {
@@ -10,16 +10,16 @@
 }
 
 .clip-yt-card .yt-title {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .clip-yt-card .yt-views-time {
-  font-size: 13px;
+  font-size: 11px;
 }
 
 @media (max-width: 600px) {
   .clip-yt-card {
-    min-width: 160px;
-    width: 100%;
+    width: 140px;
+    flex: 0 0 140px;
   }
 }

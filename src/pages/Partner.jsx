@@ -37,10 +37,10 @@ const Partner = () => {
         title="Partner With Us"
         description="Grow your brand with Vividh Talks. Partner with a growing Indian podcast platform."
       />
-      <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingTop: '160px', paddingBottom: '100px' }}>
+      <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingTop: '220px', paddingBottom: '140px' }}>
         {/* Hero Background */}
-        <div className="contact-hero-bg" ref={heroRef} style={{ backgroundImage: 'url(/generated/podcast_partner_clean_1783164552184.png)', filter: 'brightness(0.5)' }}></div>
-        <div className="contact-hero-overlay"></div>
+        <div className="contact-hero-bg" ref={heroRef} style={{ backgroundImage: 'url(/contact_hero_new.png)', filter: 'brightness(0.4)', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
+        <div className="contact-hero-overlay" style={{ background: 'linear-gradient(to bottom, rgba(10,10,12,0.2) 0%, rgba(10,10,12,1) 100%)' }}></div>
         
         <div className="container relative text-center">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> PARTNER WITH US</div>
@@ -66,11 +66,11 @@ const Partner = () => {
         </div>
       </section>
 
-      <section className="container section-padding">
-        <div className="grid grid-2">
+      <section className="container section-padding" style={{ paddingTop: '80px', paddingBottom: '120px' }}>
+        <div className="grid grid-2" style={{ gap: '80px' }}>
           <div className="animate-on-scroll">
-            <h2 className="h2 mb-8">Partnership <span className="text-accent">Opportunities</span></h2>
-            <div className="about-why-grid">
+            <h2 className="h2 mb-10" style={{ fontSize: '2.5rem' }}>Partnership <span className="text-accent">Opportunities</span></h2>
+            <div className="about-why-grid" style={{ display: 'grid', gap: '24px' }}>
               {[
                 { title: 'Podcast Sponsorships', desc: 'Sponsor our episodes for high visibility.' },
                 { title: 'Branded Content', desc: 'Custom content integrated seamlessly with our narrative.' },
@@ -98,9 +98,9 @@ const Partner = () => {
                 'Strong social media visibility',
                 'Multi-platform reach'
               ].map((item, idx) => (
-                <div className="va-item mb-4 feature-list-item" key={idx} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <CheckCircle2 className="text-accent flex-shrink-0" size={24} />
-                  <h4 style={{ margin: 0, fontSize: '18px', fontWeight: '600' }}>{item}</h4>
+                <div className="va-item feature-list-item glass-card" key={idx} style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '16px 20px', marginBottom: '16px', borderRadius: '12px', cursor: 'pointer', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <CheckCircle2 className="text-accent flex-shrink-0" size={28} />
+                  <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '500' }}>{item}</h4>
                 </div>
               ))}
             </div>

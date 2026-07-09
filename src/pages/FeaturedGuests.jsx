@@ -1,16 +1,29 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Pause, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import { episodes } from '../data/dummyData';
 
+const guestsList = [
+  { name: "Deepak Thakur", role: "Playback Singer & Bigg Boss Fame", image: "/guests/Deepak Thakur.webp" },
+  { name: "Shubham Raj", role: "Director - Garda Media", image: "/guests/Shubham Raj.webp" },
+  { name: "Sujit Kumar Mishra", role: "Founder & CEO - Thikedaar.com", image: "/guests/Sujit Kumar Mishra.webp" },
+  { name: "Preeti Singh", role: "Associate Professor - RSMT College", image: "/guests/Preeti Singh.webp" },
+  { name: "Abhishek Tiwary", role: "Political Analyst & Election Psychologist", image: "/guests/Abhishek Tiwary.webp" },
+  { name: "Aditya Raj", role: "National President - Yuva Wahini Bharat", image: "/guests/Aditya Raj.webp" },
+  { name: "Dr. Kishlay", role: "Metabolic Doctor", image: "/guests/Dr. Kishlay.webp" },
+  { name: "Dr. Shubhash Krishna", role: "Programminng Director & DGM - Radio City", image: "/guests/Dr. Shubhash Krishna.webp" },
+  { name: "Sneham Choudhary", role: "Internationally Certified Image Consultant & Fashion Stylist", image: "/guests/Sneham Choudhary.webp" },
+  { name: "Satyam Parkhi", role: "Founder - Chicka Litti & Parkhi Production", image: "/guests/Satyam Parkhi.webp" },
+  { name: "Vikash Aryan", role: "Actor & Founder - Actor Chaiwala", image: "/guests/Vikash Aryan.webp" },
+  { name: "Pd. Shree Abhay Krishan Jee Maharaj", role: "Political Astrologer", image: "/guests/Pd. Shree Abhay Krishan Jee Maharaj.webp" }
+];
+
 const FeaturedGuests = () => {
-  const [playingId, setPlayingId] = useState(null);
-  const videoRefs = useRef({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -29,104 +42,116 @@ const FeaturedGuests = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handlePlayPause = (id) => {
-    if (playingId === id) {
-      videoRefs.current[id].pause();
-      setPlayingId(null);
-    } else {
-      if (playingId && videoRefs.current[playingId]) {
-        videoRefs.current[playingId].pause();
-      }
-      videoRefs.current[id].play();
-      setPlayingId(id);
-    }
-  };
+
 
   return (
     <div className="featured-guests-page">
-      <SEO 
+      <SEO
         title="Featured Guests - Vividh Talks"
-        description="Discover the inspiring stories and valuable insights from our featured guests on Vividh Talks."
+        description="Conversations with change-makers shaping modern India."
       />
 
       {/* HEADER SECTION */}
-      <section className="section-padding" style={{ paddingBottom: '40px', paddingTop: '120px' }}>
+      <section className="section-padding" style={{ paddingBottom: '20px', paddingTop: '120px' }}>
         <div className="container text-center animate-on-scroll">
           <div className="section-tag mx-auto mb-4"><span className="section-tag-dot"></span> OUR GUESTS</div>
           <h1 className="h1 mb-4">Featured <span className="text-accent">Guests</span></h1>
-          <p className="subheading mx-auto max-w-2xl">
-            Meet the visionaries, creators, and leaders who have shared their raw, unfiltered stories on our platform. Watch their most impactful moments.
+          <p className="subheading mx-auto max-w-2xl text-accent font-bold">
+            Conversations with change-makers shaping modern India
           </p>
         </div>
       </section>
 
-      {/* GUESTS LIST */}
-      <section className="section-padding" style={{ paddingTop: '0' }}>
+      {/* GUESTS GRID (Based on the Reference Image) */}
+      <section className="section-padding" style={{ paddingTop: '20px' }}>
         <div className="container">
-          <div className="guests-list-container">
-            {episodes.map((episode, idx) => {
-              const guestNameMatch = episode.guest.match(/Featuring (.*?), (.*)/);
-              const guestName = guestNameMatch ? guestNameMatch[1] : 'Guest';
-              const guestRole = guestNameMatch ? guestNameMatch[2] : 'Expert';
+          <div
+            className="guests-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+              gap: '40px 20px',
+              justifyItems: 'center'
+            }}
+          >
+            {guestsList.map((guest, idx) => (
+              <div
+                className="guest-grid-item animate-on-scroll text-center"
+                key={idx}
+                style={{
+                  transitionDelay: `${(idx % 6) * 0.1}s`,
+                  width: '100%',
+                  maxWidth: '220px'
+                }}
+              >
+                <div
+                  className="guest-image-wrapper mb-4"
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    aspectRatio: '1/1',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-8px)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,77,0,0.2)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+                  }}
+                >
+                  <img
+                    loading="lazy"
+                    src={guest.image}
+                    alt={guest.name}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
+                </div>
+                <h3 className="h4 font-bold mb-1" style={{ fontSize: '1.1rem' }}>{guest.name}</h3>
+                <p className="text-secondary text-sm" style={{ lineHeight: '1.4' }}>{guest.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VIDEO REVIEWS SECTION */}
+      <section className="section-padding bg-secondary mt-8">
+        <div className="container">
+          <div className="text-center animate-on-scroll">
+            <h2 className="h2">Video <span className="text-accent">Reviews & Moments</span></h2>
+            <p className="subheading mx-auto mt-4 max-w-2xl">
+              Hear directly from our guests about their experience on Vividh Talks.
+            </p>
+          </div>
+
+          <div className="video-testimonial-grid animate-on-scroll" style={{ marginTop: '48px' }}>
+            {episodes.slice(0, 3).map((episode, idx) => {
+              const guestNameMatch = episode.guest.match(/Featuring (.*?),/);
+              const guestName = guestNameMatch ? guestNameMatch[1] : 'Featured Guest';
 
               return (
-                <div className={`guest-row glass-card animate-on-scroll ${idx % 2 !== 0 ? 'guest-row-reverse' : ''}`} key={episode.id}>
-                  
-                  {/* VIDEO REVIEW SECTION */}
-                  <div className="guest-video-col">
-                    <div className="guest-video-wrapper">
-                      <video 
-                        ref={el => videoRefs.current[episode.id] = el}
-                        src={episode.videoUrl} 
-                        poster={episode.guestImage}
-                        className="guest-review-video"
-                        playsInline
-                        loop
-                        muted
-                      ></video>
-                      <button className="video-play-overlay-btn" onClick={() => handlePlayPause(episode.id)}>
-                        {playingId === episode.id ? <Pause size={32} /> : <Play size={32} />}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* GUEST INFO SECTION */}
-                  <div className="guest-info-col">
-                    <div className="guest-header">
-                      <img loading="lazy" src={episode.guestImage} alt={guestName} className="guest-avatar-small" />
-                      <div>
-                        <h2 className="h2" style={{ fontSize: '2rem', marginBottom: '4px' }}>{guestName}</h2>
-                        <span className="text-accent font-mono">{guestRole}</span>
-                      </div>
-                    </div>
-                    
-                    <p className="guest-detailed-bio mt-6 text-secondary" style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
-                      {episode.guestBio}
-                    </p>
-
-                    <div className="guest-episode-ref mt-6">
-                      <p className="font-bold mb-2">Appeared in:</p>
-                      <Link to={`/episode/${episode.id}`} className="episode-link-card">
-                        <img loading="lazy" src={episode.image} alt={episode.title} />
-                        <div>
-                          <span className="text-accent text-xs block mb-1">EP. {episode.number}</span>
-                          <span className="font-medium text-sm block" style={{ lineHeight: '1.3' }}>{episode.title}</span>
-                        </div>
-                      </Link>
-                    </div>
-
-                    <div className="guest-social-links mt-6 flex gap-4">
-                      {episode.guestLinkedin && (
-                         <a href={episode.guestLinkedin} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '14px' }}>
-                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg> LinkedIn
-                         </a>
-                      )}
-                      {episode.guestInstagram && (
-                         <a href={episode.guestInstagram} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '14px' }}>
-                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg> Instagram
-                         </a>
-                      )}
-                    </div>
+                <div className="video-testimonial-card glass-card" key={episode.id} style={{ transitionDelay: `${idx * 0.1}s` }}>
+                  {/* Note for User: To use your own videos, place them in the 'public' folder (e.g., public/videos/review1.mp4) 
+                      and update the src attribute here to '/videos/review1.mp4' */}
+                  <video
+                    src="/reviews/review1.mp4"
+                    controls
+                    className="video-testimonial-player"
+                    poster={episode.guestImage}
+                  ></video>
+                  <div className="video-testimonial-info">
+                    <h4 className="h4">{guestName}</h4>
+                    <p className="text-secondary text-sm">"What an amazing experience sharing my story on Vividh Talks."</p>
                   </div>
                 </div>
               );
@@ -134,14 +159,14 @@ const FeaturedGuests = () => {
           </div>
         </div>
       </section>
-      
+
       {/* CTA SECTION */}
       <section className="section-padding text-center" style={{ background: 'rgba(0,0,0,0.3)' }}>
         <div className="container animate-on-scroll">
           <h2 className="h2 mb-6">Know someone inspiring?</h2>
           <p className="subheading mb-8">We are always looking for unique stories and voices.</p>
           <div className="flex justify-center">
-            <Link to="/nominate-guest" className="btn btn-primary">Nominate a Guest <ArrowRight size={18} /></Link>
+            <Link to="/nominate-guest" className="btn btn-primary">Nominate a Guest <ArrowRight size={18} style={{ marginLeft: '8px' }} /></Link>
           </div>
         </div>
       </section>

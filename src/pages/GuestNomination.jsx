@@ -37,9 +37,9 @@ const GuestNomination = () => {
         title="Suggest A Guest"
         description="Know someone with an inspiring story? Suggest guests for upcoming Vividh Talks conversations."
       />
-      <section className="contact-hero section-padding" style={{ paddingBottom: '0', paddingTop: '160px', position: 'relative', overflow: 'hidden' }}>
-        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/generated/podcast_partner_clean_1783164552184.png)', filter: 'brightness(0.5)' }}></div>
-        <div className="contact-hero-overlay"></div>
+      <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingTop: '220px', paddingBottom: '120px' }}>
+        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/creators_with_mic.png)', filter: 'brightness(0.4)', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
+        <div className="contact-hero-overlay" style={{ background: 'linear-gradient(to bottom, rgba(10,10,12,0.2) 0%, rgba(10,10,12,1) 100%)' }}></div>
         <div className="container relative text-center">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> GUEST NOMINATION</div>
           <h1 className="h1 animate-on-scroll" style={{ marginTop: '24px', transitionDelay: '0.1s' }}>

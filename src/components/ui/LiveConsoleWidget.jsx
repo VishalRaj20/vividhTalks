@@ -53,14 +53,35 @@ const LiveConsoleWidget = () => {
     window.addEventListener('touchend', handleUp);
   };
 
-  // Bouncing EQ bars
-  const [eqLevels, setEqLevels] = useState([40, 60, 30, 80, 50, 70, 45, 90]);
+  // Creative Audio Waveform
+  const [eqLevels, setEqLevels] = useState(Array(40).fill(10));
   useEffect(() => {
+    let phase = 0;
     const interval = setInterval(() => {
+      phase += 0.25;
       setEqLevels(
-        Array.from({ length: 8 }, () => Math.floor(Math.random() * 85) + 15)
+        Array.from({ length: 40 }, (_, i) => {
+          // Complex organic wave using multiple sine waves
+          const wave1 = Math.sin(i * 0.3 + phase);
+          const wave2 = Math.sin(i * 0.6 - phase * 1.3);
+          const wave3 = Math.cos(i * 0.2 + phase * 0.9);
+          
+          // Fast changing random noise
+          const noise = (Math.random() * 0.5 + 0.75);
+          
+          let combined = (wave1 + wave2 + wave3) / 3;
+          combined = (combined + 1) / 2; // Normalize to roughly 0-1
+          
+          // Smooth bell curve envelope to taper the edges
+          const x = i / 39; 
+          const envelope = Math.sin(x * Math.PI); 
+          
+          // Calculate final height with a base minimum
+          let height = (combined * envelope * noise * 85) + 10;
+          return Math.max(4, Math.min(96, height));
+        })
       );
-    }, 120);
+    }, 60); // Faster update for smooth animation
     return () => clearInterval(interval);
   }, []);
 
@@ -75,20 +96,27 @@ const LiveConsoleWidget = () => {
         <div className="console-ep-num">DECK_A_ONLINE</div>
       </div>
 
-      {/* EQ Visualizer Display */}
+      {/* Creative Audio Waveform Display */}
       <div className="console-eq-display">
         <div className="eq-grid">
-          {eqLevels.map((level, i) => (
-            <div className="eq-column" key={i}>
+          {eqLevels.map((level, i) => {
+            // Dynamic color based on position and height
+            const hue = 15 + (i / 40) * 50; // Gradient from Orange to Yellow-Green
+            const intensity = level / 100;
+            return (
               <div 
-                className="eq-bar" 
+                className="eq-bar wave-style" 
+                key={i}
                 style={{ 
                   height: `${level}%`,
-                  background: i % 2 === 0 ? 'var(--accent-primary)' : 'var(--accent-secondary)'
+                  background: `linear-gradient(to top, hsl(${hue}, 100%, 50%), hsl(${hue + 20}, 100%, 65%))`,
+                  boxShadow: `0 0 ${intensity * 12}px hsl(${hue}, 100%, 60%, ${intensity * 0.8})`,
+                  opacity: 0.7 + intensity * 0.3,
+                  transform: `scaleX(${0.8 + intensity * 0.2})` // Slight bulging effect
                 }}
               ></div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <div className="eq-grid-lines">
           <div></div><div></div><div></div>

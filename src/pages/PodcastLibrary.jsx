@@ -3,6 +3,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { Search, Grid, List, Play } from 'lucide-react';
 import PodcastCard from '../components/ui/PodcastCard';
 import ClipCard from '../components/ui/ClipCard';
+import ShortsReel from '../components/ui/ShortsReel';
 import { useYouTubeData } from '../hooks/useYouTubeData';
 import { episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
 import SEO from '../components/SEO';
@@ -17,6 +18,8 @@ const PodcastLibrary = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState('grid');
   const [visibleCount, setVisibleCount] = useState(6);
+  const [isShortsModalOpen, setIsShortsModalOpen] = useState(false);
+  const [selectedShortIndex, setSelectedShortIndex] = useState(0);
 
   const { episodes: apiEpisodes, clips: apiClips, loading } = useYouTubeData();
   const episodes = apiEpisodes.length > 0 ? apiEpisodes : dummyEpisodes;
@@ -67,7 +70,7 @@ const PodcastLibrary = () => {
 
   return (
     <div className="library-page">
-      <SEO 
+      <SEO
         title="Podcast Library"
         description="Browse all Vividh Talks episodes and clips."
       />
@@ -192,17 +195,31 @@ const PodcastLibrary = () => {
       <section className="clips-section section-padding">
         <div className="container animate-on-scroll">
           <div className="section-header">
-            <h2 className="h2">Binge the Best Moments</h2>
+            <h2 className="h2 mb-6">Binge the Best Moments</h2>
           </div>
           <div className="clips-full-bleed-wrapper">
-            <div className="clips-scroll-container">
-              <div className="clips-row animate-on-scroll">
-                {clips.map(clip => (
-                  <ClipCard key={clip.id} clip={clip} />
+            <div className="clips-scroll-container" style={{ overflowX: 'auto', paddingBottom: '20px', scrollbarWidth: 'none' }}>
+              <div className="clips-row">
+                {clips.map((clip, idx) => (
+                  <ClipCard 
+                    key={clip.id}
+                    clip={clip} 
+                    onClick={() => {
+                      setSelectedShortIndex(idx);
+                      setIsShortsModalOpen(true);
+                    }}
+                  />
                 ))}
               </div>
             </div>
           </div>
+
+          <ShortsReel
+            clips={clips}
+            isOpen={isShortsModalOpen}
+            onClose={() => setIsShortsModalOpen(false)}
+            initialIndex={selectedShortIndex}
+          />
         </div>
       </section>
 
