@@ -3,10 +3,10 @@ import { Sliders, Volume2, Sparkles, X, Check, Music } from 'lucide-react';
 import './StudioSettingsWidget.css';
 
 const themes = [
-  { id: 'lava', name: 'Lava Orange', primary: '#FF4D00', text: '🧡' },
-  { id: 'acid', name: 'Acid Neon', primary: '#C8FF00', text: '💚' },
-  { id: 'cyber', name: 'Cyber Purple', primary: '#A020F0', text: '💜' },
-  { id: 'gold', name: 'Gold Studio', primary: '#FFD700', text: '💛' },
+  { id: 'lava', name: 'Brand Orange', primary: '#f4831f', text: '🧡' },
+  { id: 'acid', name: 'Brand Red', primary: '#ea1f27', text: '❤️' },
+  { id: 'cyber', name: 'Brand Navy', primary: '#133a7c', text: '💙' },
+  { id: 'gold', name: 'Brand Dark', primary: '#3d3d3d', text: '🖤' },
 ];
 
 const playSynthesizedSound = (type) => {

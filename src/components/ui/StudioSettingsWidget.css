@@ -6,7 +6,7 @@
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  z-index: 99998; /* Just below widget container */
+  z-index: 1498; /* Just below widget container */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -21,7 +21,14 @@
   position: fixed;
   bottom: 100px;
   right: 24px;
-  z-index: 99999; /* Higher than Navbar (1000/2000) */
+  z-index: 1499; /* Higher than desktop Navbar (1000) but below mobile menu (2000) */
+}
+
+/* Hide on mobile and tablet devices to prevent clutter */
+@media (max-width: 1023px) {
+  .studio-settings-widget-container {
+    display: none;
+  }
 }
 
 /* Floating Action Button (FAB) */
@@ -88,6 +95,7 @@
   width: 320px;
   padding: 24px;
   border-radius: 16px;
+  background: var(--surface-card); /* Added solid background to prevent bleeding */
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
   opacity: 0;
   visibility: hidden;

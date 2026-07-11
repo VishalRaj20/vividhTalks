@@ -56,7 +56,7 @@ const Blog = () => {
           className="categories-premium-grid animate-on-scroll"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
             gap: '30px',
             width: '100%'
           }}
@@ -66,6 +66,7 @@ const Blog = () => {
               className="cat-premium-card tilt-hover-card" 
               key={idx}
               style={{
+                display: 'block',
                 padding: '0',
                 overflow: 'hidden',
                 borderRadius: '16px',
@@ -83,7 +84,7 @@ const Blog = () => {
                   overflow: 'hidden'
                 }}
               >
-                <img 
+                <img loading="lazy" 
                   src={topic.image} 
                   alt={topic.title}
                   style={{

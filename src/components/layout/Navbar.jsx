@@ -6,21 +6,40 @@ import './Navbar.css';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 60);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
     setMoreDropdownOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    // Call once on mount in case it was somehow opened on a large screen
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
@@ -37,20 +56,7 @@ const Navbar = () => {
             <Link to="/host" className={`nav-link ${location.pathname === '/host' ? 'active' : ''}`}>Our Host</Link>
             <Link to="/featured-guests" className={`nav-link ${location.pathname === '/featured-guests' ? 'active' : ''}`}>Featured Guests</Link>
             <Link to="/book" className={`nav-link ${location.pathname === '/book' ? 'active' : ''}`}>Studio</Link>
-            <div
-              className="nav-dropdown-wrapper"
-              onMouseEnter={() => setServicesDropdownOpen(true)}
-              onMouseLeave={() => setServicesDropdownOpen(false)}
-            >
-              {/* <button className="nav-link dropdown-toggle">
-                Services <ChevronDown size={13} className={servicesDropdownOpen ? 'rotated' : ''} />
-              </button>
-              <div className={`dropdown-menu ${servicesDropdownOpen ? 'show' : ''}`}>
-                <Link to="/services/talks" className="dropdown-item">Talks</Link>
-                <a href="https://vividhevents.com/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Events</a>
-                <a href="https://www.vividhcommunications.com/" className="dropdown-item" target="_blank" rel="noopener noreferrer">Communications</a>
-              </div> */}
-            </div>
+
             <div
               className="nav-dropdown-wrapper"
               onMouseEnter={() => setMoreDropdownOpen(true)}
@@ -91,19 +97,11 @@ const Navbar = () => {
           </button>
         </div>
         <nav className="mobile-nav-links">
-          <Link to="/episodes" className="mobile-link">Episodes</Link>
-          <Link to="/blog" className="mobile-link">Blog</Link>
-          <Link to="/book" className="mobile-link">Studio</Link>
-          <button className="mobile-link mobile-dropdown-toggle" onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}>
-            Services <ChevronDown size={18} className={servicesDropdownOpen ? 'rotated' : ''} />
-          </button>
-          {servicesDropdownOpen && (
-            <div className="mobile-dropdown-content">
-              <Link to="/services/talks" className="mobile-dropdown-item">Talks</Link>
-              <a href="https://vividhevents.com/" className="mobile-dropdown-item" target="_blank" rel="noopener noreferrer">Events</a>
-              <a href="https://www.vividhcommunications.com/" className="mobile-dropdown-item" target="_blank" rel="noopener noreferrer">Communications</a>
-            </div>
-          )}
+          <Link to="/episodes" className={`mobile-link ${location.pathname === '/episodes' ? 'active' : ''}`}>Episodes</Link>
+          <Link to="/host" className={`mobile-link ${location.pathname === '/host' ? 'active' : ''}`}>Our Host</Link>
+          <Link to="/featured-guests" className={`mobile-link ${location.pathname === '/featured-guests' ? 'active' : ''}`}>Featured Guests</Link>
+          <Link to="/book" className={`mobile-link ${location.pathname === '/book' ? 'active' : ''}`}>Studio</Link>
+
           <button className="mobile-link mobile-dropdown-toggle" onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}>
             More <ChevronDown size={18} className={moreDropdownOpen ? 'rotated' : ''} />
           </button>
@@ -111,12 +109,11 @@ const Navbar = () => {
             <div className="mobile-dropdown-content">
               <Link to="/partner" className="mobile-dropdown-item">Partner With Us</Link>
               <Link to="/nominate-guest" className="mobile-dropdown-item">Nominate Guest</Link>
-              <Link to="/host" className="mobile-dropdown-item">Our Host</Link>
-              <Link to="/featured-guests" className="mobile-dropdown-item">Featured Guests</Link>
+              <Link to="/blog" className="mobile-dropdown-item">Blog</Link>
             </div>
           )}
-          <Link to="/about" className="mobile-link">About</Link>
-          <Link to="/contact" className="mobile-link">Contact</Link>
+          <Link to="/about" className={`mobile-link ${location.pathname === '/about' ? 'active' : ''}`}>About</Link>
+          <Link to="/contact" className={`mobile-link ${location.pathname === '/contact' ? 'active' : ''}`}>Contact</Link>
         </nav>
         <div className="mobile-menu-footer">
           <Link to="/book" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Book a Studio Session</Link>

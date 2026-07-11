@@ -2,12 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Mic, Play, ArrowRight, Headphones, CheckCircle2, Users, Radio, Star, Globe, TrendingUp } from 'lucide-react';
 import PodcastCard from '../components/ui/PodcastCard';
-import TestimonialSlider from '../components/ui/TestimonialSlider';
 import ClipCard from '../components/ui/ClipCard';
 import ShortsReel from '../components/ui/ShortsReel';
-import { episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
+import { episodes as dummyEpisodes, clips as dummyClips, videoReviews } from '../data/dummyData';
 import { categories } from '../data/categories';
-import { testimonials as actualTestimonials } from '../data/testimonials';
 import { useYouTubeData } from '../hooks/useYouTubeData';
 import ROICalculator from '../components/ui/ROICalculator';
 import HeroVisualizer from '../components/ui/HeroVisualizer';
@@ -607,78 +605,24 @@ const Home = () => {
         </div>
 
         <div className="video-testimonial-grid animate-on-scroll" style={{ marginTop: '48px' }}>
-          <div className="video-testimonial-card glass-card">
-            {/* Note for User: To use local videos from private_assets, you would typically place them in the public folder (e.g. public/private_assets/) 
-                or import them directly. For now, here is a placeholder you can replace with your own dummy video. */}
-            <video
-              src="/reviews/review1.mp4"
-              controls
-              className="video-testimonial-player"
-              poster="/images/hero_2.png"
-            ></video>
-            <div className="video-testimonial-info">
-              <h4 className="h4">Akshat Soni</h4>
-              <p className="text-secondary text-sm">Finance Creator & Entrepreneur</p>
+          {videoReviews.map((review, idx) => (
+            <div className="video-testimonial-card glass-card" key={review.id} style={{ transitionDelay: `${idx * 0.1}s` }}>
+              <video
+                src={review.src}
+                controls
+                className="video-testimonial-player"
+                poster={review.poster}
+              ></video>
+              <div className="video-testimonial-info">
+                <h4 className="h4">{review.guestName}</h4>
+                <p className="text-secondary text-sm">{review.guestRole}</p>
+              </div>
             </div>
-          </div>
-          <div className="video-testimonial-card glass-card">
-            <video
-              src="/reviews/review1.mp4"
-              controls
-              className="video-testimonial-player"
-              poster="/images/hero_3.png"
-            ></video>
-            <div className="video-testimonial-info">
-              <h4 className="h4">Shraddha Suman</h4>
-              <p className="text-secondary text-sm">Main Host</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ═══════════════ TESTIMONIALS ═══════════════ */}
-      {/* <section className="testimonials-section section-padding container">
-        <div className="text-center animate-on-scroll">
-          <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> LISTENER LOVE</div>
-          <h2 className="h2" style={{ marginTop: '12px' }}>Real Stories. <span className="text-accent">Real Impact.</span></h2>
-        </div>
 
-        <div className="testimonials-wrapper animate-on-scroll" style={{ marginTop: '48px' }}>
-          <TestimonialSlider testimonials={actualTestimonials} />
-        </div>
-      </section> */}
-
-      {/* ═══════════════ GALLERY ═══════════════ */}
-      {/* <section className="gallery-section section-padding">
-        <div className="container">
-          <div className="section-header-row animate-on-scroll">
-            <div>
-              <div className="section-tag"><span className="section-tag-dot"></span> BEHIND THE SCENES</div>
-              <h2 className="h2" style={{ marginTop: '12px' }}>Our Moments <span className="text-accent">&amp; Memories</span></h2>
-            </div>
-            <Link to="/about" className="btn btn-secondary">View All <ArrowRight size={16} /></Link>
-          </div>
-          <div className="gallery-grid animate-on-scroll">
-            {[
-              'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?auto=format&fit=crop&q=80&w=600&h=400',
-              'https://images.unsplash.com/photo-1478737270197-2468169bd768?auto=format&fit=crop&q=80&w=600&h=700',
-              'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600&h=400',
-              'https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?auto=format&fit=crop&q=80&w=600&h=500',
-              'https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=600&h=400',
-              'https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?auto=format&fit=crop&q=80&w=600&h=300',
-              'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=600&h=500',
-              'https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&q=80&w=600&h=400',
-            ].map((img, i) => (
-              <div className="gallery-item" key={i} style={{ transitionDelay: `${i * 0.06}s` }}>
-                <img loading="lazy" src={img} alt={`Studio Moment ${i + 1}`} />
-                <div className="gallery-overlay">
-                  <div className="gallery-plus">+</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* ═══════════════ BRAND ECOSYSTEM ═══════════════ */}
       <section className="ecosystem-section section-padding container">

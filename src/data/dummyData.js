@@ -1,3 +1,14 @@
+export const videoReviews = [
+  {
+    id: 'rev-1',
+    src: '/reviews/review1.mp4',
+    poster: '/images/hero_2.png',
+    guestName: 'Deepak Thakur',
+    guestRole: 'Playback Singer & Bigg Boss Fame',
+    quote: '"What an amazing experience sharing my story on Vividh Talks."'
+  }
+];
+
 export const episodes = [
   {
     id: 'ep-042',

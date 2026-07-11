@@ -279,12 +279,44 @@
   transform: translateX(0);
 }
 
+@media (min-width: 1024px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
 .mobile-menu-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.mobile-menu-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary);
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.logo-accent {
+  color: var(--accent-primary);
 }
 
 .close-btn {
@@ -333,9 +365,16 @@
   transition: all 0.2s ease;
 }
 
-.mobile-link:hover {
+.mobile-link:hover,
+.mobile-link.active {
   color: #fff;
   background: rgba(255, 255, 255, 0.06);
+}
+
+.mobile-link.active {
+  color: var(--accent-primary);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 4px 10px 10px 4px;
 }
 
 .mobile-dropdown-toggle svg.rotated {

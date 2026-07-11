@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
-import { episodes } from '../data/dummyData';
+import { videoReviews } from '../data/dummyData';
 
 const guestsList = [
   { name: "Deepak Thakur", role: "Playback Singer & Bigg Boss Fame", image: "/guests/Deepak Thakur.webp" },
@@ -11,7 +11,7 @@ const guestsList = [
   { name: "Preeti Singh", role: "Associate Professor - RSMT College", image: "/guests/Preeti Singh.webp" },
   { name: "Abhishek Tiwary", role: "Political Analyst & Election Psychologist", image: "/guests/Abhishek Tiwary.webp" },
   { name: "Aditya Raj", role: "National President - Yuva Wahini Bharat", image: "/guests/Aditya Raj.webp" },
-  { name: "Dr. Kishlay", role: "Metabolic Doctor", image: "/guests/Dr. Kishlay.webp" },
+  { name: "Dr. Kishlay", role: "Metabolic Doctor", image: "/guests/Dr. Kishlay.jpg" },
   { name: "Dr. Shubhash Krishna", role: "Programminng Director & DGM - Radio City", image: "/guests/Dr. Shubhash Krishna.webp" },
   { name: "Sneham Choudhary", role: "Internationally Certified Image Consultant & Fashion Stylist", image: "/guests/Sneham Choudhary.webp" },
   { name: "Satyam Parkhi", role: "Founder - Chicka Litti & Parkhi Production", image: "/guests/Satyam Parkhi.webp" },
@@ -52,28 +52,38 @@ const FeaturedGuests = () => {
       />
 
       {/* HEADER SECTION */}
-      <section className="section-padding" style={{ paddingBottom: '20px', paddingTop: '120px' }}>
+      <section className="section-padding" style={{ paddingBottom: '40px', paddingTop: '120px' }}>
         <div className="container text-center animate-on-scroll">
           <div className="section-tag mx-auto mb-4"><span className="section-tag-dot"></span> OUR GUESTS</div>
-          <h1 className="h1 mb-4">Featured <span className="text-accent">Guests</span></h1>
-          <p className="subheading mx-auto max-w-2xl text-accent font-bold">
-            Conversations with change-makers shaping modern India
-          </p>
+          <h1 className="h1 mb-8">Featured <span className="text-accent">Guests</span></h1>
+
+          <div className="grid-features" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '32px',
+            marginTop: '40px'
+          }}>
+            <div className="glass-card animate-on-scroll" style={{ padding: '40px', transitionDelay: '0.1s' }}>
+              <h2 className="h3 mb-4">Why <span className="text-accent">Vividh Talks?</span></h2>
+              <p className="text-secondary" style={{ fontSize: '1.1rem', lineHeight: '1.7' }}>
+                Meaningful conversations with founders, creators, politicians, doctors, educators, artists and change-makers shaping modern India.
+              </p>
+            </div>
+
+            <div className="glass-card animate-on-scroll" style={{ padding: '40px', transitionDelay: '0.2s' }}>
+              <h2 className="h3 mb-4">Voices That <span className="text-accent">Inspire India</span></h2>
+              <p className="text-secondary" style={{ fontSize: '1.1rem', lineHeight: '1.7' }}>
+                From entrepreneurs to public leaders, we feature guests with stories, experiences and ideas that create impact.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* GUESTS GRID (Based on the Reference Image) */}
       <section className="section-padding" style={{ paddingTop: '20px' }}>
         <div className="container">
-          <div
-            className="guests-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-              gap: '40px 20px',
-              justifyItems: 'center'
-            }}
-          >
+          <div className="featured-guests-page-grid">
             {guestsList.map((guest, idx) => (
               <div
                 className="guest-grid-item animate-on-scroll text-center"
@@ -135,27 +145,20 @@ const FeaturedGuests = () => {
           </div>
 
           <div className="video-testimonial-grid animate-on-scroll" style={{ marginTop: '48px' }}>
-            {episodes.slice(0, 3).map((episode, idx) => {
-              const guestNameMatch = episode.guest.match(/Featuring (.*?),/);
-              const guestName = guestNameMatch ? guestNameMatch[1] : 'Featured Guest';
-
-              return (
-                <div className="video-testimonial-card glass-card" key={episode.id} style={{ transitionDelay: `${idx * 0.1}s` }}>
-                  {/* Note for User: To use your own videos, place them in the 'public' folder (e.g., public/videos/review1.mp4) 
-                      and update the src attribute here to '/videos/review1.mp4' */}
-                  <video
-                    src="/reviews/review1.mp4"
-                    controls
-                    className="video-testimonial-player"
-                    poster={episode.guestImage}
-                  ></video>
-                  <div className="video-testimonial-info">
-                    <h4 className="h4">{guestName}</h4>
-                    <p className="text-secondary text-sm">"What an amazing experience sharing my story on Vividh Talks."</p>
-                  </div>
+            {videoReviews.map((review, idx) => (
+              <div className="video-testimonial-card glass-card" key={review.id} style={{ transitionDelay: `${idx * 0.1}s` }}>
+                <video
+                  src={review.src}
+                  controls
+                  className="video-testimonial-player"
+                  poster={review.poster}
+                ></video>
+                <div className="video-testimonial-info">
+                  <h4 className="h4">{review.guestName}</h4>
+                  <p className="text-secondary text-sm">{review.quote}</p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </section>

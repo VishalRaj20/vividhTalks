@@ -52,7 +52,7 @@ const ClipCard = ({ clip, onClick }) => {
         onMouseLeave={handleMouseLeave}
       >
         <div className="yt-thumbnail-wrapper vertical-wrapper">
-          <img 
+          <img loading="lazy" 
             src={image} 
             alt={title} 
             className="yt-thumbnail" 

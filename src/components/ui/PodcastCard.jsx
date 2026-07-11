@@ -42,7 +42,7 @@ const PodcastCard = ({ episode }) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <img 
+        <img loading="lazy" 
           src={image} 
           alt={title} 
           className="yt-thumbnail" 
