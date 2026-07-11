@@ -1043,3 +1043,17 @@
   line-height: 1.4;
 }
 
+@media (max-width: 768px) {
+  .featured-guests-title {
+    font-size: 36px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-guests-title {
+    font-size: 28px;
+  }
+}
+
