@@ -496,7 +496,7 @@ const BookSession = () => {
             ))}
           </div>
 
-          <div className="flex justify-center items-center text-center mt-29 animate-on-scroll">
+          <div className="flex justify-center items-center text-center mt-8 animate-on-scroll">
             <p className="pricing-footer-text">
               💬 Not sure which plan fits? <a href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || '918252754340'}`} target="_blank" rel="noreferrer" className="text-accent">WhatsApp us →</a>
             </p>
@@ -505,7 +505,7 @@ const BookSession = () => {
       </section>
 
       {/* Interactive Studio Planner & Quote Builder */}
-      <section className="custom-planner-section section-padding container">
+      <section className="custom-planner-section container">
         <div className="text-center mb-12 animate-on-scroll">
           <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> STUDIO PLANNER</div>
           <h2 className="h2" style={{ marginTop: '12px' }}>Or Build Your <span className="text-accent">Custom Session.</span></h2>

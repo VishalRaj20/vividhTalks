@@ -5,7 +5,7 @@ import './PodcastCard.css';
 
 const PodcastCard = ({ episode }) => {
   const { id, title, channelName, views, timeAgo, duration, image, videoUrl } = episode;
-  
+
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef(null);
   const hoverTimeout = useRef(null);
@@ -36,17 +36,16 @@ const PodcastCard = ({ episode }) => {
 
   return (
     <div className="yt-card">
-      <Link 
-        to={`/episode/${id}`} 
+      <Link
+        to={`/episode/${id}`}
         className="yt-thumbnail-wrapper"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <img loading="lazy" 
-          src={image} 
-          alt={title} 
-          className="yt-thumbnail" 
-          loading="lazy" 
+        <img loading="lazy"
+          src={image}
+          alt={title}
+          className="yt-thumbnail"
           style={{ opacity: isHovered ? 0 : 1, transition: 'opacity 0.3s ease' }}
         />
         {videoUrl && !videoUrl.includes('youtube.com') && (
@@ -90,7 +89,7 @@ const PodcastCard = ({ episode }) => {
           {duration}
         </div>
       </Link>
-      
+
       <div className="yt-card-content">
         <div className="yt-card-info">
           <Link to={`/episode/${id}`} className="yt-title-link">

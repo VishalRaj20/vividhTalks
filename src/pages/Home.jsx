@@ -179,12 +179,12 @@ const Home = () => {
               <StaggerItem>
                 <h1 className="h1">
                   Real Conversations<br />
-                  <span className="text-accent">That Matter.</span>
+                  <span className="text-accent">That Matters</span>
                 </h1>
               </StaggerItem>
               <StaggerItem>
                 <p className="hero-subtext subheading" style={{ maxWidth: '560px', marginTop: '20px', color: 'rgba(255,255,255,0.85)' }}>
-                  India's emerging podcast platform exploring politics, business, society, health, youth culture, entrepreneurship, personal growth and modern India and inspiring human stories.
+                  India's emerging podcast platform exploring politics, business, society, health, youth culture, entrepreneurship, personal growth, modern India and inspiring human stories.
                 </p>
               </StaggerItem>
               <StaggerItem>
@@ -269,7 +269,7 @@ const Home = () => {
         <div className="container stats-bar-grid">
           <StatItem value={30} suffix="K+" label="Monthly Listeners" icon={Headphones} />
           <StatItem value={40} suffix="+" label="Guest Speakers" icon={Users} />
-          <StatItem value={20} suffix="+" label="Curated Series" icon={Radio} />
+          <StatItem value={150} suffix="+" label="Hours of Conversations" icon={Radio} />
           <StatItem value={98} suffix="%" label="Listener Satisfaction" icon={Star} />
         </div>
       </section>
@@ -278,8 +278,8 @@ const Home = () => {
       <section className="marquee-section">
         <div className="marquee-container">
           <div className="marquee-content">
-            🎙 VIVIDH TALKS <span className="dot">·</span> STORYTELLING FOR THE BOLD <span className="dot">·</span> CREATORS <span className="dot">·</span> FOUNDERS <span className="dot">·</span> BRANDS <span className="dot">·</span> VIVIDH COMMUNICATIONS <span className="dot">·</span> MADE IN INDIA <span className="dot">·</span> RECORD YOUR STORY <span className="dot">·</span> VIVIDH EVENTS <span className="dot">·</span>
-            🎙 VIVIDH TALKS <span className="dot">·</span> STORYTELLING FOR THE BOLD <span className="dot">·</span> CREATORS <span className="dot">·</span> FOUNDERS <span className="dot">·</span> BRANDS <span className="dot">·</span> VIVIDH COMMUNICATIONS <span className="dot">·</span> MADE IN INDIA <span className="dot">·</span> RECORD YOUR STORY <span className="dot">·</span> VIVIDH EVENTS <span className="dot">·</span>
+            🎙 VIVIDH TALKS <span className="dot">·</span> STORYTELLING FOR THE BOLD <span className="dot">·</span> CREATORS <span className="dot">·</span> FOUNDERS <span className="dot">·</span> BRANDS <span className="dot">·</span> MADE IN INDIA <span className="dot">·</span> RECORD YOUR STORY <span className="dot">·</span>
+            🎙 VIVIDH TALKS <span className="dot">·</span> STORYTELLING FOR THE BOLD <span className="dot">·</span> CREATORS <span className="dot">·</span> FOUNDERS <span className="dot">·</span> BRANDS <span className="dot">·</span> MADE IN INDIA <span className="dot">·</span> RECORD YOUR STORY <span className="dot">·</span>
           </div>
         </div>
       </section>
