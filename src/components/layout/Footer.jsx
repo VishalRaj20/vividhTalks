@@ -39,7 +39,7 @@ const Footer = () => {
               <img loading="lazy" src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="footer-logo-img" style={{ height: '100px', width: 'auto' }} />
             </Link>
             <p className="footer-tagline">
-              India's emerging podcast platform exploring politics, business, society, health, youth culture, entrepreneurship, personal growth, modern India and inspiring human stories.
+              India's emerging podcast platform exploring inspiring human stories.
             </p>
             <div className="ft-social-row">
               <a href="https://www.facebook.com/vividhtalks" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Facebook">

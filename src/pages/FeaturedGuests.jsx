@@ -5,18 +5,18 @@ import SEO from '../components/SEO';
 import { videoReviews } from '../data/dummyData';
 
 const guestsList = [
-  { name: "Deepak Thakur", role: "Playback Singer & Bigg Boss Fame", image: "/guests/Deepak Thakur.webp" },
-  { name: "Shubham Raj", role: "Director - Garda Media", image: "/guests/Shubham Raj.webp" },
-  { name: "Sujit Kumar Mishra", role: "Founder & CEO - Thikedaar.com", image: "/guests/Sujit Kumar Mishra.webp" },
-  { name: "Preeti Singh", role: "Associate Professor - RSMT College", image: "/guests/Preeti Singh.webp" },
-  { name: "Abhishek Tiwary", role: "Political Analyst & Election Psychologist", image: "/guests/Abhishek Tiwary.webp" },
-  { name: "Aditya Raj", role: "National President - Yuva Wahini Bharat", image: "/guests/Aditya Raj.webp" },
+  { name: "Deepak Thakur", role: "Playback Singer & Bigg Boss Fame", image: "/guests/Deepak Thakur.jpg" },
+  { name: "Shubham Raj", role: "Director - Garda Media", image: "/guests/Shubham Raj.jpg" },
+  { name: "Sujit Kumar Mishra", role: "Founder & CEO - Thikedaar.com", image: "/guests/Sujit Kumar Mishra.jpg" },
+  { name: "Preeti Singh", role: "Associate Professor - RSMT College", image: "/guests/Preeti Singh.jpg" },
+  { name: "Abhishek Tiwary", role: "Political Analyst & Election Psychologist", image: "/guests/Abhishek Tiwary.jpg" },
+  { name: "Aditya Raj", role: "National President - Yuva Wahini Bharat", image: "/guests/Aditya Raj.jpg" },
   { name: "Dr. Kishlay", role: "Metabolic Doctor", image: "/guests/Dr. Kishlay.jpg" },
-  { name: "Dr. Shubhash Krishna", role: "Programminng Director & DGM - Radio City", image: "/guests/Dr. Shubhash Krishna.webp" },
-  { name: "Sneham Choudhary", role: "Internationally Certified Image Consultant & Fashion Stylist", image: "/guests/Sneham Choudhary.webp" },
-  { name: "Satyam Parkhi", role: "Founder - Chicka Litti & Parkhi Production", image: "/guests/Satyam Parkhi.webp" },
-  { name: "Vikash Aryan", role: "Actor & Founder - Actor Chaiwala", image: "/guests/Vikash Aryan.webp" },
-  { name: "Pd. Shree Abhay Krishan Jee Maharaj", role: "Political Astrologer", image: "/guests/Pd. Shree Abhay Krishan Jee Maharaj.webp" }
+  { name: "Dr. Shubhash Krishna", role: "Programminng Director & DGM - Radio City", image: "/guests/Dr Shubhash Krishna.jpg" },
+  { name: "Sneham Choudhary", role: "Internationally Certified Image Consultant & Fashion Stylist", image: "/guests/Sneham Choudhary.jpg" },
+  { name: "Satyam Parkhi", role: "Founder - Chicka Litti & Parkhi Production", image: "/guests/Satyam Parkhi.jpg" },
+  { name: "Vikash Aryan", role: "Actor & Founder - Actor Chaiwala", image: "/guests/Vikash Aryan.jpg" },
+  { name: "Pd. Shree Abhay Krishan Jee Maharaj", role: "Political Astrologer", image: "/guests/Pd. Shree Abhay Krishan Jee Maharaj.jpg" }
 ];
 
 const FeaturedGuests = () => {
@@ -81,35 +81,19 @@ const FeaturedGuests = () => {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', maxWidth: '1000px', margin: '0 auto' }}>
 
-            {/* Why Vividh Talks Block */}
-            <div className="glass-card creative-card-1" style={{
-              padding: '48px',
-              borderRadius: '24px',
-              borderLeft: '4px solid var(--accent-primary)',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
-              position: 'relative',
-              overflow: 'hidden'
-            }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, width: '100px', height: '100%', background: 'linear-gradient(90deg, rgba(255,77,0,0.1) 0%, transparent 100%)', pointerEvents: 'none' }}></div>
-              <h1 className="h1 mb-4" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>Why <span className="text-accent">Vividh Talks?</span></h1>
-              <p className="text-secondary" style={{ fontSize: '1.15rem', lineHeight: '1.8', maxWidth: '800px' }}>
-                Meaningful conversations with founders, creators, politicians, doctors, educators, artists and change-makers shaping modern India.
-              </p>
-            </div>
-
             {/* Voices That Inspire Block */}
             <div className="glass-card creative-card-2" style={{
               padding: '48px',
               borderRadius: '24px',
               borderRight: '4px solid var(--accent-primary)',
               background: 'linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.04) 100%)',
-              textAlign: 'right',
+              textAlign: 'center',
               position: 'relative',
               overflow: 'hidden'
             }}>
               <div style={{ position: 'absolute', top: 0, right: 0, width: '100px', height: '100%', background: 'linear-gradient(270deg, rgba(255,77,0,0.1) 0%, transparent 100%)', pointerEvents: 'none' }}></div>
               <h2 className="h1 mb-4" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>Voices That <span className="text-accent">Inspire India</span></h2>
-              <p className="text-secondary" style={{ fontSize: '1.15rem', lineHeight: '1.8', maxWidth: '800px', marginLeft: 'auto' }}>
+              <p className="text-secondary" style={{ fontSize: '1.15rem', lineHeight: '1.8', maxWidth: '800px', marginLeft: '20px' }}>
                 From entrepreneurs to public leaders, we feature guests with stories, experiences and ideas that create impact.
               </p>
             </div>
@@ -191,7 +175,7 @@ const FeaturedGuests = () => {
                   className="video-testimonial-player"
                   poster={review.poster}
                 ></video>
-                <div className="video-testimonial-info">
+                <div className="video-testimonial-info mt-40">
                   <h4 className="h4">{review.guestName}</h4>
                   <p className="text-secondary text-sm">{review.quote}</p>
                 </div>
@@ -206,7 +190,7 @@ const FeaturedGuests = () => {
         <div className="container animate-on-scroll">
           <h2 className="h2 mb-6">Know someone inspiring?</h2>
           <p className="subheading mb-8">We are always looking for unique stories and voices.</p>
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-4">
             <Link to="/nominate-guest" className="btn btn-primary">Nominate a Guest <ArrowRight size={18} style={{ marginLeft: '8px' }} /></Link>
           </div>
         </div>

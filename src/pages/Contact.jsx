@@ -58,7 +58,7 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-      <SEO 
+      <SEO
         title="Contact Us"
         description="Get in touch with Vividh Talks. We'd love to hear from you."
       />
@@ -108,7 +108,7 @@ const Contact = () => {
             </div>
             <div className="contact-option-body">
               <h3>Visit the Studio</h3>
-              <p>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</p>
+              <p>4th Floor, Above Apollo Dental, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</p>
             </div>
             <div className="contact-option-arrow">→</div>
           </a>

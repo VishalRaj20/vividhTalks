@@ -18,7 +18,7 @@ const hosts = [
       { label: 'Her Mission', text: 'Through Vividh Talks, her vision is to build a platform that represents ambitious minds, diverse stories, and conversations that truly matter in today’s world.' }
     ],
     expertise: ['Empathetic Hosting', 'Branding & Stories', 'Impact Conversations'],
-    img: '/guests/Shradhha Suman.webp',
+    img: '/guests/Shradhha Suman.jpeg',
     social: { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' },
     quote: "Every person has a story powerful enough to inspire change."
   }
@@ -231,41 +231,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── CREATORS (PEOPLE WITH THE MIC) ─── */}
-      <section className="section-padding" style={{ background: 'rgba(255,77,0,0.02)' }}>
-        <div className="container">
-          <div className="creators-layout">
-            <div className="creators-image animate-on-scroll">
-              <div className="creators-img-wrap">
-                <img loading="lazy" src="/guests/creators_with_mic.webp" alt="Creators With The Mic" />
-                <div className="creators-img-glow"></div>
-              </div>
-            </div>
-            <div className="creators-text animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
-              <div className="section-tag"><span className="section-tag-dot"></span> THE VOICES</div>
-              <h2 className="h2" style={{ marginTop: '16px' }}>The People <span className="text-accent">With the Mic</span></h2>
-              <p className="body-text mt-6" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: '1.8' }}>
-                From visionary startup founders to inspiring campus leaders, our mic has been a home for those who dare to speak their truth. We've hosted over 300+ guests who are shaping the future of India, one conversation at a time.
-              </p>
-              <div className="creators-stats mt-8">
-                <div className="c-stat">
-                  <span className="c-stat-num">300+</span>
-                  <span className="c-stat-label">Voices Heard</span>
-                </div>
-                <div className="c-stat">
-                  <span className="c-stat-num">12+</span>
-                  <span className="c-stat-label">Cities Reached</span>
-                </div>
-                <div className="c-stat">
-                  <span className="c-stat-num">Infinite</span>
-                  <span className="c-stat-label">Impact</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ─── MEET THE HOSTS ─── */}
       <section id="hosts" className="hosts-section section-padding">
         <div className="container">
@@ -330,76 +295,13 @@ const About = () => {
         </div>
       </section>
 
-      {/* ─── TEAM (PEOPLE BEHIND THE MIC) ─── */}
-      {/* <section className="section-padding">
-        <div className="container">
-          <div className="text-center animate-on-scroll mb-12">
-            <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> THE TEAM</div>
-            <h2 className="h2 mt-4">The People <span className="text-accent">Behind the Mic</span></h2>
-          </div>
-          <div className="team-grid">
-            {teamMembers.map((m, i) => (
-              <div className="team-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-                <div className="team-img-wrap">
-                  <img loading="lazy" src={m.img} alt={m.name} />
-                  <div className="team-img-overlay"></div>
-                </div>
-                <div className="team-card-body">
-                  <h3 className="team-name">{m.name}</h3>
-                  <span className="team-role">{m.role}</span>
-                  <p className="team-bio">{m.bio}</p>
-                  <div className="team-socials">
-                    {m.social.linkedin && <a href={m.social.linkedin} className="team-social-link">LinkedIn</a>}
-                    {m.social.instagram && <a href={m.social.instagram} className="team-social-link">Instagram</a>}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* ─── FEATURED GUESTS ─── */}
-      <section className="featured-guests-section section-padding">
-        <div className="container">
-          <div className="text-center animate-on-scroll mb-12">
-            <h2 className="featured-guests-title">
-              FEATURED <span className="text-stroke-orange">GUESTS</span>
-            </h2>
-            <div className="featured-guests-separator">
-              <span className="dot"></span>
-              <span className="line"></span>
-              <span className="circle"></span>
-              <span className="line"></span>
-              <span className="dot"></span>
-            </div>
-            <p className="featured-guests-subtitle">
-              Conversations with change-makers shaping modern India
-            </p>
-          </div>
-          <div className="featured-guests-grid">
-            {featuredGuests.map((guest, i) => (
-              <div className="featured-guest-card animate-on-scroll" key={i} style={{ transitionDelay: `${(i % 6) * 0.08}s` }}>
-                <div className="featured-guest-img-wrap">
-                  <img loading="lazy" src={guest.img} alt={guest.name} />
-                </div>
-                <div className="featured-guest-info">
-                  <h4 className="featured-guest-name">{guest.name}</h4>
-                  <p className="featured-guest-role">{guest.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── WHY VIVIDH TALKS & VALUE ─── */}
       <section className="section-padding" style={{ background: 'rgba(0,0,0,0.2)' }}>
         <div className="container">
           <div className="grid grid-2">
             <div className="animate-on-scroll">
               <h2 className="h2 mb-8">Why <span className="text-accent">Vividh Talks?</span></h2>
-              <div className="about-why-grid">
+              <div className="about-why-grid mb-10">
                 {[
                   { title: 'Focus on depth, along with visibility', desc: 'Focus on meaningful content that also builds your reach.' },
                   { title: 'Honest, unscripted conversations', desc: 'Honest, raw, and authentic conversations.' },
@@ -419,17 +321,19 @@ const About = () => {
             </div>
             <div className="animate-on-scroll" style={{ transitionDelay: '0.2s' }}>
               <h2 className="h2 mb-8">Value for <span className="text-accent">Audience</span></h2>
-              <div className="value-audience-box glass-card p-8">
+              <div className="about-why-grid">
                 {[
-                  { icon: <TrendingUp className="text-accent mb-2" />, title: 'Practical learnings & insights', desc: 'Insights and lessons you can actually use.' },
-                  { icon: <CheckCircle2 className="text-accent mb-2" />, title: 'Real-life experiences & lessons', desc: 'Narratives based on true personal journeys.' },
-                  { icon: <Award className="text-accent mb-2" />, title: 'Industry knowledge from credible voices', desc: 'Knowledge from experts you can trust.' },
-                  { icon: <Zap className="text-accent mb-2" />, title: 'Motivation rooted in reality', desc: 'Inspiration grounded in real-life struggles and success.' },
+                  { icon: <TrendingUp size={20} className="text-accent" />, title: 'Practical learnings & insights', desc: 'Insights and lessons you can actually use.' },
+                  { icon: <CheckCircle2 size={20} className="text-accent" />, title: 'Real-life experiences & lessons', desc: 'Narratives based on true personal journeys.' },
+                  { icon: <Award size={20} className="text-accent" />, title: 'Industry knowledge from credible voices', desc: 'Knowledge from experts you can trust.' },
+                  { icon: <Zap size={20} className="text-accent" />, title: 'Motivation rooted in reality', desc: 'Inspiration grounded in real-life struggles and success.' },
                 ].map((item, idx) => (
-                  <div className="va-item mb-6" key={idx} style={{ marginBottom: idx === 3 ? '0' : '24px' }}>
+                  <div className="why-item" key={idx}>
                     {item.icon}
-                    <h4>{item.title}</h4>
-                    <p className="text-secondary">{item.desc}</p>
+                    <div>
+                      <h4 className="font-bold">{item.title}</h4>
+                      <p className="text-secondary text-sm">{item.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -441,7 +345,7 @@ const About = () => {
       {/* ─── FUTURE VISION ─── */}
       <section className="section-padding">
         <div className="container">
-          <div className="text-center animate-on-scroll mb-12">
+          <div className="text- center animate-on-scroll mb-12">
             <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> LOOKING AHEAD</div>
             <h2 className="h2 mt-4">Our <span className="text-accent">Future Vision</span></h2>
           </div>
@@ -468,8 +372,8 @@ const About = () => {
           <h2 className="h2 mb-4">Let’s talk about <span className="text-accent">stories that matter.</span></h2>
           <p className="subheading mb-8">Join the movement of meaningful conversations.</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
-            <Link to="/book" className="btn btn-primary"><Mic size={18} /> Book a Session</Link>
-            <Link to="/contact" className="btn btn-secondary">Get In Touch <ArrowRight size={18} /></Link>
+            <Link to="/book" className="btn btn-primary mt-3" style={{ marginTop: '10px' }}><Mic size={18} /> Book a Session</Link>
+            <Link to="/contact" className="btn btn-secondary mt-3" style={{ marginTop: '10px' }}>Get In Touch <ArrowRight size={18} /></Link>
           </div>
         </div>
       </section>
