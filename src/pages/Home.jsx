@@ -306,13 +306,9 @@ const Home = () => {
               )}
             </div>
             <div className="featured-content-col">
-              <span className="mono-label text-accent">EP. {safeEpisodes[0].number}</span>
               <h2 className="h2 featured-title">{safeEpisodes[0].title}</h2>
               <p className="featured-guest subheading">{safeEpisodes[0].guest}</p>
               <p className="featured-duration">{safeEpisodes[0].duration} <span className="dot">·</span> Video + Audio</p>
-              <div className="featured-tags">
-                {safeEpisodes[0].tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
-              </div>
               <div className="featured-actions">
                 <Link to={`/episode/${safeEpisodes[0].id}`} className="btn btn-primary">
                   <Play size={18} fill="currentColor" /> Watch Now
@@ -375,7 +371,6 @@ const Home = () => {
                 <div className="program-card-img-wrap">
                   <img loading="lazy" src={ep.image} alt={ep.title} />
                   <div className="program-card-overlay"></div>
-                  <span className="program-ep-badge">EP. {ep.number}</span>
                   <div className="program-play-btn"><Play size={20} fill="currentColor" /></div>
                 </div>
                 <div className="program-card-body">

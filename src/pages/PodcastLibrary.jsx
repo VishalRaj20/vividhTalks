@@ -82,12 +82,12 @@ const PodcastLibrary = () => {
           <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> EPISODE LIBRARY</div>
           <h1 className="h1" style={{ marginTop: '16px', textAlign: 'center' }}>All Episodes.<br /><span className="text-accent">All Stories.</span></h1>
           <p className="subheading" style={{ maxWidth: '600px', marginTop: '16px', textAlign: 'center' }}>
-            Browse, discover, and binge every conversation we've ever had.
+            Browse, discover and binge every conversation we've ever had.
           </p>
           <div className="stats-row mono-label" style={{ marginTop: '24px', color: 'var(--text-secondary)', justifyContent: 'center' }}>
-            <span>50+ Episodes</span><span className="dot">·</span>
-            <span>30+ Guests</span><span className="dot">·</span>
-            <span>8 Categories</span><span className="dot">·</span>
+            <span>40+ Episodes</span><span className="dot">·</span>
+            <span>40+ Guests</span><span className="dot">·</span>
+            <span>Multiple Categories</span><span className="dot">·</span>
             <span style={{ color: 'var(--accent-primary)' }}>Growing Every Week</span>
           </div>
         </div>
@@ -153,7 +153,6 @@ const PodcastLibrary = () => {
                   <div className="play-overlay"><div className="play-btn"><Play fill="currentColor" /></div></div>
                 </div>
                 <div className="pinned-content">
-                  <span className="mono-label text-accent">EP. {ep.number}</span>
                   <h3 className="h3 mt-2 mb-2">{ep.title}</h3>
                   <p className="text-secondary mb-4">{ep.guest}</p>
                   <Link to={`/episode/${ep.id}`} className="btn btn-outline">Watch Now</Link>
@@ -201,9 +200,9 @@ const PodcastLibrary = () => {
             <div className="clips-scroll-container" style={{ overflowX: 'auto', paddingBottom: '20px', scrollbarWidth: 'none' }}>
               <div className="clips-row">
                 {clips.map((clip, idx) => (
-                  <ClipCard 
+                  <ClipCard
                     key={clip.id}
-                    clip={clip} 
+                    clip={clip}
                     onClick={() => {
                       setSelectedShortIndex(idx);
                       setIsShortsModalOpen(true);
@@ -226,7 +225,7 @@ const PodcastLibrary = () => {
       {/* CTA Strip */}
       <section className="cta-strip">
         <div className="container animate-on-scroll text-center">
-          <h2 className="h2 mb-4">Your Story Belongs Here.</h2>
+          <h2 className="h2 mb-4">Your Story Belongs Here</h2>
           <p className="subheading mb-6">Apply to be a guest or book your own episode.</p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <Link to="/contact" className="btn btn-outline">Apply as a Guest →</Link>

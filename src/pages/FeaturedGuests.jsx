@@ -51,31 +51,69 @@ const FeaturedGuests = () => {
         description="Conversations with change-makers shaping modern India."
       />
 
-      {/* HEADER SECTION */}
-      <section className="section-padding" style={{ paddingBottom: '40px', paddingTop: '120px' }}>
-        <div className="container text-center animate-on-scroll">
-          <div className="section-tag mx-auto mb-4"><span className="section-tag-dot"></span> OUR GUESTS</div>
-          <h1 className="h1 mb-8">Featured <span className="text-accent">Guests</span></h1>
+      <style>{`
+        @keyframes floatSlow {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+        @keyframes floatSlightly {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-6px); }
+          100% { transform: translateY(0px); }
+        }
+        .creative-card-1 {
+          animation: floatSlow 6s ease-in-out infinite;
+        }
+        .creative-card-2 {
+          animation: floatSlightly 7s ease-in-out infinite;
+        }
+      `}</style>
 
-          <div className="grid-features" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '32px',
-            marginTop: '40px'
-          }}>
-            <div className="glass-card animate-on-scroll" style={{ padding: '40px', transitionDelay: '0.1s' }}>
-              <h2 className="h3 mb-4">Why <span className="text-accent">Vividh Talks?</span></h2>
-              <p className="text-secondary" style={{ fontSize: '1.1rem', lineHeight: '1.7' }}>
+      {/* HEADER SECTION */}
+      <section className="section-padding" style={{ paddingBottom: '80px', paddingTop: '150px', position: 'relative' }}>
+        {/* Decorative background blurs */}
+        <div style={{ position: 'absolute', top: '5%', left: '5%', width: '300px', height: '300px', background: 'var(--accent-primary)', opacity: '0.06', filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+        <div style={{ position: 'absolute', bottom: '0%', right: '5%', width: '400px', height: '400px', background: '#872EC4', opacity: '0.04', filter: 'blur(100px)', borderRadius: '50%', pointerEvents: 'none' }}></div>
+
+        <div className="container animate-on-scroll">
+          {/* <div className="section-tag mx-auto mb-10" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> OUR GUESTS</div> */}
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', maxWidth: '1000px', margin: '0 auto' }}>
+
+            {/* Why Vividh Talks Block */}
+            <div className="glass-card creative-card-1" style={{
+              padding: '48px',
+              borderRadius: '24px',
+              borderLeft: '4px solid var(--accent-primary)',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, width: '100px', height: '100%', background: 'linear-gradient(90deg, rgba(255,77,0,0.1) 0%, transparent 100%)', pointerEvents: 'none' }}></div>
+              <h1 className="h1 mb-4" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>Why <span className="text-accent">Vividh Talks?</span></h1>
+              <p className="text-secondary" style={{ fontSize: '1.15rem', lineHeight: '1.8', maxWidth: '800px' }}>
                 Meaningful conversations with founders, creators, politicians, doctors, educators, artists and change-makers shaping modern India.
               </p>
             </div>
 
-            <div className="glass-card animate-on-scroll" style={{ padding: '40px', transitionDelay: '0.2s' }}>
-              <h2 className="h3 mb-4">Voices That <span className="text-accent">Inspire India</span></h2>
-              <p className="text-secondary" style={{ fontSize: '1.1rem', lineHeight: '1.7' }}>
+            {/* Voices That Inspire Block */}
+            <div className="glass-card creative-card-2" style={{
+              padding: '48px',
+              borderRadius: '24px',
+              borderRight: '4px solid var(--accent-primary)',
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.04) 100%)',
+              textAlign: 'right',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div style={{ position: 'absolute', top: 0, right: 0, width: '100px', height: '100%', background: 'linear-gradient(270deg, rgba(255,77,0,0.1) 0%, transparent 100%)', pointerEvents: 'none' }}></div>
+              <h2 className="h1 mb-4" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>Voices That <span className="text-accent">Inspire India</span></h2>
+              <p className="text-secondary" style={{ fontSize: '1.15rem', lineHeight: '1.8', maxWidth: '800px', marginLeft: 'auto' }}>
                 From entrepreneurs to public leaders, we feature guests with stories, experiences and ideas that create impact.
               </p>
             </div>
+
           </div>
         </div>
       </section>

@@ -279,7 +279,7 @@ const BookSession = () => {
         <div className="book-hero-overlay"></div>
         <div className="container relative text-center">
           <h1 className="h1 animate-on-scroll">
-            Your Podcast.<br />Your Rules.<br /><span className="text-accent">Our Studio.</span>
+            Your Podcast.<br /><span className="text-accent">Our Studio.</span>
           </h1>
           <p className="subheading mx-auto mt-4 animate-on-scroll" style={{ maxWidth: '600px', color: 'rgba(255,255,255,0.9)' }}>
             From idea to published episode — we handle everything. All you need to bring is your story.
@@ -893,11 +893,11 @@ const BookSession = () => {
                 </>
               )}
               <div className="form-group">
-                <input 
-                  type="date" 
-                  name="date" 
-                  className="form-input text-secondary" 
-                  required 
+                <input
+                  type="date"
+                  name="date"
+                  className="form-input text-secondary"
+                  required
                   min={new Date().toISOString().split('T')[0]}
                 />
               </div>
@@ -905,10 +905,10 @@ const BookSession = () => {
               {serviceType === 'studio' && (
                 <div className="form-group">
                   <label className="text-secondary text-xs font-mono uppercase block mb-2">Select Time Slot *</label>
-                  <select 
-                    className="form-select" 
-                    name="timeSlot" 
-                    required 
+                  <select
+                    className="form-select"
+                    name="timeSlot"
+                    required
                     value={selectedTimeSlot}
                     onChange={(e) => setSelectedTimeSlot(e.target.value)}
                   >

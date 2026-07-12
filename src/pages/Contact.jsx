@@ -130,14 +130,14 @@ const Contact = () => {
                 <div className="contact-info-item-icon"><Mail size={18} /></div>
                 <div>
                   <div className="contact-info-item-label">Email</div>
-                  <div>vividhtalks@gmail.com</div>
+                  <div><a href="mailto:vividhtalks@gmail.com?subject=Studio%20Booking%20Inquiry" style={{ color: 'inherit', textDecoration: 'none' }}>vividhtalks@gmail.com</a></div>
                 </div>
               </div>
               <div className="contact-info-item">
                 <div className="contact-info-item-icon"><Phone size={18} /></div>
                 <div>
                   <div className="contact-info-item-label">WhatsApp</div>
-                  <div>+91 {import.meta.env.VITE_WHATSAPP_NUMBER || '8252754340'}</div>
+                  <div><a href={`https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '8252754340'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+91 {import.meta.env.VITE_WHATSAPP_NUMBER || '8252754340'}</a></div>
                 </div>
               </div>
               <div className="contact-info-item">

@@ -219,9 +219,9 @@ export const fetchChannelData = async () => {
       // Clean up the title to remove guest names, episode numbers, or channel branding after separators
       let cleanTitle = video.snippet.title;
       
-      // Remove trailing part after '|'
       if (cleanTitle.includes('|')) {
-        cleanTitle = cleanTitle.split('|')[0].trim();
+        const parts = cleanTitle.split('|');
+        cleanTitle = parts[0].trim();
       }
       
       // Remove trailing part after '-' if it contains channel name or common branding

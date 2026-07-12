@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Mail, MapPin, ChevronUp, ChevronDown } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, ChevronUp, ChevronDown, Phone } from 'lucide-react';
 import './Footer.css';
 
 /* ── Accordion section (mobile only) ── */
@@ -39,7 +39,7 @@ const Footer = () => {
               <img loading="lazy" src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="footer-logo-img" style={{ height: '100px', width: 'auto' }} />
             </Link>
             <p className="footer-tagline">
-              India's boldest podcast platform. Where creators, founders, and voices that deserve to be heard come alive.
+              India's emerging podcast platform exploring politics, business, society, health, youth culture, entrepreneurship, personal growth, modern India and inspiring human stories.
             </p>
             <div className="ft-social-row">
               <a href="https://www.facebook.com/vividhtalks" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Facebook">
@@ -70,6 +70,17 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* About */}
+          <div className="footer-col">
+            <h4 className="footer-col-heading">About</h4>
+            <nav className="footer-nav-list">
+              <Link to="/about" className="footer-nav-link">About Us</Link>
+              <Link to="/host" className="footer-nav-link">Our Host</Link>
+              <Link to="/featured-guests" className="footer-nav-link">Featured Guests</Link>
+              <Link to="/partner" className="footer-nav-link">Partner With Us</Link>
+            </nav>
+          </div>
+
           {/* Explore */}
           <div className="footer-col">
             <h4 className="footer-col-heading">Explore</h4>
@@ -78,7 +89,6 @@ const Footer = () => {
               <Link to="/episodes" className="footer-nav-link">Trending Now</Link>
               <Link to="/episodes" className="footer-nav-link">Shorts &amp; Clips</Link>
               <Link to="/episodes" className="footer-nav-link">Categories</Link>
-              <Link to="/episodes" className="footer-nav-link">Guests</Link>
             </nav>
           </div>
 
@@ -87,7 +97,6 @@ const Footer = () => {
             <h4 className="footer-col-heading">Studio</h4>
             <nav className="footer-nav-list">
               <Link to="/book" className="footer-nav-link">Book a Session</Link>
-              <Link to="/about" className="footer-nav-link">About Us</Link>
               <Link to="/contact" className="footer-nav-link">Contact</Link>
               <Link to="/privacy" className="footer-nav-link">Privacy Policy</Link>
               <Link to="/terms" className="footer-nav-link">Terms of Use</Link>
@@ -97,14 +106,11 @@ const Footer = () => {
           {/* Newsletter */}
           <div className="footer-newsletter-col">
             <h4 className="footer-col-heading">Stay In The Loop</h4>
-            <p className="footer-newsletter-desc">Fresh episode drops, behind-the-scenes content, and exclusive creator updates.</p>
-            <form className="footer-newsletter-form" onSubmit={(e) => { e.preventDefault(); setEmail(''); alert("You're subscribed!"); }}>
-              <input type="email" placeholder="Your email address" className="footer-newsletter-input" value={email} onChange={e => setEmail(e.target.value)} required />
-              <button type="submit" className="footer-newsletter-btn" aria-label="Subscribe"><ArrowRight size={16} /></button>
-            </form>
+            <p className="footer-newsletter-desc">Fresh episode drops, behind-the-scenes content and exclusive creator updates.</p>
             <div className="footer-contact-info">
-              <div className="footer-contact-row"><Mail size={13} className="footer-contact-icon" /><span>vividhtalks@gmail.com</span></div>
-              <div className="footer-contact-row"><MapPin size={13} className="footer-contact-icon" /><span style={{ fontSize: '11px', lineHeight: '1.4' }}>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</span></div>
+              <a href={`https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" className="footer-contact-row" style={{ textDecoration: 'none' }}><Phone size={13} className="footer-contact-icon" /><span>{import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}</span></a>
+              <a href="mailto:vividhtalks@gmail.com?subject=Studio%20Booking%20Inquiry" className="footer-contact-row" style={{ textDecoration: 'none' }}><Mail size={13} className="footer-contact-icon" /><span>vividhtalks@gmail.com</span></a>
+              <div className="footer-contact-row"><MapPin size={13} className="footer-contact-icon" /><span style={{ fontSize: '11px', lineHeight: '1.4' }}>4th Floor, Above Apollo Dental, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</span></div>
             </div>
           </div>
 
@@ -119,9 +125,9 @@ const Footer = () => {
         {/* Accordion: About */}
         <AccordionSection title="ABOUT">
           <Link to="/about" className="mob-footer-link">About Us</Link>
-          <Link to="/contact" className="mob-footer-link">Contact Us</Link>
-          <Link to="/privacy" className="mob-footer-link">Privacy Policy</Link>
-          <Link to="/terms" className="mob-footer-link">Terms of Use</Link>
+          <Link to="/host" className="mob-footer-link">Our Host</Link>
+          <Link to="/featured-guests" className="mob-footer-link">Featured Guests</Link>
+          <Link to="/partner" className="mob-footer-link">Partner With Us</Link>
         </AccordionSection>
 
         {/* Accordion: Explore */}
@@ -130,21 +136,22 @@ const Footer = () => {
           <Link to="/episodes" className="mob-footer-link">Trending Now</Link>
           <Link to="/episodes" className="mob-footer-link">Shorts &amp; Clips</Link>
           <Link to="/episodes" className="mob-footer-link">Categories</Link>
-          <Link to="/episodes" className="mob-footer-link">Guests</Link>
         </AccordionSection>
 
         {/* Accordion: Studio */}
         <AccordionSection title="STUDIO">
           <Link to="/book" className="mob-footer-link">Book a Session</Link>
-          <Link to="/contact" className="mob-footer-link">Get In Touch</Link>
-          <Link to="/book" className="mob-footer-link">Be a Guest</Link>
+          <Link to="/contact" className="mob-footer-link">Contact</Link>
+          <Link to="/privacy" className="mob-footer-link">Privacy Policy</Link>
+          <Link to="/terms" className="mob-footer-link">Terms of Use</Link>
         </AccordionSection>
 
         {/* Address + Socials + Platforms */}
         <div className="mob-footer-bottom-block">
           {/* Address */}
           <div className="mob-footer-address">
-            <span>vividhtalks@gmail.com</span>
+            <span><a href={`https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>{import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}</a></span>
+            <span><a href="mailto:vividhtalks@gmail.com?subject=Studio%20Booking%20Inquiry" style={{ textDecoration: 'none', color: 'inherit' }}>vividhtalks@gmail.com</a></span>
             <span style={{ fontSize: '11px', lineHeight: '1.4', marginTop: '6px' }}>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</span>
           </div>
 
