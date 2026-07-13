@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
 import { Mic2, Video, Scissors, Paintbrush, Radio, TrendingUp, ChevronDown } from 'lucide-react';
 import FeatureCard from '../components/ui/FeatureCard';
-import TestimonialSlider from '../components/ui/TestimonialSlider';
 import SEO from '../components/SEO';
 import { testimonials } from '../data/testimonials';
 import './BookSession.css';
@@ -69,9 +67,11 @@ const BookSession = () => {
 
     if (reviewCompetitor) price += 1000;
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCustomReviewPrice(price);
 
     const label = `Review Audit: ${reviewDuration} mins, ${reviewSpeed === 'express' ? 'Express (48h)' : 'Standard'}, ${reviewSEO ? 'SEO Ready' : 'No SEO'}${reviewCompetitor ? ', Competitor Analysis' : ''}`;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCustomReviewSummary(label);
   }, [reviewDuration, reviewSpeed, reviewSEO, reviewCompetitor]);
 
@@ -168,10 +168,12 @@ const BookSession = () => {
 
     if (brandingOpt) price += 500; // Thumbnail design
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCustomPackagePrice(price);
 
     // Format options description
     const label = `${format === 'video' ? 'Video' : 'Audio'}, ${durationOpt} mins, ${editingOpt === 'edited' ? 'Edited' : 'Raw'}, ${shortsOpt !== 'none' ? shortsOpt + ' Reels' : 'No Reels'}${brandingOpt ? ', Thumbnail' : ''}`;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCustomPackageSummary(label);
   }, [format, durationOpt, editingOpt, shortsOpt, brandingOpt]);
 
@@ -275,7 +277,7 @@ const BookSession = () => {
       />
       {/* Hero */}
       <section className="book-hero section-padding animate-on-scroll">
-        <div className="book-hero-bg" style={{ backgroundImage: 'url(/podcast_studio_premium.png)' }}></div>
+        <div className="book-hero-bg" style={{ backgroundImage: 'url(/podcast_studio_premium.webp)' }}></div>
         <div className="book-hero-overlay"></div>
         <div className="container relative text-center">
           <h1 className="h1 animate-on-scroll">

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Mail, MapPin, ChevronUp, ChevronDown, Phone } from 'lucide-react';
+import { Mail, MapPin, ChevronUp, ChevronDown, Phone } from 'lucide-react';
 import './Footer.css';
 
 /* ── Accordion section (mobile only) ── */
@@ -20,7 +20,6 @@ const AccordionSection = ({ title, children }) => {
 };
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
 
   return (
     <footer className="footer">
@@ -36,7 +35,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="footer-brand">
             <Link to="/" className="footer-logo-link">
-              <img loading="lazy" src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="footer-logo-img" style={{ height: '100px', width: 'auto' }} />
+              <img loading="lazy" src="/Vividh Talks DP With Tagline White.webp" alt="Vividh Talks" className="footer-logo-img" style={{ height: '100px', width: 'auto' }} />
             </Link>
             <p className="footer-tagline">
               India's emerging podcast platform exploring inspiring human stories.

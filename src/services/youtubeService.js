@@ -78,12 +78,9 @@ const parseDuration = (duration) => {
   
   const totalSeconds = hours * 3600 + minutes * 60 + seconds;
   
-  let formatted = '';
-  if (hours > 0) {
-    formatted = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  } else {
-    formatted = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  }
+  const formatted = hours > 0 
+    ? `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+    : `${minutes}:${seconds.toString().padStart(2, '0')}`;
   
   return { totalSeconds, formatted };
 };

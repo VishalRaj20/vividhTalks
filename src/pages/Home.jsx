@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Mic, Play, ArrowRight, Headphones, CheckCircle2, Users, Radio, Star, Globe, TrendingUp } from 'lucide-react';
-import PodcastCard from '../components/ui/PodcastCard';
 import ClipCard from '../components/ui/ClipCard';
 import ShortsReel from '../components/ui/ShortsReel';
 import { episodes as dummyEpisodes, clips as dummyClips, videoReviews } from '../data/dummyData';
@@ -11,7 +10,9 @@ import ROICalculator from '../components/ui/ROICalculator';
 import HeroVisualizer from '../components/ui/HeroVisualizer';
 import LiveConsoleWidget from '../components/ui/LiveConsoleWidget';
 import SEO from '../components/SEO';
-import { FadeIn, SlideUp, StaggerContainer, StaggerItem } from '../components/ui/Animated';
+import OptimizedImage from '../components/ui/OptimizedImage';
+import DriveVideoPlayer from '../components/ui/DriveVideoPlayer';
+import { FadeIn, StaggerContainer, StaggerItem } from '../components/ui/Animated';
 import './Home.css';
 
 // Animated counter hook
@@ -52,24 +53,6 @@ const StatItem = ({ value, suffix, label, icon: Icon }) => {
     </div>
   );
 };
-
-const heroImages = [
-  {
-    url: "/images/hero_studio.png",
-    title: "Premium Studio Experience",
-    subtitle: "State-of-the-art equipment for your voice."
-  },
-  {
-    url: "/images/hero_2.png",
-    title: "Dynamic Storytelling",
-    subtitle: "Where every conversation sparks a new idea."
-  },
-  {
-    url: "/images/hero_3.png",
-    title: "Global Reach",
-    subtitle: "Amplifying your message across all platforms."
-  },
-];
 
 const whyReasons = [
   { icon: <Mic size={32} />, title: 'Studio-Quality Production', desc: 'Professional-grade audio and video setup so every episode sounds and looks phenomenal.' },
@@ -299,7 +282,7 @@ const Home = () => {
                 />
               ) : (
                 <>
-                  <img loading="lazy" src={safeEpisodes[0].image} alt="Featured Episode" />
+                  <OptimizedImage loading="lazy" src={safeEpisodes[0].image} alt="Featured Episode" />
                   <div className="featured-play"><Play size={32} fill="currentColor" /></div>
                   <div className="featured-img-overlay"></div>
                 </>
@@ -340,8 +323,8 @@ const Home = () => {
               { name: '"Pd. Shree Abhay Krishan Jee Maharaj"', title: "Political Astrologer", img: "/guests/Pd. Shree Abhay Krishan Jee Maharaj.webp" },
             ].map((guest, idx) => (
               <div className="program-card animate-on-scroll" key={idx} style={{ transitionDelay: `${idx * 0.08}s` }}>
-                <div className="program-card-img-wrap">
-                  <img loading="lazy" src={guest.img} alt={guest.name} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <div className="program-card-img-wrap" style={{ aspectRatio: '1/0.8' }}>
+                  <OptimizedImage loading="lazy" src={guest.img} alt={guest.name} style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
                   <div className="program-card-overlay"></div>
                 </div>
                 <div className="program-card-body text-center">
@@ -369,7 +352,7 @@ const Home = () => {
             {safeEpisodes.slice(0, 6).map((ep, idx) => (
               <Link to={`/episode/${ep.id}`} className="program-card animate-on-scroll" key={ep.id} style={{ transitionDelay: `${idx * 0.08}s` }}>
                 <div className="program-card-img-wrap">
-                  <img loading="lazy" src={ep.image} alt={ep.title} />
+                  <OptimizedImage loading="lazy" src={ep.image} alt={ep.title} />
                   <div className="program-card-overlay"></div>
                   <div className="program-play-btn"><Play size={20} fill="currentColor" /></div>
                 </div>
@@ -470,7 +453,7 @@ const Home = () => {
         <div className="host-preview-card-wrapper animate-on-scroll">
           <div className="host-preview-grid">
             <div className="host-preview-img-wrap">
-              <img loading="lazy" src="/guests/Shradhha Suman.webp" alt="Shraddha Suman" />
+              <OptimizedImage loading="lazy" src="/guests/Shradhha Suman.webp" alt="Shraddha Suman" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', }} />
               <div className="host-preview-badge">Our Host</div>
             </div>
             <div className="host-preview-content">
@@ -541,7 +524,7 @@ const Home = () => {
       <section className="creator-cta-section section-padding">
         <div className="container">
           <div className="creator-cta-card animate-on-scroll">
-            <div className="creator-cta-bg" style={{ backgroundImage: 'url(/images/stats_bg.png)' }}></div>
+            <div className="creator-cta-bg" style={{ backgroundImage: 'url(/images/stats_bg.webp)' }}></div>
             <div className="creator-cta-overlay"></div>
             <div className="creator-cta-content">
               <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> STUDIO SESSIONS</div>
@@ -576,14 +559,14 @@ const Home = () => {
             { n: '02', title: 'Record With Us', desc: 'Walk into our studio or go remote. Our team handles sound, lighting & direction.' },
             { n: '03', title: 'Publish & Grow', desc: 'We edit, brand, and distribute your episode across all major platforms.' },
           ].map((step, i) => (
-            <React.Fragment key={i}>
+            <Fragment key={i}>
               <div className="step-card glass-card">
                 <div className="step-number text-accent">{step.n}</div>
                 <h3 className="h3">{step.title}</h3>
                 <p className="text-secondary">{step.desc}</p>
               </div>
               {i < 2 && <div className="step-connector"></div>}
-            </React.Fragment>
+            </Fragment>
           ))}
         </div>
         <div className="steps-cta text-center animate-on-scroll" style={{ marginTop: '48px' }}>
@@ -602,12 +585,7 @@ const Home = () => {
         <div className="video-testimonial-grid animate-on-scroll" style={{ marginTop: '48px' }}>
           {videoReviews.map((review, idx) => (
             <div className="video-testimonial-card glass-card" key={review.id} style={{ transitionDelay: `${idx * 0.1}s` }}>
-              <video
-                src={review.src}
-                controls
-                className="video-testimonial-player"
-                poster={review.poster}
-              ></video>
+              <DriveVideoPlayer src={review.src} poster={review.poster} className="video-testimonial-player" />
               <div className="video-testimonial-info">
                 <h4 className="h4">{review.guestName}</h4>
                 <p className="text-secondary text-sm">{review.guestRole}</p>

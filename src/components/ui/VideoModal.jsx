@@ -1,35 +1,37 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import './VideoModal.css';
 
 // Robust helper to extract YouTube Video ID from any watch/embed/shorts URL
 const getYouTubeId = (url) => {
   if (!url) return null;
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
-  const match = url.match(regExp);
-  return (match && match[2].length === 11) ? match[2] : null;
+  const regex = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/i;
+  const match = url.match(regex);
+  return (match && match[1]) ? match[1] : null;
 };
 
 const VideoModal = ({ isOpen, onClose, videoUrl, title }) => {
   const videoRef = useRef(null);
   const ytId = getYouTubeId(videoUrl);
 
+  const isDriveLink = videoUrl && videoUrl.includes('drive.google.com');
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      if (videoRef.current && !ytId) {
+      if (videoRef.current && !ytId && !isDriveLink) {
         videoRef.current.play().catch(e => console.log('Autoplay prevented', e));
       }
     } else {
       document.body.style.overflow = 'unset';
-      if (videoRef.current && !ytId) {
+      if (videoRef.current && !ytId && !isDriveLink) {
         videoRef.current.pause();
       }
     }
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen, ytId]);
+  }, [isOpen, ytId, isDriveLink]);
 
   if (!isOpen) return null;
 
@@ -47,15 +49,28 @@ const VideoModal = ({ isOpen, onClose, videoUrl, title }) => {
               title={title || "YouTube Video"}
             ></iframe>
           </div>
+        ) : isDriveLink ? (
+          <div className="shorts-iframe-container" style={{ display: 'flex', height: '100%', width: '100%' }}>
+            <iframe
+              src={videoUrl}
+              className="video-modal-player"
+              frameBorder="0"
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              title={title || "Google Drive Video"}
+              style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: '#000' }}
+            ></iframe>
+          </div>
         ) : (
           <video 
             ref={videoRef}
             src={videoUrl} 
             className="video-modal-player video-direct" 
-            controls={false}
+            controls={true}
             autoPlay 
             loop
             playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'contain', backgroundColor: '#000' }}
           ></video>
         )}
 

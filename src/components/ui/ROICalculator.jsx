@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DollarSign, Eye, Award, TrendingUp, Sparkles, HelpCircle } from 'lucide-react';
 import './ROICalculator.css';
 

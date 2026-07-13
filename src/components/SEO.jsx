@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO = ({ title, description, keywords, url, image }) => {
@@ -6,7 +5,7 @@ const SEO = ({ title, description, keywords, url, image }) => {
   const siteDescription = description || "India's boldest podcast platform and production suite for creators, founders, and brands that deserve to be heard.";
   const siteKeywords = keywords || "podcast studio, video podcasting, creators, founders, vividh talks";
   const siteUrl = url || "https://vividhtalks.com";
-  const siteImage = image || "https://vividhtalks.com/images/hero_studio.png"; // Example OpenGraph image
+  const siteImage = image || "https://vividhtalks.com/images/hero_studio.webp"; // Example OpenGraph image
 
   return (
     <Helmet>

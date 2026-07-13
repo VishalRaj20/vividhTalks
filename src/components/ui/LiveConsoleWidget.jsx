@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Volume2, Shield } from 'lucide-react';
 
 const LiveConsoleWidget = () => {

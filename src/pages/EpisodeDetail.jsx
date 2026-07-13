@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Play, Share2, Heart } from 'lucide-react';
+import { Play, Share2 } from 'lucide-react';
 import PodcastCard from '../components/ui/PodcastCard';
 import ClipCard from '../components/ui/ClipCard';
 import { episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
@@ -10,21 +10,21 @@ import './EpisodeDetail.css';
 
 const getGuestDetails = (episode) => {
   const rawGuest = episode.guest || 'Special Guest';
-  
+
   // Clean guest name (e.g. "Ft. Akshat Soni VT32" -> "Akshat Soni")
   let guestName = rawGuest;
   guestName = guestName.replace(/^(?:ft\.?|featuring)\s+/i, '');
   guestName = guestName.replace(/\s+VT\d+$/i, '');
   guestName = guestName.replace(/\s+Ep\s*\d+$/i, '');
   guestName = guestName.trim();
-  
+
   // Try to find role and description from the video description
   let guestRole = 'Special Guest';
-  let guestBio = '';
-  
+  let guestBio;
+
   const desc = episode.description || '';
   const descLower = desc.toLowerCase();
-  
+
   // Heuristics to find guest role from description
   // e.g. "conversation with Akshat Soni, Founder of Jewel jewellers, we discuss"
   const guestIndex = descLower.indexOf(guestName.toLowerCase());
@@ -41,7 +41,7 @@ const getGuestDetails = (episode) => {
       }
     }
   }
-  
+
   if (guestRole === 'Special Guest') {
     // Alternate check: scan description for terms like "Founder of X", "CEO of X", "Co-Founder of X"
     const match = desc.match(/(?:founder|ceo|co-founder|director|creator|artist|expert|coach)\s+of\s+([A-Za-z0-9\s]+)/i);
@@ -58,7 +58,7 @@ const getGuestDetails = (episode) => {
   } else {
     guestBio = `${guestName} is a prominent voice in their field, sharing insights and experience on this episode of Vividh Talks.`;
   }
-  
+
   // Pronoun and avatar detection based on description content
   let isFemale = false;
   if (descLower.includes(' she ') || descLower.includes(' her ') || descLower.includes(' herself ')) {
@@ -90,7 +90,7 @@ const getGuestDetails = (episode) => {
   for (let i = 0; i < guestName.length; i++) {
     hash = guestName.charCodeAt(i) + ((hash << 5) - hash);
   }
-  
+
   const avatars = isFemale ? guestImagesFemale : guestImagesMale;
   const guestImage = episode.image || avatars[Math.abs(hash) % avatars.length];
 
@@ -110,10 +110,9 @@ const getGuestDetails = (episode) => {
 const EpisodeDetail = () => {
   const { slug } = useParams();
   const [isPlaying, setIsPlaying] = useState(false);
-  
+
   const [startTime, setStartTime] = useState(0);
-  const [playerKey, setPlayerKey] = useState(0);
-  
+
   const { episodes: apiEpisodes, clips: apiClips, loading } = useYouTubeData();
   const episodes = apiEpisodes.length > 0 ? apiEpisodes : dummyEpisodes;
   const clips = apiClips.length > 0 ? apiClips : dummyClips;
@@ -122,11 +121,11 @@ const EpisodeDetail = () => {
     if (!desc) return '';
     const lines = desc.split('\n');
     const cleanLines = [];
-    
+
     for (const line of lines) {
       const trimmedLine = line.trim();
       const lowerLine = trimmedLine.toLowerCase();
-      
+
       // Stop rendering when promo sections, links, hashtags, tags lists, or contact info begin
       if (
         lowerLine.includes('follow us') ||
@@ -161,45 +160,47 @@ const EpisodeDetail = () => {
       }
       cleanLines.push(line);
     }
-    
+
     return cleanLines.join('\n').trim();
   };
 
   const getRelatedClips = (currentEpisode, allClips) => {
     if (!currentEpisode || !allClips) return [];
-    
+
     let matched = [];
-    
+
     // 1. Try matching by guest name
     if (currentEpisode.guest && currentEpisode.guest !== 'Special Guest') {
       const guestName = currentEpisode.guest.toLowerCase().replace(/featuring|ft\.?/g, '').trim();
       matched = allClips.filter(clip => {
-        return (clip.guest && clip.guest.toLowerCase().includes(guestName)) || 
-               clip.title.toLowerCase().includes(guestName) ||
-               (clip.description && clip.description.toLowerCase().includes(guestName));
+        return (clip.guest && clip.guest.toLowerCase().includes(guestName)) ||
+          clip.title.toLowerCase().includes(guestName) ||
+          (clip.description && clip.description.toLowerCase().includes(guestName));
       });
     }
 
     // 2. Fallback to title keywords if no guest match
     if (matched.length === 0 && currentEpisode.title) {
-       const mainTitlePart = currentEpisode.title.split('|')[0].trim().toLowerCase();
-       // Grab a couple significant words
-       const titleWords = mainTitlePart.split(/[\s,—\-\|]+/).filter(w => w.length > 3).slice(0, 3);
-       if (titleWords.length > 0) {
-         matched = allClips.filter(clip => {
-           const clipText = `${clip.title} ${clip.description || ''}`.toLowerCase();
-           // Require at least one significant word to match
-           return titleWords.some(word => clipText.includes(word));
-         });
-       }
+      const mainTitlePart = currentEpisode.title.split('|')[0].trim().toLowerCase();
+      // Grab a couple significant words
+      const titleWords = mainTitlePart.split(/[\s,—\-|]+/).filter(w => w.length > 3).slice(0, 3);
+      if (titleWords.length > 0) {
+        matched = allClips.filter(clip => {
+          const clipText = `${clip.title} ${clip.description || ''}`.toLowerCase();
+          // Require at least one significant word to match
+          return titleWords.some(word => clipText.includes(word));
+        });
+      }
     }
-    
+
     return matched;
   };
 
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStartTime(0);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsPlaying(false);
   }, [slug]);
 
@@ -242,7 +243,7 @@ const EpisodeDetail = () => {
 
   return (
     <div className="episode-page">
-      <SEO 
+      <SEO
         title={episode.title}
         description={episode.description || "Watch this episode of Vividh Talks"}
         image={episode.image}
@@ -253,30 +254,29 @@ const EpisodeDetail = () => {
           <div className="video-player-wrapper animate-on-scroll">
             {!isPlaying ? (
               <div className="video-player-placeholder cursor-pointer" onClick={() => setIsPlaying(true)}>
-                 <img loading="lazy" src={episode.image} alt={episode.title} />
-                 <div className="play-overlay is-visible">
-                   <button className="play-btn large">
-                     <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%"><path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#ff0000"></path><path d="M 45,24 27,14 27,34" fill="#fff"></path></svg>
-                   </button>
-                 </div>
-                 <div className="yt-duration-pill">{episode.duration}</div>
+                <img loading="lazy" src={episode.image} alt={episode.title} />
+                <div className="play-overlay is-visible">
+                  <button className="play-btn large">
+                    <svg height="100%" version="1.1" viewBox="0 0 68 48" width="100%"><path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#ff0000"></path><path d="M 45,24 27,14 27,34" fill="#fff"></path></svg>
+                  </button>
+                </div>
+                <div className="yt-duration-pill">{episode.duration}</div>
               </div>
             ) : episode.videoUrl && episode.videoUrl.includes('youtube.com') ? (
-              <iframe 
-                key={playerKey}
-                src={`https://www.youtube.com/embed/${episode.id}?autoplay=1&start=${startTime}&modestbranding=1&rel=0`} 
-                className="w-full h-full" 
-                frameBorder="0" 
-                allow="autoplay; encrypted-media; fullscreen" 
+              <iframe
+                src={`https://www.youtube.com/embed/${episode.id}?autoplay=1&start=${startTime}&modestbranding=1&rel=0`}
+                className="w-full h-full"
+                frameBorder="0"
+                allow="autoplay; encrypted-media; fullscreen"
                 allowFullScreen
                 style={{ aspectRatio: '16/9', width: '100%', objectFit: 'cover', background: '#000' }}
               ></iframe>
             ) : (
-              <video 
-                src={episode.videoUrl || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"} 
-                className="w-full h-full" 
-                controls 
-                autoPlay 
+              <video
+                src={episode.videoUrl || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"}
+                className="w-full h-full"
+                controls
+                autoPlay
                 style={{ aspectRatio: '16/9', width: '100%', objectFit: 'cover', background: '#000' }}
               ></video>
             )}
@@ -284,7 +284,7 @@ const EpisodeDetail = () => {
 
           <div className="episode-header-meta animate-stagger-1" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h1 className="h1 mt-2 mb-4">{episode.title}</h1>
-            
+
             <div className="episode-info-row text-secondary mb-4" style={{ justifyContent: 'center' }}>
               <span>{episode.timeAgo || 'Recently Released'}</span>
               <span className="dot">·</span>
@@ -320,27 +320,30 @@ const EpisodeDetail = () => {
           <div className="episode-sidebar-col animate-stagger-3">
             {(() => {
               const guestDetails = getGuestDetails(episode);
+              const isSoloEpisode = guestDetails.name.toLowerCase().includes('vividh talks') || guestDetails.name.toLowerCase() === 'special guest';
               return (
                 <>
-                  <div className="profile-card glass-card mb-6 profile-glow">
-                    <h4 className="font-mono text-accent mb-4">GUEST</h4>
-                    <div className="profile-flex">
-                      <img loading="lazy" src={guestDetails.image} alt={guestDetails.name} className="profile-img" />
-                      <div>
-                        <h3 className="h3">{guestDetails.name}</h3>
-                        <p className="text-secondary">{guestDetails.role}</p>
+                  {!isSoloEpisode && (
+                    <div className="profile-card glass-card mb-6 profile-glow">
+                      <h4 className="font-mono text-accent mb-4">GUEST</h4>
+                      <div className="profile-flex">
+                        <img loading="lazy" src={guestDetails.image} alt={guestDetails.name} className="profile-img" />
+                        <div>
+                          <h3 className="h3">{guestDetails.name}</h3>
+                          <p className="text-secondary">{guestDetails.role}</p>
+                        </div>
+                      </div>
+                      <p className="body-text mt-4 mb-4 text-sm">{guestDetails.bio}</p>
+                      <div className="flex gap-4">
+                        {guestDetails.linkedin && guestDetails.linkedin !== '#' && (
+                          <a href={guestDetails.linkedin} target="_blank" rel="noreferrer" className="text-secondary hover-text-primary">LinkedIn</a>
+                        )}
+                        {guestDetails.instagram && guestDetails.instagram !== '#' && (
+                          <a href={guestDetails.instagram} target="_blank" rel="noreferrer" className="text-secondary hover-text-primary">Instagram</a>
+                        )}
                       </div>
                     </div>
-                    <p className="body-text mt-4 mb-4 text-sm">{guestDetails.bio}</p>
-                    <div className="flex gap-4">
-                      {guestDetails.linkedin && guestDetails.linkedin !== '#' && (
-                        <a href={guestDetails.linkedin} target="_blank" rel="noreferrer" className="text-secondary hover-text-primary">LinkedIn</a>
-                      )}
-                      {guestDetails.instagram && guestDetails.instagram !== '#' && (
-                        <a href={guestDetails.instagram} target="_blank" rel="noreferrer" className="text-secondary hover-text-primary">Instagram</a>
-                      )}
-                    </div>
-                  </div>
+                  )}
 
                   <div className="profile-card glass-card profile-glow">
                     <h4 className="font-mono text-accent mb-4">HOST</h4>

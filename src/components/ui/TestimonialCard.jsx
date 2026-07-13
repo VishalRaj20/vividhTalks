@@ -1,15 +1,14 @@
-import React from 'react';
-import { Quote, Star } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 import './TestimonialCard.css';
 
 const TestimonialCard = ({ testimonial }) => {
-  const { quote, name, title, rating, date } = testimonial;
+  const { name, role, content, rating, image } = testimonial;
 
   return (
     <div className="testimonial-card-premium">
       <h4 className="testimonial-author-name">{name}</h4>
       
-      <p className="testimonial-text">"{quote}"</p>
+      <p className="testimonial-text">"{content}"</p>
       
       <div className="testimonial-footer">
         <div className="testimonial-stars">

@@ -1,139 +1,77 @@
 export const videoReviews = [
   {
-    id: 'rev-1',
-    src: '/reviews/review1.mp4',
-    poster: '/images/hero_2.png',
+    id: '1',
+    src: 'https://drive.google.com/file/d/1e66LIcDoxMHjazPpV_485SsSAu5w7TE1/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Abhishek Tiwary.webp',
+    guestName: 'Abhishek Tiwary',
+    guestRole: 'Political Analyst & Election Psychologist',
+  },
+  {
+    id: '2',
+    src: 'https://drive.google.com/file/d/1WHO_RM4gDJHWrX1kRBCb0PLV2kO-L9_5/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Aditya Raj.webp', // Path to your front photo
+    guestName: 'Aditya Raj',
+    guestRole: 'National President - Yuva Wahini Bharat'
+  },
+  {
+    id: '3',
+    src: 'https://drive.google.com/file/d/1pdOmqD-FZHWypb1uIugfBc2Q9mKbOFM6/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Dr. Kishlay.webp', // Path to your front photo
+    guestName: 'Dr. Kishlay',
+    guestRole: 'Metabolic Doctor',
+  },
+  {
+    id: '4',
+    src: 'https://drive.google.com/file/d/1up85xtNoxw9V-QC5m1R20Cef4OagAukh/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Deepak Thakur.webp', // Path to your front photo
     guestName: 'Deepak Thakur',
-    guestRole: 'Playback Singer & Bigg Boss Fame',
-    quote: '"What an amazing experience sharing my story on Vividh Talks."'
-  }
+    guestRole: 'Playback Singer & Bigg Boss Fame'
+  },
+  {
+    id: '5',
+    src: 'https://drive.google.com/file/d/1I68h_PUWxSQMoF1kfNA4DWuYfn4NpyBG/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Shubham Raj.webp', // Path to your front photo
+    guestName: 'Shubham Raj',
+    guestRole: 'Director - Garda Media'
+  },
+  {
+    id: '6',
+    src: 'https://drive.google.com/file/d/1Y9wbA-Yx4jU3nxk6JlMrNMgqPN7-KhP2/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Sneham Choudhary.webp', // Path to your front photo
+    guestName: 'Sneham Choudhary',
+    guestRole: 'Internationally Certified Image Consultant & Fashion Stylist'
+  },
+  {
+    id: '7',
+    src: 'https://drive.google.com/file/d/1-zkj8yBLNwq8nBSp_Idq-i3TQv9BcHa9/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Anurag Kumar Singh.webp', // Path to your front photo
+    guestName: 'Anurag Kumar Singh',
+    guestRole: "Founder - VAP'D DASHSTEAM"
+  },
+  {
+    id: '8',
+    src: 'https://drive.google.com/file/d/1FsiZQxwqlc_53tWRHQxqDozVQTNgiHCz/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Dr Jaya Sharma.webp', // Path to your front photo
+    guestName: 'Dr. Jaya Sharma',
+    guestRole: 'MBBS, DNB OBS & Gynaecologist'
+  },
+  {
+    id: '9',
+    src: 'https://drive.google.com/file/d/1L5edwt7ZkCbob2mZOTfUvcxvdo_YD5dA/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/RJ Rama Murti.webp', // Path to your front photo
+    guestName: 'RJ Rama Murti',
+    guestRole: 'Doordarshan (DD) Bihar host, Anchor & Creator'
+  },
+  {
+    id: '10',
+    src: 'https://drive.google.com/file/d/12P4xWUnPlieKyn1VE-OhXo1r6gKR_XHI/view?usp=drive_link', // Paste your drive link here
+    poster: '/guests/Acharya Rohit Tandon.webp', // Path to your front photo
+    guestName: 'Acharya Rohit Tandon',
+    guestRole: 'Gemologist, IGI - Colored Stone & Diamond Graduate'
+  },
 ];
 
-export const episodes = [
-  {
-    id: 'ep-042',
-    number: '042',
-    title: 'From Zero to ₹1 Crore: The Startup Story Nobody Told',
-    guest: 'Featuring Arjun Mehta, Founder — NxtGenX',
-    duration: '52 min',
-    tags: ['#Startup', '#Hustle', '#FounderStories'],
-    image: 'https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&q=80&w=800&h=450',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    category: 'Startup',
-    channelName: 'Vividh Talks and NxtGenX',
-    views: '12K views',
-    timeAgo: '2 days ago',
-    guestImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150',
-    guestBio: 'Arjun Mehta is a serial entrepreneur and the founder of NxtGenX. With over a decade of experience in bootstrapping and scaling SaaS ventures, he is dedicated to mentoring early-stage founders in India.',
-    guestLinkedin: 'https://linkedin.com/in/arjun-mehta-nxtgenx',
-    guestInstagram: 'https://instagram.com/arjun.nxtgenx',
-    hostName: 'Vikram Singh',
-    hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
-    hostTitle: 'Host, Vividh Talks'
-  },
-  {
-    id: 'ep-041',
-    number: '041',
-    title: 'How to Build a Personal Brand in 2026',
-    guest: 'Featuring Sarah Jones, Brand Strategist',
-    duration: '45 min',
-    tags: ['#Branding', '#Marketing', '#Growth'],
-    image: 'https://images.unsplash.com/photo-1581368135153-a506cf13b1e1?auto=format&fit=crop&q=80&w=800&h=450',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-    category: 'Personal Branding',
-    channelName: 'Vividh Talks',
-    views: '8.4K views',
-    timeAgo: '5 days ago',
-    guestImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150',
-    guestBio: 'Sarah Jones is a leading global brand strategist who has shaped the visual narratives of Fortune 500 executives. She specializes in narrative storytelling and visual authority.',
-    guestLinkedin: 'https://linkedin.com/in/sarah-jones-brand',
-    guestInstagram: 'https://instagram.com/sarah.branding',
-    hostName: 'Neha Sharma',
-    hostImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150',
-    hostTitle: 'Co-Host, Vividh Talks'
-  },
-  {
-    id: 'ep-040',
-    number: '040',
-    title: 'The Future of AI in Creative Industries',
-    guest: 'Featuring Dr. Anil Kumar, AI Researcher',
-    duration: '60 min',
-    tags: ['#Tech', '#AI', '#Innovation'],
-    image: 'https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=800&h=450',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    category: 'Tech',
-    channelName: 'Vividh Talks and AI Institute',
-    views: '45K views',
-    timeAgo: '1 week ago',
-    guestImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150',
-    guestBio: 'Dr. Anil Kumar is an associate professor and researcher specializing in computer vision and artificial neural networks. He is focused on human-centered AI systems in creative arts.',
-    guestLinkedin: 'https://linkedin.com/in/anil-kumar-ai',
-    guestInstagram: 'https://instagram.com/anil.kumar.ai',
-    hostName: 'Vikram Singh',
-    hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
-    hostTitle: 'Host, Vividh Talks'
-  },
-  {
-    id: 'ep-039',
-    number: '039',
-    title: 'Campus to Corporate: The Real Transition',
-    guest: 'Featuring Priya Sharma, HR Head',
-    duration: '38 min',
-    tags: ['#Students', '#Career', '#Corporate'],
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800&h=450',
-    category: 'Student Life',
-    channelName: 'Vividh Talks',
-    views: '2.1K views',
-    timeAgo: '2 weeks ago',
-    guestImage: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=150',
-    guestBio: 'Priya Sharma is a seasoned Human Resources leader with a passion for university recruitment. She helps bridging the gap between student competencies and corporate requirements.',
-    guestLinkedin: 'https://linkedin.com/in/priya-sharma-hr',
-    guestInstagram: 'https://instagram.com/priya.hr.talks',
-    hostName: 'Vikram Singh',
-    hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
-    hostTitle: 'Host, Vividh Talks'
-  },
-  {
-    id: 'ep-038',
-    number: '038',
-    title: 'Building Communities That Last',
-    guest: 'Featuring Rohan Das, Community Builder',
-    duration: '48 min',
-    tags: ['#Community', '#SocialImpact'],
-    image: 'https://images.unsplash.com/photo-1511632765486-a01c80cf8cb4?auto=format&fit=crop&q=80&w=800&h=450',
-    category: 'Social Impact',
-    channelName: 'Vividh Talks',
-    views: '3.5K views',
-    timeAgo: '3 weeks ago',
-    guestImage: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150',
-    guestBio: 'Rohan Das has organized community movements across five metro cities in India. He acts as a catalyst for local civic programs, creating structured and self-sustaining neighborhood groups.',
-    guestLinkedin: 'https://linkedin.com/in/rohan-das-community',
-    guestInstagram: 'https://instagram.com/rohan.community',
-    hostName: 'Neha Sharma',
-    hostImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150',
-    hostTitle: 'Co-Host, Vividh Talks'
-  },
-  {
-    id: 'ep-037',
-    number: '037',
-    title: 'The Art of Storytelling in Business',
-    guest: 'Featuring Neha Kapoor, CMO',
-    duration: '55 min',
-    tags: ['#Marketing', '#Business', '#Storytelling'],
-    image: 'https://images.unsplash.com/photo-1475721025870-24608f5fd0ca?auto=format&fit=crop&q=80&w=800&h=450',
-    category: 'Marketing',
-    channelName: 'Vividh Talks and BrandWave',
-    views: '15K views',
-    timeAgo: '1 month ago',
-    guestImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150',
-    guestBio: 'Neha Kapoor is a metrics-driven Chief Marketing Officer who pioneered storytelling-first marketing funnels in high-growth retail brands. She writes and talks about consumer psychological behaviors.',
-    guestLinkedin: 'https://linkedin.com/in/neha-kapoor-cmo',
-    guestInstagram: 'https://instagram.com/neha.marketing',
-    hostName: 'Vikram Singh',
-    hostImage: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150',
-    hostTitle: 'Host, Vividh Talks'
-  }
-];
+export const episodes = [];
 
 export const clips = [
   {
@@ -192,4 +130,3 @@ export const clips = [
     timeAgo: '3 weeks ago'
   }
 ];
-

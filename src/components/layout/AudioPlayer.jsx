@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Volume2, VolumeX, X, SkipBack, SkipForward, Music } from 'lucide-react';
 import './AudioPlayer.css';
 

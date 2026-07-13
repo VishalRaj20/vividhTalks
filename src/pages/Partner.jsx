@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { ArrowRight, CheckCircle2, TrendingUp, Handshake } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { Handshake, TrendingUp, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import './EnhancedStyles.css'; // New CSS file for the extra features
@@ -39,7 +39,7 @@ const Partner = () => {
       />
       <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingTop: '220px', paddingBottom: '140px' }}>
         {/* Hero Background */}
-        <div className="contact-hero-bg" ref={heroRef} style={{ backgroundImage: 'url(/contact_hero_new.png)', filter: 'brightness(0.4)', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
+        <div className="contact-hero-bg" ref={heroRef} style={{ backgroundImage: 'url(/contact_hero_new.webp)', filter: 'brightness(0.4)', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
         <div className="contact-hero-overlay" style={{ background: 'linear-gradient(to bottom, rgba(10,10,12,0.2) 0%, rgba(10,10,12,1) 100%)' }}></div>
         
         <div className="container relative text-center">

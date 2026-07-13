@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { ArrowRight, UserPlus } from 'lucide-react';
+import { useEffect } from 'react';
+import { UserPlus } from 'lucide-react';
 import SEO from '../components/SEO';
 import './EnhancedStyles.css';
 
@@ -38,7 +38,7 @@ const GuestNomination = () => {
         description="Know someone with an inspiring story? Suggest guests for upcoming Vividh Talks conversations."
       />
       <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingTop: '220px', paddingBottom: '120px' }}>
-        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/creators_with_mic.png)', filter: 'brightness(0.4)', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
+        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/creators_with_mic.webp)', filter: 'brightness(0.4)', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
         <div className="contact-hero-overlay" style={{ background: 'linear-gradient(to bottom, rgba(10,10,12,0.2) 0%, rgba(10,10,12,1) 100%)' }}></div>
         <div className="container relative text-center">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> GUEST NOMINATION</div>

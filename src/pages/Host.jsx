@@ -7,7 +7,7 @@ const hostData = {
   name: 'Shraddha Suman',
   role: 'Founder & Host, Vividh Talks',
   subtitle: 'Entrepreneur • Podcast Host • Storyteller',
-  img: '/guests/Shradhha Suman.jpeg',
+  img: '/guests/Shradhha Suman.webp',
   social: {
     linkedin: 'https://www.linkedin.com/in/shraddha-suman-7b71b363',
     instagram: 'https://www.instagram.com/shraddd_ha'

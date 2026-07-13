@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Search, Grid, List, Play } from 'lucide-react';
 import PodcastCard from '../components/ui/PodcastCard';
@@ -8,6 +8,8 @@ import { useYouTubeData } from '../hooks/useYouTubeData';
 import { episodes as dummyEpisodes, clips as dummyClips } from '../data/dummyData';
 import SEO from '../components/SEO';
 import './PodcastLibrary.css';
+
+const filters = ['All', 'Startup', 'Student Life', 'Culture', 'Tech', 'Personal Branding', 'Local Voices', 'Social Impact', 'Marketing'];
 
 const PodcastLibrary = () => {
   const location = useLocation();
@@ -25,7 +27,7 @@ const PodcastLibrary = () => {
   const episodes = apiEpisodes.length > 0 ? apiEpisodes : dummyEpisodes;
   const clips = apiClips.length > 0 ? apiClips : dummyClips;
 
-  const filters = ['All', 'Startup', 'Student Life', 'Culture', 'Tech', 'Personal Branding', 'Local Voices', 'Social Impact', 'Marketing'];
+
 
   useEffect(() => {
     const category = new URLSearchParams(location.search).get('category');
@@ -34,7 +36,7 @@ const PodcastLibrary = () => {
     } else if (!category) {
       setActiveFilter('All');
     }
-  }, [location.search]);
+  }, [location.search, filters]);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -76,7 +78,7 @@ const PodcastLibrary = () => {
       />
       {/* Page Hero */}
       <section className="library-hero-section animate-on-scroll">
-        <div className="library-hero-bg" style={{ backgroundImage: 'url(/podcast_episodes_hero.png)' }}></div>
+        <div className="library-hero-bg" style={{ backgroundImage: 'url(/podcast_episodes_hero.webp)' }}></div>
         <div className="library-hero-overlay"></div>
         <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <div className="section-tag" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> EPISODE LIBRARY</div>
@@ -145,7 +147,7 @@ const PodcastLibrary = () => {
       {activeFilter === 'All' && (
         <section className="pinned-section container section-padding">
           <div className="pinned-grid animate-on-scroll">
-            {episodes.slice(0, 2).map((ep, idx) => (
+            {episodes.slice(0, 2).map((ep) => (
               <div className="pinned-card glass-card" key={ep.id}>
                 <div className="pinned-badge">FEATURED</div>
                 <div className="pinned-img">

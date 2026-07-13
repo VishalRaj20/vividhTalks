@@ -180,6 +180,18 @@
 .clips-scroll-container { overflow-x: auto; scrollbar-width: thin; scrollbar-color: rgba(255,77,0,0.3) transparent; }
 .clips-row { display: flex; gap: 16px; padding: 16px 20px; width: max-content; }
 
+@media (min-width: 480px) {
+  .clips-row { padding-left: 32px; padding-right: 32px; }
+}
+
+@media (min-width: 768px) {
+  .clips-row { padding-left: 64px; padding-right: 64px; }
+}
+
+@media (min-width: 1440px) {
+  .clips-row { padding-left: calc((100vw - 1440px) / 2 + 80px); padding-right: calc((100vw - 1440px) / 2 + 80px); }
+}
+
 /* ─── CTA Strip ─── */
 .cta-strip {
   background: rgba(255,77,0,0.04);

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 export const FadeIn = ({ children, delay = 0, duration = 0.6, className = '' }) => (

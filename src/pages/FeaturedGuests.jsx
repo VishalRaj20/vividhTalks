@@ -1,22 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
+import OptimizedImage from '../components/ui/OptimizedImage';
+import DriveVideoPlayer from '../components/ui/DriveVideoPlayer';
 import { videoReviews } from '../data/dummyData';
 
 const guestsList = [
-  { name: "Deepak Thakur", role: "Playback Singer & Bigg Boss Fame", image: "/guests/Deepak Thakur.jpg" },
-  { name: "Shubham Raj", role: "Director - Garda Media", image: "/guests/Shubham Raj.jpg" },
-  { name: "Sujit Kumar Mishra", role: "Founder & CEO - Thikedaar.com", image: "/guests/Sujit Kumar Mishra.jpg" },
-  { name: "Preeti Singh", role: "Associate Professor - RSMT College", image: "/guests/Preeti Singh.jpg" },
-  { name: "Abhishek Tiwary", role: "Political Analyst & Election Psychologist", image: "/guests/Abhishek Tiwary.jpg" },
-  { name: "Aditya Raj", role: "National President - Yuva Wahini Bharat", image: "/guests/Aditya Raj.jpg" },
-  { name: "Dr. Kishlay", role: "Metabolic Doctor", image: "/guests/Dr. Kishlay.jpg" },
-  { name: "Dr. Shubhash Krishna", role: "Programminng Director & DGM - Radio City", image: "/guests/Dr Shubhash Krishna.jpg" },
-  { name: "Sneham Choudhary", role: "Internationally Certified Image Consultant & Fashion Stylist", image: "/guests/Sneham Choudhary.jpg" },
-  { name: "Satyam Parkhi", role: "Founder - Chicka Litti & Parkhi Production", image: "/guests/Satyam Parkhi.jpg" },
-  { name: "Vikash Aryan", role: "Actor & Founder - Actor Chaiwala", image: "/guests/Vikash Aryan.jpg" },
-  { name: "Pd. Shree Abhay Krishan Jee Maharaj", role: "Political Astrologer", image: "/guests/Pd. Shree Abhay Krishan Jee Maharaj.jpg" }
+  { name: "Deepak Thakur", role: "Playback Singer & Bigg Boss Fame", image: "/guests/Deepak Thakur.webp" },
+  { name: "Shubham Raj", role: "Director - Garda Media", image: "/guests/Shubham Raj.webp" },
+  { name: "Sujit Kumar Mishra", role: "Founder & CEO - Thikedaar.com", image: "/guests/Sujit Kumar Mishra.webp" },
+  { name: "Preeti Singh", role: "Associate Professor - RSMT College", image: "/guests/Preeti Singh.webp" },
+  { name: "Abhishek Tiwary", role: "Political Analyst & Election Psychologist", image: "/guests/Abhishek Tiwary.webp" },
+  { name: "Aditya Raj", role: "National President - Yuva Wahini Bharat", image: "/guests/Aditya Raj.webp" },
+  { name: "Dr. Kishlay", role: "Metabolic Doctor", image: "/guests/Dr. Kishlay.webp" },
+  { name: "Dr. Shubhash Krishna", role: "Programminng Director & DGM - Radio City", image: "/guests/Dr Shubhash Krishna.webp" },
+  { name: "Sneham Choudhary", role: "Internationally Certified Image Consultant & Fashion Stylist", image: "/guests/Sneham Choudhary.webp" },
+  { name: "Satyam Parkhi", role: "Founder - Chicka Litti & Parkhi Production", image: "/guests/Satyam Parkhi.webp" },
+  { name: "Vikash Aryan", role: "Actor & Founder - Actor Chaiwala", image: "/guests/Vikash Aryan.webp" },
+  { name: "Pd. Shree Abhay Krishan Jee Maharaj", role: "Political Astrologer", image: "/guests/Pd. Shree Abhay Krishan Jee Maharaj.webp" }
 ];
 
 const FeaturedGuests = () => {
@@ -137,14 +139,15 @@ const FeaturedGuests = () => {
                     e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
                   }}
                 >
-                  <img
+                  <OptimizedImage
                     loading="lazy"
                     src={guest.image}
                     alt={guest.name}
                     style={{
                       width: '100%',
                       height: '100%',
-                      objectFit: 'cover'
+                      objectFit: 'cover',
+                      objectPosition: 'top center'
                     }}
                   />
                 </div>
@@ -169,12 +172,7 @@ const FeaturedGuests = () => {
           <div className="video-testimonial-grid animate-on-scroll" style={{ marginTop: '48px' }}>
             {videoReviews.map((review, idx) => (
               <div className="video-testimonial-card glass-card" key={review.id} style={{ transitionDelay: `${idx * 0.1}s` }}>
-                <video
-                  src={review.src}
-                  controls
-                  className="video-testimonial-player"
-                  poster={review.poster}
-                ></video>
+                <DriveVideoPlayer src={review.src} poster={review.poster} className="video-testimonial-player" />
                 <div className="video-testimonial-info mt-40">
                   <h4 className="h4">{review.guestName}</h4>
                   <p className="text-secondary text-sm">{review.quote}</p>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Sliders, Volume2, Sparkles, X, Check, Music } from 'lucide-react';
 import './StudioSettingsWidget.css';
 
@@ -157,8 +157,18 @@ const StudioSettingsWidget = () => {
   const [activeTheme, setActiveTheme] = useState('lava');
   const widgetRef = useRef(null);
 
+  const applyTheme = (themeId) => {
+    // Remove all previous theme classes
+    themes.forEach((t) => {
+      document.body.classList.remove(`theme-${t.id}`);
+    });
+    // Add current theme class
+    document.body.classList.add(`theme-${themeId}`);
+  };
+
   useEffect(() => {
     const savedTheme = localStorage.getItem('vividh-talks-theme') || 'lava';
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setActiveTheme(savedTheme);
     applyTheme(savedTheme);
   }, []);
@@ -179,14 +189,7 @@ const StudioSettingsWidget = () => {
     };
   }, [isOpen]);
 
-  const applyTheme = (themeId) => {
-    // Remove all previous theme classes
-    themes.forEach((t) => {
-      document.body.classList.remove(`theme-${t.id}`);
-    });
-    // Add current theme class
-    document.body.classList.add(`theme-${themeId}`);
-  };
+
 
   const handleThemeChange = (themeId) => {
     setActiveTheme(themeId);

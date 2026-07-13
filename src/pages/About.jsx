@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Mic, Globe, Star, ArrowRight, Users, Radio, Headphones, Target, Eye, Shield, CheckCircle2, Zap, TrendingUp, Award } from 'lucide-react';
+import { Mic, Globe, Star, ArrowRight, Target, Eye, Shield, CheckCircle2, Zap, TrendingUp, Award } from 'lucide-react';
 import SEO from '../components/SEO';
 import './About.css';
 
@@ -18,96 +18,9 @@ const hosts = [
       { label: 'Her Mission', text: 'Through Vividh Talks, her vision is to build a platform that represents ambitious minds, diverse stories, and conversations that truly matter in today’s world.' }
     ],
     expertise: ['Empathetic Hosting', 'Branding & Stories', 'Impact Conversations'],
-    img: '/guests/Shradhha Suman.jpeg',
-    social: { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' },
+    img: '/guests/Shradhha Suman.webp',
+    social: { linkedin: 'https://www.linkedin.com/in/shraddha-suman-7b71b363', instagram: 'https://www.instagram.com/shraddd_ha' },
     quote: "Every person has a story powerful enough to inspire change."
-  }
-];
-
-const teamMembers = [
-  {
-    name: 'Vikram Singh',
-    role: 'Founder & Host',
-    bio: 'The visionary behind Vividh Communications, bringing raw storytelling to the forefront of Indian media.',
-    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300',
-    social: { linkedin: '#', instagram: '#' }
-  },
-  {
-    name: 'Ananya Rao',
-    role: 'Lead Audio Engineer',
-    bio: 'Ensuring every whisper and laugh is captured with pristine studio clarity and professional depth.',
-    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300',
-    social: { linkedin: '#' }
-  },
-  {
-    name: 'Rahul Verma',
-    role: 'Video Producer',
-    bio: 'Crafting the visual narrative and directing multi-cam studio setups for maximum impact.',
-    img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=300',
-    social: { instagram: '#' }
-  },
-];
-
-const featuredGuests = [
-  {
-    name: 'Deepak Thakur',
-    role: 'Playback Singer & Bigg Boss Fame',
-    img: '/guests/Deepak Thakur.webp'
-  },
-  {
-    name: 'Shubham Raj',
-    role: 'Director - Garda Media',
-    img: '/guests/Shubham Raj.webp'
-  },
-  {
-    name: 'Sujit Kumar Mishra',
-    role: 'Founder & CEO - Thikedaar.com',
-    img: '/guests/Sujit Kumar Mishra.webp'
-  },
-  {
-    name: 'Preeti Singh',
-    role: 'Associate Professor - RSMT College',
-    img: '/guests/Preeti Singh.webp'
-  },
-  {
-    name: 'Abhishek Tiwary',
-    role: 'Political Analyst & Election Psychologist',
-    img: '/guests/Abhishek Tiwary.webp'
-  },
-  {
-    name: 'Aditya Raj',
-    role: 'National President - Yuva Wahini Bharat',
-    img: '/guests/Aditya Raj.webp'
-  },
-  {
-    name: 'Dr. Kishlay',
-    role: 'Metabolic Doctor',
-    img: '/guests/Dr. Kishlay.jpg'
-  },
-  {
-    name: 'Dr. Shubhash Krishna',
-    role: 'Programminng Director & DGM - Radio City',
-    img: '/guests/Dr. Shubhash Krishna.webp'
-  },
-  {
-    name: 'Sneham Choudhary',
-    role: 'Internationally Certified Image Consultant & Fashion Stylist',
-    img: '/guests/Sneham Choudhary.webp'
-  },
-  {
-    name: 'Satyam Parkhi',
-    role: 'Founder - Chicka Litti & Parkhi Production',
-    img: '/guests/Satyam Parkhi.webp'
-  },
-  {
-    name: 'Vikash Aryan',
-    role: 'Actor & Founder - Actor Chaiwala',
-    img: '/guests/Vikash Aryan.webp'
-  },
-  {
-    name: 'Pd. Shree Abhay Krishan Jee Maharaj',
-    role: 'Political Astrologer',
-    img: '/guests/Pd. Shree Abhay Krishan Jee Maharaj.webp'
   }
 ];
 
@@ -131,7 +44,7 @@ const About = () => {
       />
       {/* ─── HERO ─── */}
       <section className="about-hero-section">
-        <div className="about-hero-bg" style={{ backgroundImage: 'url(/creators_with_mic.png)' }}></div>
+        <div className="about-hero-bg" style={{ backgroundImage: 'url(/creators_with_mic.webp)' }}></div>
         <div className="about-hero-overlay"></div>
         <div className="container about-hero-content">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> ESTABLISHED 2025</div>

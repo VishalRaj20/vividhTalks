@@ -1,22 +1,21 @@
-import React, { useEffect } from 'react';
-import { ArrowRight, BookOpen } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BookOpen } from 'lucide-react';
 import SEO from '../components/SEO';
 import './EnhancedStyles.css';
 
 const topics = [
-  { title: 'Entrepreneurship', image: '/blog-image/entrepreneurship.png' },
-  { title: 'Politics & Society', image: '/blog-image/politics.png' },
-  { title: 'Health & Wellness', image: '/blog-image/health.png' },
-  { title: 'Startups & Business', image: '/blog-image/business.png' },
-  { title: 'Personal Growth', image: '/blog-image/personal_growth.png' },
-  { title: 'Youth Culture', image: '/blog-image/youth.png' },
-  { title: 'Women Empowerment', image: '/blog-image/women.png' },
-  { title: 'Social Issues', image: '/blog-image/social_issues.png' },
-  { title: 'Media & Content', image: '/blog-image/media.png' },
-  { title: 'Social Trends', image: '/blog-image/trends.png' },
-  { title: 'Creator Economy', image: '/blog-image/creator.png' },
-  { title: 'Digital Growth', image: '/blog-image/digital.png' }
+  { title: 'Entrepreneurship', image: '/blog-image/entrepreneurship.webp' },
+  { title: 'Politics & Society', image: '/blog-image/politics.webp' },
+  { title: 'Health & Wellness', image: '/blog-image/health.webp' },
+  { title: 'Startups & Business', image: '/blog-image/business.webp' },
+  { title: 'Personal Growth', image: '/blog-image/personal_growth.webp' },
+  { title: 'Youth Culture', image: '/blog-image/youth.webp' },
+  { title: 'Women Empowerment', image: '/blog-image/women.webp' },
+  { title: 'Social Issues', image: '/blog-image/social_issues.webp' },
+  { title: 'Media & Content', image: '/blog-image/media.webp' },
+  { title: 'Social Trends', image: '/blog-image/trends.webp' },
+  { title: 'Creator Economy', image: '/blog-image/creator.webp' },
+  { title: 'Digital Growth', image: '/blog-image/digital.webp' }
 ];
 
 const Blog = () => {
@@ -38,7 +37,7 @@ const Blog = () => {
         description="Read insights on Entrepreneurship, Politics & Society, Health & Wellness, Startups, and more."
       />
       <section className="contact-hero section-padding" style={{ position: 'relative', overflow: 'hidden', paddingTop: '220px', paddingBottom: '140px' }}>
-        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/podcast_episodes_hero.png)', filter: 'brightness(0.4)', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
+        <div className="contact-hero-bg" style={{ backgroundImage: 'url(/podcast_episodes_hero.webp)', filter: 'brightness(0.4)', backgroundPosition: 'center', backgroundSize: 'cover' }}></div>
         <div className="contact-hero-overlay" style={{ background: 'linear-gradient(to bottom, rgba(10,10,12,0.2) 0%, rgba(10,10,12,1) 100%)' }}></div>
         <div className="container relative text-center">
           <div className="section-tag animate-on-scroll" style={{ justifyContent: 'center' }}><span className="section-tag-dot"></span> VIVIDH BLOG</div>

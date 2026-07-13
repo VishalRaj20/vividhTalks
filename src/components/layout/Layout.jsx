@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -25,7 +25,7 @@ const Layout = () => {
 
   return (
     <div className="app-layout">
-      <div className="global-site-bg" style={{ backgroundImage: 'url(/images/stats_bg.png)' }}></div>
+      <div className="global-site-bg" style={{ backgroundImage: 'url(/images/stats_bg.webp)' }}></div>
       <div className="global-site-overlay"></div>
       <Navbar />
       <main style={{ minHeight: '100vh', position: 'relative', zIndex: 1 }}>

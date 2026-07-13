@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { MoreVertical } from 'lucide-react';
 import VideoModal from './VideoModal';
+import './PodcastCard.css';
 import './ClipCard.css';
 
 const ClipCard = ({ clip, onClick }) => {

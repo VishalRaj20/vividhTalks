@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Radio } from 'lucide-react';
 import './Navbar.css';
@@ -47,7 +47,7 @@ const Navbar = () => {
         <div className="container navbar-container">
           {/* Logo */}
           <Link to="/" className="logo">
-            <img loading="lazy" src="/Vividh Talks DP With Tagline White.png" alt="Vividh Talks" className="logo-img" />
+            <img loading="lazy" src="/Vividh Talks DP With Tagline White.webp" alt="Vividh Talks" className="logo-img" />
           </Link>
 
           {/* Desktop Nav */}
