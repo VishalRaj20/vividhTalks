@@ -62,7 +62,7 @@ const EngagementPopup = () => {
 
         <div className="popup-header">
           <div className="popup-avatar-wrapper">
-            <img src="/images/vividh_about.jpg" alt="Vividh" className="popup-avatar" />
+            <img src="/Vividh Talks DP With Tagline White.webp" alt="Vividh Talks" className="popup-avatar" />
             <div className="status-indicator"></div>
           </div>
           <div className="popup-title">
