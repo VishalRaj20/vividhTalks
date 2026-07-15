@@ -5,6 +5,7 @@ import Footer from './Footer';
 import WhatsAppFab from './WhatsAppFab';
 import StudioSettingsWidget from '../ui/StudioSettingsWidget';
 import CustomCursor from './CustomCursor';
+import EngagementPopup from '../ui/EngagementPopup';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -37,6 +38,7 @@ const Layout = () => {
       <WhatsAppFab />
       <StudioSettingsWidget />
       <CustomCursor />
+      <EngagementPopup />
     </div>
   );
 };

@@ -149,15 +149,18 @@ const Contact = () => {
               </div>
             </div>
             {/* Social links */}
-            <div className="contact-socials">
-              <a href="#" className="contact-social">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+            <div className="ft-social-row">
+              <a href="https://www.facebook.com/vividhtalks" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Facebook">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
               </a>
-              <a href="#" className="contact-social">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
+              <a href="https://www.x.com/VividhTalks" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="X / Twitter">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z" /></svg>
               </a>
-              <a href="#" className="contact-social">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z" /></svg>
+              <a href="https://www.instagram.com/vividhtalks" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="Instagram">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
+              </a>
+              <a href="https://www.youtube.com/@TalksVividh" target="_blank" rel="noreferrer" className="footer-social-btn" aria-label="YouTube">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
               </a>
             </div>
           </div>
@@ -213,9 +216,9 @@ const Contact = () => {
           </div>
           <div className="social-cards-grid animate-on-scroll">
             {[
-              { svg: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>, name: '@vividhtalks', stat: '50K+ Followers', color: '#E1306C', label: 'Instagram' },
-              { svg: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>, name: 'Vividh Talks', stat: '100K+ Subscribers', color: '#FF0000', label: 'YouTube' },
-              { svg: <MessageCircle size={28} />, name: 'Creator Community', stat: 'Join Group', color: '#25D366', label: 'WhatsApp' },
+              { svg: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>, name: '@vividhtalks', stat: '1500+ Followers', color: '#E1306C', label: 'Instagram', link: "https://www.instagram.com/vividhtalks" },
+              { svg: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>, name: 'Vividh Talks', stat: '1000+ Subscribers', color: '#FF0000', label: 'YouTube', link: "https://www.youtube.com/@TalksVividh" },
+              { svg: <MessageCircle size={28} />, name: 'Creator Community', stat: 'Join Group', color: '#25D366', label: 'WhatsApp', link: `https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '8252754340'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20joining%20the%20Creator%20Community!` },
             ].map((s, i) => (
               <div className="social-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
                 <div className="social-card-icon" style={{ color: s.color, borderColor: `${s.color}33`, background: `${s.color}12` }}>
@@ -223,9 +226,9 @@ const Contact = () => {
                 </div>
                 <h3 className="social-card-name">{s.name}</h3>
                 <p className="social-card-stat">{s.stat}</p>
-                <button className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', marginTop: '20px', fontSize: '14px' }}>
+                <a href={s.link} className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', marginTop: '20px', fontSize: '14px' }}>
                   Follow on {s.label} →
-                </button>
+                </a>
               </div>
             ))}
           </div>
