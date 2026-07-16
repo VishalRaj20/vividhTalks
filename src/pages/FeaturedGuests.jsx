@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import OptimizedImage from '../components/ui/OptimizedImage';
-import DriveVideoPlayer from '../components/ui/DriveVideoPlayer';
+import VideoReviewReel from '../components/ui/VideoReviewReel';
+import { Play } from 'lucide-react';
 import { videoReviews } from '../data/dummyData';
 
 const guestsList = [
@@ -22,6 +23,21 @@ const guestsList = [
 ];
 
 const FeaturedGuests = () => {
+  const [isVideoReelOpen, setIsVideoReelOpen] = useState(false);
+  const [initialReelIndex, setInitialReelIndex] = useState(0);
+
+  const formattedReviews = videoReviews.map((review) => ({
+    id: review.id,
+    title: review.quote || review.guestName + " Review",
+    image: review.poster,
+    videoUrl: review.src,
+    channelName: review.guestName,
+  }));
+
+  const handleReviewClick = (index) => {
+    setInitialReelIndex(index);
+    setIsVideoReelOpen(true);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -171,8 +187,31 @@ const FeaturedGuests = () => {
 
           <div className="video-testimonial-grid animate-on-scroll" style={{ marginTop: '48px' }}>
             {videoReviews.map((review, idx) => (
-              <div className="video-testimonial-card glass-card" key={review.id} style={{ transitionDelay: `${idx * 0.1}s` }}>
-                <DriveVideoPlayer src={review.src} poster={review.poster} className="video-testimonial-player" />
+              <div 
+                className="video-testimonial-card glass-card" 
+                key={review.id} 
+                style={{ transitionDelay: `${idx * 0.1}s`, cursor: 'pointer' }}
+                onClick={() => handleReviewClick(idx)}
+              >
+                <div className="video-player-placeholder video-testimonial-player" style={{ position: 'relative', width: '100%', aspectRatio: '9/12', backgroundColor: '#000', borderRadius: '12px', overflow: 'hidden' }}>
+                  <OptimizedImage
+                    src={review.poster}
+                    alt={review.guestName}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center' }}
+                  />
+                  <div className="play-overlay" style={{
+                    position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.4)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center'
+                  }}>
+                    <button className="play-btn" style={{
+                      background: 'rgba(255, 77, 0, 0.9)', border: 'none', borderRadius: '50%',
+                      width: '60px', height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      boxShadow: '0 4px 15px rgba(255, 77, 0, 0.4)', pointerEvents: 'none'
+                    }}>
+                      <Play size={28} fill="#fff" color="#fff" style={{ marginLeft: '4px' }} />
+                    </button>
+                  </div>
+                </div>
                 <div className="video-testimonial-info mt-40">
                   <h4 className="h4">{review.guestName}</h4>
                   <p className="text-secondary text-sm">{review.quote}</p>
@@ -181,6 +220,13 @@ const FeaturedGuests = () => {
             ))}
           </div>
         </div>
+        
+        <VideoReviewReel 
+          clips={formattedReviews} 
+          isOpen={isVideoReelOpen} 
+          onClose={() => setIsVideoReelOpen(false)} 
+          initialIndex={initialReelIndex}
+        />
       </section>
 
       {/* CTA SECTION */}

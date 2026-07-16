@@ -391,6 +391,12 @@
   border: 1px solid rgba(255,255,255,0.05);
 }
 
+@media (max-width: 768px) {
+  .booking-form {
+    padding: 20px;
+  }
+}
+
 .form-group {
   margin-bottom: 16px;
 }
@@ -474,6 +480,10 @@
   font-family: var(--font-subheading);
   font-size: 18px;
   margin-bottom: 8px;
+}
+
+.timeline-item .content p {
+  color: rgba(255, 255, 255, 0.85); /* Slightly increased intensity */
 }
 
 /* FAQ */
@@ -818,3 +828,248 @@
   transform: translateY(-2px);
 }
 
+/* Elite Podcast Production Suite Styles */
+.elite-production-section {
+  position: relative;
+  z-index: 2;
+}
+
+.elite-setup-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .elite-setup-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.elite-setup-card {
+  padding: 40px;
+  text-align: center;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.elite-setup-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 77, 0, 0.3);
+}
+
+.tech-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 992px) {
+  .tech-specs-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tech-spec-card {
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.4s ease;
+  position: relative;
+}
+.tech-spec-card:hover { transform: translateY(-5px); }
+.tech-spec-card.highlight {
+  border-color: rgba(255, 77, 0, 0.4);
+  background: rgba(255, 77, 0, 0.03);
+}
+
+.tech-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 77, 0, 0.1);
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.tech-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+.tech-list li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.green-room-split {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .green-room-split { grid-template-columns: 1.2fr 1fr; }
+}
+
+.green-room-content {
+  padding: 3rem;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 600px) {
+  .amenities-grid { grid-template-columns: 1fr 1fr; }
+}
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.process-timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  position: relative;
+}
+@media (min-width: 992px) {
+  .process-timeline-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.process-step-card {
+  padding: 32px 24px;
+  border-top: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+.process-step-card:hover {
+  border-top-color: var(--accent-primary);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.process-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(255, 77, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.process-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.process-list li {
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 16px;
+}
+.process-list li::before {
+  content: '•';
+  color: var(--accent-primary);
+  position: absolute;
+  left: 0;
+}
+
+.badge-outline {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+/* Mobile Responsive Adjustments for Elite Production Suite */
+@media (max-width: 768px) {
+  .elite-setup-card {
+    padding: 24px 16px;
+  }
+  .tech-spec-card {
+    padding: 24px 16px;
+  }
+  .process-step-card {
+    padding: 24px 16px;
+  }
+  .green-room-content {
+    padding: 24px 16px;
+  }
+  .green-room-image {
+    display: none;
+  }
+  .elite-setup-grid,
+  .tech-specs-grid,
+  .process-timeline-grid,
+  .amenities-grid {
+    gap: 16px;
+  }
+  .why-bullets {
+    gap: 10px !important;
+  }
+  .badge-outline {
+    font-size: 0.8rem;
+    padding: 8px 16px !important;
+  }
+  .tech-icon-circle, .process-icon {
+    width: 48px;
+    height: 48px;
+  }
+  .tech-icon-circle svg, .process-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Green Room Amenities Grid */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+
+.amenity-item:hover {
+  background: rgba(255, 77, 0, 0.08);
+  border-color: rgba(255, 77, 0, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(255, 77, 0, 0.15);
+}
+
+.amenity-item svg {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.amenity-item:hover svg {
+  transform: scale(1.2);
+}

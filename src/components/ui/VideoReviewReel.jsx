@@ -4,25 +4,41 @@ import { Play, VolumeX, Volume2, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ShortsReel.css';
 
-const ShortVideo = ({ clip, isActive }) => {
+const ReviewVideo = ({ clip, isActive }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const isYoutube = clip.videoUrl?.includes('youtube.com') || clip.videoUrl?.includes('youtu.be');
+  const isDrive = clip.videoUrl?.includes('drive.google.com');
+
   let ytId = null;
+  let embedUrl = clip.videoUrl;
+
   if (isYoutube) {
-    if (clip.id && !clip.id.includes('clip-')) {
+    if (clip.id && !String(clip.id).includes('clip-')) {
       ytId = clip.id;
     } else {
       const match = clip.videoUrl.match(/[?&]v=([^&]+)/);
       ytId = match ? match[1] : clip.id;
     }
+  } else if (isDrive) {
+    let driveId = null;
+    if (embedUrl.includes('/d/')) {
+      driveId = embedUrl.split('/d/')[1].split('/')[0];
+    } else if (embedUrl.includes('id=')) {
+      driveId = embedUrl.split('id=')[1].split('&')[0];
+    }
+    if (driveId) {
+      embedUrl = `https://drive.google.com/file/d/${driveId}/preview`;
+    }
   }
 
+  const isNative = !isYoutube && !isDrive;
+
   useEffect(() => {
-    if (!isYoutube) {
+    if (isNative) {
       if (isActive) {
         const playPromise = videoRef.current?.play();
         if (playPromise !== undefined) {
@@ -43,7 +59,7 @@ const ShortVideo = ({ clip, isActive }) => {
 
   const togglePlay = (e) => {
     e.stopPropagation();
-    if (isYoutube) return; // Cannot easily toggle native play/pause for iframe without YT API
+    if (!isNative) return; // Cannot easily toggle native play/pause for iframe without YT API
     if (isPlaying) {
       videoRef.current?.pause();
       setIsPlaying(false);
@@ -55,7 +71,7 @@ const ShortVideo = ({ clip, isActive }) => {
 
   const toggleMute = (e) => {
     e.stopPropagation();
-    if (isYoutube) return;
+    if (!isNative) return;
     const newMuted = !isMuted;
     setIsMuted(newMuted);
     if (videoRef.current) {
@@ -74,14 +90,15 @@ const ShortVideo = ({ clip, isActive }) => {
 
   return (
     <div className="short-video-container" onClick={togglePlay}>
-      {isYoutube ? (
+      {!isNative ? (
         isActive ? (
           <iframe
-            src={`https://www.youtube.com/embed/${ytId}?autoplay=1&mute=0&controls=1&modestbranding=1&loop=1&playlist=${ytId}&playsinline=1`}
+            src={isDrive ? embedUrl : `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=0&controls=1&modestbranding=1&loop=1&playlist=${ytId}&playsinline=1`}
             className="short-video-player"
             frameBorder="0"
             allow="autoplay; encrypted-media; fullscreen"
             allowFullScreen
+            style={isDrive ? { backgroundColor: '#000', width: '100%', height: '100%', border: 'none' } : {}}
           />
         ) : (
           <img loading="lazy" src={clip.image} alt={clip.title} className="short-video-player" style={{ objectFit: 'cover' }} />
@@ -100,7 +117,7 @@ const ShortVideo = ({ clip, isActive }) => {
       )}
       
       {/* UI Overlay - Only show for native videos, YouTube handles its own UI */}
-      {!isYoutube && (
+      {isNative && (
         <div className="short-overlay">
           <div className="short-top-controls">
             <button className="short-control-btn" onClick={toggleMute} aria-label={isMuted ? "Unmute" : "Mute"}>
@@ -133,7 +150,7 @@ const ShortVideo = ({ clip, isActive }) => {
   );
 };
 
-const ShortsReel = ({ clips, isOpen, onClose, initialIndex = 0 }) => {
+const VideoReviewReel = ({ clips, isOpen, onClose, initialIndex = 0 }) => {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(initialIndex);
 
@@ -211,7 +228,7 @@ const ShortsReel = ({ clips, isOpen, onClose, initialIndex = 0 }) => {
                 key={clip.id || idx} 
                 data-index={idx}
               >
-                <ShortVideo 
+                <ReviewVideo 
                   clip={clip} 
                   isActive={activeIndex === idx} 
                 />
@@ -225,4 +242,4 @@ const ShortsReel = ({ clips, isOpen, onClose, initialIndex = 0 }) => {
   );
 };
 
-export default ShortsReel;
+export default VideoReviewReel;
