@@ -315,7 +315,6 @@ a {
 .glow-shape {
   position: absolute;
   border-radius: 50%;
-  filter: blur(140px);
   opacity: 0.18;
   mix-blend-mode: screen;
   will-change: transform;
@@ -554,10 +553,9 @@ a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  filter: blur(50px) brightness(0.55);
+  filter: blur(30px) brightness(0.55);
   z-index: -2;
-  transform: scale(1.1); /* To prevent white edges from blur */
+  transform: scale(1.1) translateZ(0); /* translateZ forces GPU acceleration safely */
 }
 
 .global-site-overlay {

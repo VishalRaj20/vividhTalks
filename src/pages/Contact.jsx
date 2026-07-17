@@ -78,7 +78,7 @@ const Contact = () => {
       </section>
 
       {/* ── Contact Options ── */}
-      <section className="container" style={{ paddingBottom: '0' }}>
+      <section className="container" style={{ paddingBottom: '0', paddingTop: '1rem' }}>
         <div className="contact-options-grid animate-on-scroll">
           <a href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || '918252754340'}`} target="_blank" rel="noreferrer" className="contact-option-card whatsapp-card">
             <div className="contact-option-icon" style={{ background: 'rgba(37,211,102,0.12)', borderColor: 'rgba(37,211,102,0.3)', color: '#25D366' }}>
@@ -181,7 +181,15 @@ const Contact = () => {
               <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Phone / WhatsApp</label>
-                  <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" className="form-input" />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="+91 XXXXX XXXXX"
+                    className="form-input"
+                    maxLength="10"
+                    pattern="[0-9]{10}"
+                    onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 10)}
+                  />
                 </div>
                 <div className="form-group">
                   <label className="form-label">I want to...</label>

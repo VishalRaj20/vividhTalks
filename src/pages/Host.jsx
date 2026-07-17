@@ -114,8 +114,8 @@ const Host = () => {
         <div className="container">
           <div className="host-quote-box animate-on-scroll glass-card text-center p-5">
             <div className="quote-icon">"</div>
-            <h3 className="h3 mb-6 mx-auto max-w-4xl" style={{ fontWeight: '500', marginLeft: '150px', lineHeight: '1.4' }}>{hostData.quote}</h3>
-            <p className="flex justify-center text-accent font-mono text-xl">— {hostData.name}</p>
+            <h3 className="h3 mb-6 mx-auto max-w-4xl" style={{ position: 'relative', zIndex: 1, fontWeight: '500', lineHeight: '1.4' }}>{hostData.quote}</h3>
+            <p className="flex justify-center text-accent font-mono text-xl" style={{ position: 'relative', zIndex: 1 }}>— {hostData.name}</p>
           </div>
         </div>
       </section>

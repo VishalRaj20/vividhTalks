@@ -205,11 +205,10 @@
   position: absolute;
   top: -50%;
   right: -5%;
-  width: 150px;
-  height: 150px;
-  background: var(--accent-primary);
-  filter: blur(80px);
-  opacity: 0.15;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+  opacity: 0.25;
   pointer-events: none;
 }
 

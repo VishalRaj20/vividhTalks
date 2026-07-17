@@ -373,7 +373,16 @@ const BookSession = () => {
                   <input type="email" name="email" placeholder="Email Address *" required className="form-input" />
                 </div>
                 <div className="form-group">
-                  <input type="tel" name="phone" placeholder="Phone (WhatsApp) *" required className="form-input" />
+                  <input 
+                    type="tel" 
+                    name="phone" 
+                    placeholder="Phone (WhatsApp) *" 
+                    required 
+                    className="form-input" 
+                    maxLength="10"
+                    pattern="[0-9]{10}"
+                    onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 10)}
+                  />
                 </div>
               </div>
               <div className="form-group">
@@ -431,6 +440,14 @@ const BookSession = () => {
                   className="form-input text-secondary"
                   required
                   min={new Date().toISOString().split('T')[0]}
+                  max={`${new Date().getFullYear() + 2}-12-31`}
+                  onClick={(e) => {
+                    try {
+                      e.target.showPicker();
+                    } catch (err) {
+                      // Ignore on older browsers
+                    }
+                  }}
                 />
               </div>
 

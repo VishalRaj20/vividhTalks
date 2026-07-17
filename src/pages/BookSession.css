@@ -424,6 +424,11 @@
   font-size: 16px;
   outline: none;
   transition: border-color 0.3s ease;
+  color-scheme: dark;
+}
+
+.form-input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
 }
 
 .form-select {
