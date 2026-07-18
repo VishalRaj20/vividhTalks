@@ -33,7 +33,7 @@ const Contact = () => {
       `*Message:* ${data.message}%0A%0A` +
       `_Sent from Vividh Talks Website_`;
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${msg}`;
+    const whatsappUrl = `https://wa.me/91${whatsappNumber}?text=${msg}`;
 
     // 2. Email fallback
     if (formspreeId) {
