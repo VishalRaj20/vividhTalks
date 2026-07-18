@@ -21,7 +21,7 @@ const Contact = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "918252754340";
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "9031806915";
     const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
 
     // 1. Prepare WhatsApp Message
@@ -80,7 +80,7 @@ const Contact = () => {
       {/* ── Contact Options ── */}
       <section className="container" style={{ paddingBottom: '0', paddingTop: '1rem' }}>
         <div className="contact-options-grid animate-on-scroll">
-          <a href={`https://wa.me/${import.meta.env.VITE_WHATSAPP_NUMBER || '918252754340'}`} target="_blank" rel="noreferrer" className="contact-option-card whatsapp-card">
+          <a href={`https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}`} target="_blank" rel="noreferrer" className="contact-option-card whatsapp-card">
             <div className="contact-option-icon" style={{ background: 'rgba(37,211,102,0.12)', borderColor: 'rgba(37,211,102,0.3)', color: '#25D366' }}>
               <MessageCircle size={28} />
             </div>
@@ -137,14 +137,14 @@ const Contact = () => {
                 <div className="contact-info-item-icon"><Phone size={18} /></div>
                 <div>
                   <div className="contact-info-item-label">WhatsApp</div>
-                  <div><a href={`https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '8252754340'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+91 {import.meta.env.VITE_WHATSAPP_NUMBER || '8252754340'}</a></div>
+                  <div><a href={`https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+91 {import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}</a></div>
                 </div>
               </div>
               <div className="contact-info-item">
                 <div className="contact-info-item-icon"><MapPin size={18} /></div>
                 <div>
                   <div className="contact-info-item-label">Studio</div>
-                  <div>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</div>
+                  <div>4th Floor, Above Apollo Dental, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</div>
                 </div>
               </div>
             </div>
@@ -226,7 +226,7 @@ const Contact = () => {
             {[
               { svg: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>, name: '@vividhtalks', stat: '1500+ Followers', color: '#E1306C', label: 'Instagram', link: "https://www.instagram.com/vividhtalks" },
               { svg: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>, name: 'Vividh Talks', stat: '1000+ Subscribers', color: '#FF0000', label: 'YouTube', link: "https://www.youtube.com/@TalksVividh" },
-              { svg: <MessageCircle size={28} />, name: 'Creator Community', stat: 'Join Group', color: '#25D366', label: 'WhatsApp', link: `https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '8252754340'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20joining%20the%20Creator%20Community!` },
+              { svg: <MessageCircle size={28} />, name: 'Creator Community', stat: 'Join Group', color: '#25D366', label: 'WhatsApp', link: `https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20joining%20the%20Creator%20Community!` },
             ].map((s, i) => (
               <div className="social-card animate-on-scroll" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
                 <div className="social-card-icon" style={{ color: s.color, borderColor: `${s.color}33`, background: `${s.color}12` }}>

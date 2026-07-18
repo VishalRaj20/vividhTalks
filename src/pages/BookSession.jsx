@@ -61,7 +61,7 @@ const BookSession = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "918252754340";
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "9031806915";
     const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
 
     // 1. Prepare WhatsApp Message
@@ -79,7 +79,7 @@ const BookSession = () => {
       `*Preferred Time:* ${selectedTimeSlot || 'Not Selected'}%0A%0A` +
       `_Sent from Vividh Talks Website_`;
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    const whatsappUrl = `https://wa.me/91${whatsappNumber}?text=${message}`;
 
     // 2. Optional: Send to Formspree (Email)
     if (formspreeId) {
@@ -198,22 +198,22 @@ const BookSession = () => {
 
         <div className="studio-gallery-grid animate-on-scroll" style={{ marginTop: "1rem" }}>
           <div className="gallery-item">
-            <img loading="lazy" src="/studio/photo_2026-07-01_20-55-53.webp" alt="Studio Setup 1" />
+            <img loading="lazy" src="/studio/1.webp" alt="Studio Setup 1" />
           </div>
           <div className="gallery-item">
-            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-10.webp" alt="Studio Setup 2" />
+            <img loading="lazy" src="/studio/2.webp" alt="Studio Setup 2" />
           </div>
           <div className="gallery-item">
-            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-15.webp" alt="Studio Setup 3" />
+            <img loading="lazy" src="/studio/3.webp" alt="Studio Setup 3" />
           </div>
           <div className="gallery-item">
-            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-18.webp" alt="Studio Setup 4" />
+            <img loading="lazy" src="/studio/4.webp" alt="Studio Setup 4" />
           </div>
           <div className="gallery-item">
-            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-23.webp" alt="Studio Setup 5" />
+            <img loading="lazy" src="/studio/5.webp" alt="Studio Setup 5" />
           </div>
           <div className="gallery-item">
-            <img loading="lazy" src="/studio/photo_2026-07-01_20-58-26.webp" alt="Studio Setup 6" />
+            <img loading="lazy" src="/studio/6.webp" alt="Studio Setup 6" />
           </div>
         </div>
       </section>
@@ -233,7 +233,7 @@ const BookSession = () => {
           <div className="elite-setup-grid animate-on-scroll mb-16" style={{ marginBottom: '1.5rem', marginTop: "1rem" }}>
             <div className="elite-setup-card glass-card">
               <div className="setup-icon mb-4" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Users size={32} className="text-accent" />
+                <User size={32} className="text-accent" /> <span className="text-secondary" style={{ fontSize: '20px' }}>+</span> <User size={26} className="text-accent" />
               </div>
               <h3 className="h3">2-Person Podcast Setup</h3>
               <p className="text-accent font-semibold mb-3 mt-1">1 Host + 1 Guest</p>
@@ -296,11 +296,10 @@ const BookSession = () => {
 
               <h4 className="h4 mb-4">Amenities</h4>
               <div className="amenities-grid">
-                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> Comfortable seating</div>
-                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> Air-conditioned waiting area</div>
-                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> High-speed Wi-Fi</div>
-                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> Charging stations</div>
-                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> Mirror & preparation space</div>
+                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> Private Green Room Access</div>
+                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> Professional Vanity & Grooming Station</div>
+                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> Makeup & Hair Artist (On Request)</div>
+                <div className="amenity-item"><CheckCircle2 size={16} className="text-accent" /> Quiet Space for Briefing & Preparation</div>
               </div>
             </div>
             <div className="green-room-image" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1550262174-83907c030d97?q=80&w=800&auto=format&fit=crop)', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '350px' }}>
@@ -373,12 +372,12 @@ const BookSession = () => {
                   <input type="email" name="email" placeholder="Email Address *" required className="form-input" />
                 </div>
                 <div className="form-group">
-                  <input 
-                    type="tel" 
-                    name="phone" 
-                    placeholder="Phone (WhatsApp) *" 
-                    required 
-                    className="form-input" 
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone (WhatsApp) *"
+                    required
+                    className="form-input"
                     maxLength="10"
                     pattern="[0-9]{10}"
                     onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '').slice(0, 10)}
