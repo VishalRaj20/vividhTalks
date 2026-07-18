@@ -61,7 +61,7 @@ const BookSession = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "9031806915";
+    const whatsappNumber = "9031806915";
     const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
 
     // 1. Prepare WhatsApp Message

@@ -23,7 +23,7 @@ const GuestNomination = () => {
     const guestLink = formData.get('guestLink');
     const reason = formData.get('reason');
 
-    const waNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915';
+    const waNumber = '9031806915';
     const text = `*New Guest Nomination* 🎙️\n\n*Nominator:* ${nominatorName}\n*Guest Name:* ${guestName}\n*Guest Link:* ${guestLink || 'N/A'}\n*Why feature them?*\n${reason}`;
     const waUrl = `https://wa.me/91${waNumber}?text=${encodeURIComponent(text)}`;
     

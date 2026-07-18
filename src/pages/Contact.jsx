@@ -21,7 +21,7 @@ const Contact = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "9031806915";
+    const whatsappNumber = "9031806915";
     const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
 
     // 1. Prepare WhatsApp Message
@@ -80,7 +80,7 @@ const Contact = () => {
       {/* ── Contact Options ── */}
       <section className="container" style={{ paddingBottom: '0', paddingTop: '1rem' }}>
         <div className="contact-options-grid animate-on-scroll">
-          <a href={`https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}`} target="_blank" rel="noreferrer" className="contact-option-card whatsapp-card">
+          <a href={`https://wa.me/919031806915`} target="_blank" rel="noreferrer" className="contact-option-card whatsapp-card">
             <div className="contact-option-icon" style={{ background: 'rgba(37,211,102,0.12)', borderColor: 'rgba(37,211,102,0.3)', color: '#25D366' }}>
               <MessageCircle size={28} />
             </div>
@@ -137,7 +137,7 @@ const Contact = () => {
                 <div className="contact-info-item-icon"><Phone size={18} /></div>
                 <div>
                   <div className="contact-info-item-label">WhatsApp</div>
-                  <div><a href={"https://wa.me/919031806915?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!"} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+91 {import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}</a></div>
+                  <div><a href={"https://wa.me/919031806915?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!"} target="_blank" rel="noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>+91 9031806915</a></div>
                 </div>
               </div>
               <div className="contact-info-item">

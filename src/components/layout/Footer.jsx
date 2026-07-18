@@ -107,7 +107,7 @@ const Footer = () => {
             <h4 className="footer-col-heading">Stay In The Loop</h4>
             <p className="footer-newsletter-desc">Fresh episode drops, behind-the-scenes content and exclusive creator updates.</p>
             <div className="footer-contact-info">
-              <a href={`https://wa.me/919031806915}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" className="footer-contact-row" style={{ textDecoration: 'none' }}><Phone size={13} className="footer-contact-icon" /><span>{import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}</span></a>
+              <a href={`https://wa.me/919031806915?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" className="footer-contact-row" style={{ textDecoration: 'none' }}><Phone size={13} className="footer-contact-icon" /><span>9031806915</span></a>
               <a href="mailto:vividhtalks@gmail.com?subject=Studio%20Booking%20Inquiry" className="footer-contact-row" style={{ textDecoration: 'none' }}><Mail size={13} className="footer-contact-icon" /><span>vividhtalks@gmail.com</span></a>
               <div className="footer-contact-row"><MapPin size={13} className="footer-contact-icon" /><span style={{ fontSize: '11px', lineHeight: '1.4' }}>4th Floor, Above Apollo Dental, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</span></div>
             </div>
@@ -149,7 +149,7 @@ const Footer = () => {
         <div className="mob-footer-bottom-block">
           {/* Address */}
           <div className="mob-footer-address">
-            <span><a href={`https://wa.me/91${import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>{import.meta.env.VITE_WHATSAPP_NUMBER || '9031806915'}</a></span>
+            <span><a href={`https://wa.me/919031806915?text=Hi%20Vividh%20Talks,%20I'm%20interested%20in%20booking%20the%20podcast%20studio!`} target="_blank" rel="noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>9031806915</a></span>
             <span><a href="mailto:vividhtalks@gmail.com?subject=Studio%20Booking%20Inquiry" style={{ textDecoration: 'none', color: 'inherit' }}>vividhtalks@gmail.com</a></span>
             <span style={{ fontSize: '11px', lineHeight: '1.4', marginTop: '6px' }}>4th Floor, Above Apollo Dental, Keshri Nagar, Rajeev Nagar Main Road, Patna, Bihar - 800024, India</span>
           </div>

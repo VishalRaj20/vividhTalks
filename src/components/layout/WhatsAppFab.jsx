@@ -2,7 +2,7 @@ import { MessageCircle } from 'lucide-react';
 import './FloatingElements.css';
 
 const WhatsAppFab = () => {
-  const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "9031806915";
+  const whatsappNumber = "9031806915";
   const defaultMessage = encodeURIComponent("Hi Vividh Talks! I'm interested in recording a podcast episode. Can you help me with more details?");
 
   return (
